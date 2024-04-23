@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AdresseRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AdresseRepository::class)]
@@ -16,17 +18,35 @@ class Adresse
     #[ORM\Column]
     private ?int $number = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 125)]
     private ?string $street = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 100)]
     private ?string $city = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $department = null;
+    #[ORM\Column(length: 125)]
+    private ?string $county = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 125)]
     private ?string $country = null;
+
+    /**
+     * @var Collection<int, Client>
+     */
+    #[ORM\OneToMany(targetEntity: Client::class, mappedBy: 'adresse')]
+    private Collection $clients;
+
+    /**
+     * @var Collection<int, Operation>
+     */
+    #[ORM\OneToMany(targetEntity: Operation::class, mappedBy: 'adresse')]
+    private Collection $operations;
+
+    public function __construct()
+    {
+        $this->clients = new ArrayCollection();
+        $this->operations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -69,14 +89,14 @@ class Adresse
         return $this;
     }
 
-    public function getDepartment(): ?string
+    public function getCounty(): ?string
     {
-        return $this->department;
+        return $this->county;
     }
 
-    public function setDepartment(string $department): static
+    public function setCounty(string $county): static
     {
-        $this->department = $department;
+        $this->county = $county;
 
         return $this;
     }
@@ -89,6 +109,66 @@ class Adresse
     public function setCountry(string $country): static
     {
         $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Client>
+     */
+    public function getClients(): Collection
+    {
+        return $this->clients;
+    }
+
+    public function addClient(Client $client): static
+    {
+        if (!$this->clients->contains($client)) {
+            $this->clients->add($client);
+            $client->setAdresse($this);
+        }
+
+        return $this;
+    }
+
+    public function removeClient(Client $client): static
+    {
+        if ($this->clients->removeElement($client)) {
+            // set the owning side to null (unless already changed)
+            if ($client->getAdresse() === $this) {
+                $client->setAdresse(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Operation>
+     */
+    public function getOperations(): Collection
+    {
+        return $this->operations;
+    }
+
+    public function addOperation(Operation $operation): static
+    {
+        if (!$this->operations->contains($operation)) {
+            $this->operations->add($operation);
+            $operation->setAdresse($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOperation(Operation $operation): static
+    {
+        if ($this->operations->removeElement($operation)) {
+            // set the owning side to null (unless already changed)
+            if ($operation->getAdresse() === $this) {
+                $operation->setAdresse(null);
+            }
+        }
 
         return $this;
     }

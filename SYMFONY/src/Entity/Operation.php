@@ -14,36 +14,32 @@ class Operation
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 100)]
     private ?string $statut = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $dateDebut = null;
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $dateStart = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $dateEnd = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $datePrevisionnel = null;
+    private ?\DateTimeInterface $dateForecast = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $dateFin = null;
+    #[ORM\ManyToOne(inversedBy: 'operations')]
+    private ?adresse $adresse = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?facture $facture = null;
-
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne(inversedBy: 'operations')]
     private ?client $client = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne(inversedBy: 'operations')]
     private ?typeOperation $type = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?employe $employe = null;
+    #[ORM\ManyToOne(inversedBy: 'operations')]
+    private ?user $user = null;
 
     public function getId(): ?int
     {
@@ -74,50 +70,50 @@ class Operation
         return $this;
     }
 
-    public function getDateDebut(): ?\DateTimeInterface
+    public function getDateStart(): ?\DateTimeInterface
     {
-        return $this->dateDebut;
+        return $this->dateStart;
     }
 
-    public function setDateDebut(\DateTimeInterface $dateDebut): static
+    public function setDateStart(?\DateTimeInterface $dateStart): static
     {
-        $this->dateDebut = $dateDebut;
+        $this->dateStart = $dateStart;
 
         return $this;
     }
 
-    public function getDatePrevisionnel(): ?\DateTimeInterface
+    public function getDateEnd(): ?\DateTimeInterface
     {
-        return $this->datePrevisionnel;
+        return $this->dateEnd;
     }
 
-    public function setDatePrevisionnel(\DateTimeInterface $datePrevisionnel): static
+    public function setDateEnd(?\DateTimeInterface $dateEnd): static
     {
-        $this->datePrevisionnel = $datePrevisionnel;
+        $this->dateEnd = $dateEnd;
 
         return $this;
     }
 
-    public function getDateFin(): ?\DateTimeInterface
+    public function getDateForecast(): ?\DateTimeInterface
     {
-        return $this->dateFin;
+        return $this->dateForecast;
     }
 
-    public function setDateFin(\DateTimeInterface $dateFin): static
+    public function setDateForecast(\DateTimeInterface $dateForecast): static
     {
-        $this->dateFin = $dateFin;
+        $this->dateForecast = $dateForecast;
 
         return $this;
     }
 
-    public function getFacture(): ?facture
+    public function getAdresse(): ?adresse
     {
-        return $this->facture;
+        return $this->adresse;
     }
 
-    public function setFacture(?facture $facture): static
+    public function setAdresse(?adresse $adresse): static
     {
-        $this->facture = $facture;
+        $this->adresse = $adresse;
 
         return $this;
     }
@@ -146,14 +142,14 @@ class Operation
         return $this;
     }
 
-    public function getEmploye(): ?employe
+    public function getUser(): ?user
     {
-        return $this->employe;
+        return $this->user;
     }
 
-    public function setEmploye(?employe $employe): static
+    public function setUser(?user $user): static
     {
-        $this->employe = $employe;
+        $this->user = $user;
 
         return $this;
     }
