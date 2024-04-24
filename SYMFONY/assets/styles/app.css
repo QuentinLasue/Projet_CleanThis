@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: #D9D9D9
  ;
    
 }
@@ -59,3 +60,290 @@ body {
 .navE-links li:nth-child(1) {
     margin-left: 40px; 
 }
+
+/* login.html.twig */
+
+.navbarCo {
+    height: 125px;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contentCo {
+    width: 960px; /* Largeur de 960px */
+    margin: 0 auto; /* Marge automatique sur les côtés pour centrer */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 125px); /* Hauteur de la fenêtre moins la hauteur de la navbar */
+    background-color: #FFFFFF;
+    height: 751px;
+    margin-top: 3%;
+}
+.form-containerCo {
+    text-align: center;
+}
+
+input[type="emailCo"], input[type="passwordCo"] {
+    width: 484px;
+    height: 51.97px;
+    border-radius: 50px;
+    border: 1px solid #CCCCCC;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+input[type="emailCo"]::before, input[type="passwordCo"]::before {
+    content: url(email_icon.png); /* Remplacez 'email_icon.png' par le chemin de votre icône email */
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+input[type="emailCo"]::after, input[type="passwordCo"]::after {
+    content: "";
+    position: absolute;
+    height: 80%;
+    width: 1px;
+    background-color: #CCCCCC;
+    top: 10%;
+    right: 30px;
+}
+
+input[type="emailCo"]:focus, input[type="passwordCo"]:focus {
+    outline: none;
+    border-color: #3366FF;
+}
+
+input[type="emailCo"]:focus::before, input[type="passwordCo"]:focus::before {
+    filter: invert(35%) sepia(91%) saturate(1043%) hue-rotate(190deg) brightness(97%) contrast(97%);
+}
+
+input[type="emailCo"]:focus::after, input[type="passwordCo"]:focus::after {
+    background-color: #3366FF;
+}
+
+::placeholder {
+    color: #999999;
+}
+
+
+    button {
+        width: 484px; 
+        height: 51.97px;
+        border: none;
+        border-radius: 50px;
+        background-color: #2678D1;
+        color: #FFFFFF;
+        font-size: 30px;
+        cursor: pointer;
+        font-family:sans-serif;
+    }
+    
+
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#h1Co {
+    font-size: 50px;
+    color: #2678D1;
+    margin-bottom: 25%;
+}
+
+.input-iconCo {
+    position: relative;
+}
+
+.input-iconCo i {
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    transform: translateY(-52%);
+}
+
+.input-iconCo input {
+    padding-left: 60px; /* Pour laisser de l'espace à l'icône */
+    width: 484px;
+    height: 51.97px;
+    border-radius: 50px;
+    border: 1px solid #CCCCCC;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.input-iconCo input::before, .input-iconCo input::before {
+    content: url(email_icon.png); /* Remplacez 'email_icon.png' par le chemin de votre icône email */
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.input-iconCo input::after, .input-iconCo input::after {
+    content: "";
+    position: absolute;
+    height: 80%;
+    width: 1px;
+    background-color: #CCCCCC;
+    top: 10%;
+    right: 30px;
+}
+
+.input-iconCo input:focus, .input-iconCo input:focus {
+    outline: none;
+    border-color: #3366FF;
+}
+
+.input-iconCo input:focus::before, .input-iconCo input:focus::before {
+    filter: invert(35%) sepia(91%) saturate(1043%) hue-rotate(190deg) brightness(97%) contrast(97%);
+}
+
+.input-iconCo input:focus::after, .input-iconCo input:focus::after {
+    background-color: #3366FF;
+}
+
+::placeholder {
+    color: #999999;
+    
+}
+.remember-meCo,
+.forgot-passwordCo {
+    display: inline-block;
+}
+
+.forgot-passwordCo {
+    margin-left: 60px; /* Espacement de 160px */
+}
+
+.flex-containerCo {
+    display: flex;
+    align-items: center; /* Alignement vertical */
+}
+
+.remember-meCo, .forgot-passwordCo {
+    flex: 1; 
+}
+
+.connect-withCo {
+    text-align: center; /* Centrage horizontal */
+}
+
+/* google */
+
+.gsi-material-button {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -webkit-appearance: none;
+    background-color: #f2f2f2;
+    background-image: none;
+    border: none;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #1f1f1f;
+    cursor: pointer;
+    font-family: 'Roboto', arial, sans-serif;
+    font-size: 14px;
+    height: 40px;
+    letter-spacing: 0.25px;
+    outline: none;
+    overflow: hidden;
+    padding: 0 12px;
+    position: relative;
+    text-align: center;
+    -webkit-transition: background-color .218s, border-color .218s, box-shadow .218s;
+    transition: background-color .218s, border-color .218s, box-shadow .218s;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: auto;
+    max-width: 400px;
+    min-width: min-content;
+  }
+  
+  .gsi-material-button .gsi-material-button-icon {
+    height: 20px;
+    margin-right: 12px;
+    min-width: 20px;
+    width: 20px;
+  }
+  
+  .gsi-material-button .gsi-material-button-content-wrapper {
+    -webkit-align-items: center;
+    align-items: center;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    height: 100%;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+  }
+  
+  .gsi-material-button .gsi-material-button-contents {
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    font-family: 'Roboto', arial, sans-serif;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: top;
+  }
+  
+  .gsi-material-button .gsi-material-button-state {
+    -webkit-transition: opacity .218s;
+    transition: opacity .218s;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    max-width: 0;
+  }
+  
+  .gsi-material-button:disabled {
+    cursor: default;
+    background-color: #ffffff61;
+  }
+  
+  .gsi-material-button:disabled .gsi-material-button-state {
+    background-color: #1f1f1f1f;
+  }
+  
+  .gsi-material-button:disabled .gsi-material-button-contents {
+    opacity: 38%;
+  }
+  
+  .gsi-material-button:disabled .gsi-material-button-icon {
+    opacity: 38%;
+  }
+  
+  .gsi-material-button:not(:disabled):active .gsi-material-button-state, 
+  .gsi-material-button:not(:disabled):focus .gsi-material-button-state {
+    background-color: #001d35;
+    opacity: 12%;
+  }
+  
+  .gsi-material-button:not(:disabled):hover {
+    -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
+  }
+  
+  .gsi-material-button:not(:disabled):hover .gsi-material-button-state {
+    background-color: #001d35;
+    opacity: 8%;
+  }
+  

@@ -4,6 +4,3 @@ controllers:
         namespace: App\Controller
     type: attribute
 
-nave_route:
-    path: /base/nave
-    controller: 'App\Controller\YourController::yourAction'
