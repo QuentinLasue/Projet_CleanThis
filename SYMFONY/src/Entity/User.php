@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -38,17 +36,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 50)]
     private ?string $firstname = null;
-
-    /**
-     * @var Collection<int, Operation>
-     */
-    #[ORM\OneToMany(targetEntity: Operation::class, mappedBy: 'user')]
-    private Collection $operations;
-
-    public function __construct()
-    {
-        $this->operations = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -145,36 +132,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setFirstname(string $firstname): static
     {
         $this->firstname = $firstname;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Operation>
-     */
-    public function getOperations(): Collection
-    {
-        return $this->operations;
-    }
-
-    public function addOperation(Operation $operation): static
-    {
-        if (!$this->operations->contains($operation)) {
-            $this->operations->add($operation);
-            $operation->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeOperation(Operation $operation): static
-    {
-        if ($this->operations->removeElement($operation)) {
-            // set the owning side to null (unless already changed)
-            if ($operation->getUser() === $this) {
-                $operation->setUser(null);
-            }
-        }
 
         return $this;
     }

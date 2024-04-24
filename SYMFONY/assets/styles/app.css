@@ -1,3 +1,86 @@
-body {
-    background-color: skyblue;
+@import url("https ://fonts.googleapis.com/css2 ?family=Lato :wght@400 ; 700; 900&family=Roboto :ital,wght@0,100 ; 0,300; 0,400; 0,500; 0,700; 0,900; 1,100; 1,300; 1,400; 1,500; 1,700; 1 900&display=swap");
+
+/* home */
+.container {
+  padding-inline: 10%;
+}
+.divIntro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.intro {
+  font-family: "Roboto";
+  font-size: 32px;
+  font-style: italic;
+}
+.btnDevis {
+  background-color: #2678d1;
+  color: white;
+  padding: 1%;
+  font-size: 32px;
+  text-decoration: none;
+  border-radius: 30px;
+  box-shadow: 0px 4px 4px #4a4a4a;
+}
+.btnDevis:hover {
+  box-shadow: 0px 4px 4px #4a4a4a inset;
+}
+.cardList {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.flipperFront h4,
+.flipperBack h4 {
+  color: #2678d1;
+  font-size: 32px;
+}
+.flipperBack p {
+  color: #2678d1;
+  font-size: 32px;
+}
+.flipperFront img {
+  width: 300px;
+  height: 450px;
+  border-radius: 30px 30px 0px 0px;
+}
+
+.flipContainer {
+  perspective: 1000px; /*Perspective pour l'effet de profondeur lors du retournement*/
+  margin-bottom: 5%;
+  display: flex;
+  justify-content: center;
+}
+
+.flipper {
+  width: 300px;
+  height: 600px;
+  position: relative;
+  transform-style: preserve-3d; /*indique que les enfant doivent être rendu en 3D (flipperFront Et Back)*/
+  transition: transform 0.8s; /*transition fluide*/
+}
+
+.flipContainer:hover .flipper {
+  transform: rotateY(180deg); /*Retournement de 180 degrés lors du survol*/
+}
+.flip {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden; /*Cache le côté arrière pendant le retournement*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 30px;
+  box-shadow: 0px 4px 4px 0px #77b800;
+}
+.flipperFront {
+  transform: rotateY(0deg); /*face avant initiale, non retournée*/
+}
+.flipperBack {
+  transform: rotateY(180deg); /*face arrière initiale, retournéeà 180deg*/
+  text-align: center;
 }
