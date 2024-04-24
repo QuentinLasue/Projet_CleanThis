@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+{% block title %}Demande d'opération{% endblock %}
+{% block body %}
+{% set titre = "Opération" %}
+{% include "base/blueBar.html.twig" %}
+    {{ form(formClient) }}
+    <hr>
+    {{ form(formAdresse) }}
+    <hr>
+    {{ form(formOperation) }}
+
+{% endblock %}

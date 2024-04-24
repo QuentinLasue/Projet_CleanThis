@@ -26,7 +26,7 @@ class Client
 
     #[ORM\ManyToOne(inversedBy: 'clients')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?adresse $adresse = null;
+    private ?Adresse $adresse = null;
 
     /**
      * @var Collection<int, Operation>
