@@ -14,7 +14,7 @@ class ClientController extends AbstractController{
     {
         $typesOperations = $repo->findAll();
 
-        return $this->render('home/home.html.twig', [
+        return $this->render('base.html.twig', [
             'typesOperations'=>$typesOperations
         ]);
     } 

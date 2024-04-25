@@ -1,17 +1,66 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>"> {% block stylesheets %}{% endblock %}
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+		{% block javascripts %}
+			{% block importmap %}
+				{{ importmap('app') }}
+			{% endblock %}
+		{% endblock %}
+	</head>
+	<body>
+		{% block body %}
+			<div
+				class="container">
+				{# Paragraphe intro #}
+				<div class="divIntro">
+					<h2 class="intro">
+						Depuis un demi-siècle, Clean This définit l'excellence en nettoyage. Avec 50 ans d'expérience,
+														            notre savoir-faire inégalé garantit un service de qualité supérieure à chaque intervention.
+														            Faites confiance à notre héritage pour des résultats impeccables à chaque fois.
+					</h2>
+				</div>
+
+				{# Card prestation #}
+				<div class="cardList">
+					{% for typeOperation in typesOperations %}
+						<div class="flipContainer">
+							<div class="flipper">
+								<div class="flipperFront flip">
+									<img src="https://th.bing.com/th/id/OIP.CmTZmPvJbpQq4Gvr44Fn9AHaEW?rs=1&pid=ImgDetMain" alt="Image de presentation de l'opération">
+									<div>
+										<h4>{{typeOperation.name}}</h4>
+									</div>
+								</div>
+								<div class="flipperBack flip">
+									<h4>{{typeOperation.name}}</h4>
+									<p>{{typeOperation.description}}</p>
+									<p>Prix :
+										{% if typeOperation.prix == 0 %}
+											Personnalisé
+										{% else %}
+
+											{{typeOperation.prix}}
+											€
+										{% endif %}
+									</p>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+
+				{# btn devis #}
+				<div class="divIntro">
+					<a class="btnDevis" href="">DEMANDER VOTRE DEVIS</a>
+				</div>
+			</div>
+		{% endblock %}
+	</body>
 </html>
