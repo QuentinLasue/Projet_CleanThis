@@ -1,0 +1,28 @@
+
+/* blueBar */
+.titleDiv{
+    display: flex;
+    justify-content: center;
+}
+.blueBar{
+    width: 1000px;
+    background-color:#2678D1;
+    padding: 0.5%;
+    padding-left: 5%;
+    border-radius: 0 150px 0 0;
+    margin: 2%;
+} 
+.blueBar h2 {
+    color:white;
+    font-size: 30;
+}
+
+/* Formulaire */
+.doubleChamp{
+    display: flex;
+}
+.formClient{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

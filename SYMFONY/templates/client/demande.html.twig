@@ -1,12 +1,40 @@
 {% extends "base.html.twig" %}
-{% block title %}Demande d'opération{% endblock %}
+{% block title %}Demande d'opération
+{% endblock %}
 {% block body %}
-{% set titre = "Opération" %}
-{% include "base/blueBar.html.twig" %}
-    {{ form(formClient) }}
-    <hr>
-    {{ form(formAdresse) }}
-    <hr>
-    {{ form(formOperation) }}
 
+	{% set titre = "Demande d'opération de nettoyage" %}
+	{% include "base/blueBar.html.twig" %}
+	<div class="formClient">
+		{{form_start(form)}}
+		<div>
+			<div class="doubleChamp">
+				{{ form_row(form.client.name)}}
+				{{ form_row(form.client.firstname)}}
+			</div>
+			{{ form_row(form.client.mail)}}
+		</div>
+
+		<div>
+			<p>Adesse :
+			</p>
+			<div class="doubleChamp">
+				{{ form_row(form.adresse.number)}}
+				{{ form_row(form.adresse.street)}}
+			</div>
+			<div class="doubleChamp">
+				{{ form_row(form.adresse.city)}}
+				{{ form_row(form.adresse.county)}}
+			</div>
+			{{ form_row(form.adresse.country)}}
+		</div>
+		<div>
+			<p>
+				Votre demande :</p>
+			{{ form_row(form.operation.type)}}
+			{{ form_row(form.operation.dateForecast)}}
+			{{ form_row(form.operation.description)}}
+		</div>
+		 {{form_end(form)}}
+	</div> 
 {% endblock %}

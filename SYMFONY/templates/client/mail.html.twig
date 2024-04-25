@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+{% block title %}Client
+{% endblock %}
+{% block body %}
+    {% set titre = "Qui êtes-vous ?" %}
+	{% include "base/blueBar.html.twig" %}
+    <div class="formClient">
+        {% for message in app.flashes('danger') %}
+        <div class="alert">
+        {{ message }}
+        </div>
+        {% endfor %}
+        
+        {{form_start(form)}}
+        {{form_end(form)}}
+    </div>
+
+    
+{% endblock %}
