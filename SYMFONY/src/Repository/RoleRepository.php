@@ -20,6 +20,21 @@ class RoleRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Role::class);
     }
+    public function findAllRoleNames(): array
+    {
+        $roles = $this->createQueryBuilder('r')
+            ->select('r.name')
+            ->getQuery()
+            ->getResult();
+        
+            $roleNames = [];
+            foreach ($roles as $role) {
+                $roleNames[] = $role['name'];
+            }
+    
+            return $roleNames;
+        }
+    
 
     //    /**
     //     * @return Role[] Returns an array of Role objects

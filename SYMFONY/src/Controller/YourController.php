@@ -8,13 +8,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class YourController extends AbstractController
 {
-    /**
-     * @Route("/base/nave", name="nave_route")
-     */
+   
+    #[Route("base", name:"base_route")]
     public function yourAction(): Response
     {
 
-        return $this->render('base/nave.html.twig');
+        return $this->render('base.html.twig');
 
     }
 }

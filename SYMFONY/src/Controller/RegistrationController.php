@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Role;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Repository\RoleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,13 +16,13 @@ use Symfony\Component\Routing\Attribute\Route;
 class RegistrationController extends AbstractController
 {
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request,Role $role, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, RoleRepository $roleRepository): Response
     {
         $user = new User();
-        $role = new Role();
-        $role = $entityManager->getRepository(Role::class)->findAll();
-        $form = $this->createForm(RegistrationFormType::class, $user);
-        $form->get('roles')->setData($role); 
+        $roles = $roleRepository->findAllRoleNames();
+        $form = $this->createForm(RegistrationFormType::class, $user, [
+            'roles' => $roles,
+        ]);
         $form->handleRequest($request);
 
 
@@ -39,11 +40,12 @@ class RegistrationController extends AbstractController
 
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('_preview_error');
+            return $this->redirectToRoute('redirection_vue');
         }
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form,
+            'roles' => $roles,
         ]);
     }
 }

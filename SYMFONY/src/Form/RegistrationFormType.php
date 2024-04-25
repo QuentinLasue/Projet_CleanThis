@@ -4,9 +4,11 @@ namespace App\Form;
 
 use App\Entity\Role;
 use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,16 +18,17 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class RegistrationFormType extends AbstractType
 {
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        
         $builder
-        ->add('roles', EntityType::class, [
-            'class' => Role::class,
-            'choice_label' => 'name', // Assurez-vous que l'entité Role a une propriété "name" contenant le nom du rôle
-            'multiple' => true, // Si vous permettez la sélection de plusieurs rôles
-            'expanded' => true, // Pour afficher les choix sous forme de cases à cocher
-            'label' => "Type de rôle souhaité",
-        ])
+            ->add('roles', ChoiceType::class, [
+                'choices' => $options['roles'], // Utiliser les rôles passés au formulaire comme choix
+                'multiple' => false,
+                'expanded' => false,
+           
+            ])
             ->add('name')
             ->add('firstname')
             ->add('email')
@@ -61,6 +64,7 @@ class RegistrationFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'roles' => [],
         ]);
     }
 }
