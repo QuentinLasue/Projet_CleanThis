@@ -14,10 +14,54 @@
 } 
 .blueBar h2 {
     color:white;
-    font-size: 30;
+    font-size: 30px;
 }
 
 /* Formulaire */
+.titleForm{
+    font-size: 20px;
+}
+input{
+    width: 300px;
+    height: 30px;
+}
+textarea{
+    width: 600px;
+    height: 200px;
+}
+select, .widgetDate{
+    width: 300px;
+    height:30px;
+    font-size: 20px;
+    padding-left: 20px;
+}
+.radioInput{
+    width: 20px;
+    height: 20px;
+    box-shadow: none;
+}
+
+input, textarea,select{
+    border: none;
+    box-shadow:0px 4px 4px #85BA22;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+input,textarea,select:focus{
+    outline: none;
+    border:#85BA22 1px;
+    font-size: 20px;
+}
+
+.divInput{
+    width:350px;
+}
+.divLabel, .divInput {
+    margin-bottom: 20px;
+}
+label{
+    font-size: 20px;
+}
 .doubleChamp{
     display: flex;
 }
@@ -26,3 +70,34 @@
     flex-direction: column;
     align-items: center;
 }
+.divBtnSend{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+.btn{
+    background-color: #2678D1;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 20px;
+    box-shadow: 0px 4px 4px #4a4a4a;
+    font-weight: bold;
+}
+.btnSend{
+    border-radius: 10px;
+    font-size: 31px;
+    padding:20px;
+    width: 300px;
+}
+.btnBack{
+    padding: 0.5%;
+    text-decoration: none;
+    margin-left: 11%;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    align-self: flex-start;
+}
+.btn:hover {
+    box-shadow: 0px 4px 4px #4a4a4a inset;
+  }

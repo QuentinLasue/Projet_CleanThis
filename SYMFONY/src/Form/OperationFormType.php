@@ -24,7 +24,11 @@ class OperationFormType extends AbstractType
             ])
             ->add('dateForecast', DateType::class, [
                 'widget' => 'single_text',
-                'label'=>'Date de réalisation souhaité :'
+                'label'=>'Date de réalisation souhaité :',
+                'html5'=>true,
+                'attr'=>[
+                    'min'=>(new \DateTime())->format('Y-m-d')// définit la date minimal a aujourd'hui
+                ]
             ])
             ->add('description',TextareaType::class ,[
                 'label'=>'Description',

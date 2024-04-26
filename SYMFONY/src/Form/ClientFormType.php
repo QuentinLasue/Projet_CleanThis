@@ -17,7 +17,7 @@ class ClientFormType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'label' => 'Nom :'
-            ])
+                ])
             ->add('firstname', TextType::class, [
                 'label' => 'Prénom :'
             ])

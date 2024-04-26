@@ -27,6 +27,7 @@ class Operation
     private ?\DateTimeInterface $dateEnd = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Assert\GreaterThan("today")]
     private ?\DateTimeInterface $dateForecast = null;
 
     #[ORM\ManyToOne(inversedBy: 'operations')] 
