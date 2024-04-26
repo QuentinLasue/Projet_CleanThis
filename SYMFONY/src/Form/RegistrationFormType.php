@@ -4,30 +4,26 @@ namespace App\Form;
 
 use App\Entity\Role;
 use App\Entity\User;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\CallbackTransformer; // Ajout de l'importation manquante
 
 class RegistrationFormType extends AbstractType
 {
-
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        
         $builder
             ->add('roles', ChoiceType::class, [
-                'choices' => $options['roles'], // Utiliser les rôles passés au formulaire comme choix
+                'choices' => array_combine($options['roles'], $options['roles']),
                 'multiple' => false,
                 'expanded' => false,
-           
             ])
             ->add('name')
             ->add('firstname')
@@ -41,8 +37,6 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('plainPassword', PasswordType::class, [
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
@@ -52,19 +46,31 @@ class RegistrationFormType extends AbstractType
                     new Length([
                         'min' => 6,
                         'minMessage' => 'Your password should be at least {{ limit }} characters',
-                        // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
                 ],
             ])
         ;
+
+        // Transformation des rôles entre tableau et chaîne de caractères
+        $builder->get('roles')
+            ->addModelTransformer(new CallbackTransformer(
+                function ($rolesArray) {
+                    // Transforme le tableau en chaîne de caractères
+                    return implode(', ', $rolesArray);
+                },
+                function ($rolesString) {
+                    // Transforme la chaîne de caractères en tableau
+                    return explode(', ', $rolesString);
+                }
+            ));
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => User::class,
-            'roles' => [],
+            'roles' => [], // Définir l'option roles avec une valeur par défaut
         ]);
     }
 }

@@ -5,16 +5,17 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
+
     <h1>Register</h1>
+    <pre>
+        {{ dump(roles) }}
+    </pre>
 
     {{ form_errors(registrationForm) }}
 
     {{ form_start(registrationForm) }}
     
     {# Afficher le champ de sélection des rôles #}
-    {{ form_label(registrationForm.roles) }}
-    {{ form_widget(registrationForm.roles, { 'attr': {'class': 'form-control'} }) }}
-    {{ form_errors(registrationForm.roles) }}
 
     {# Autres champs du formulaire #}
     {{ form_row(registrationForm.name) }}

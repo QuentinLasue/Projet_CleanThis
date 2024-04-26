@@ -19,10 +19,11 @@ class RegistrationController extends AbstractController
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, RoleRepository $roleRepository): Response
     {
         $user = new User();
-        $roles = $roleRepository->findAllRoleNames();
+        $roles = $roleRepository->findAll();
         $form = $this->createForm(RegistrationFormType::class, $user, [
-            'roles' => $roles,
+            'roles' => $roles
         ]);
+       
         $form->handleRequest($request);
 
 
@@ -45,7 +46,8 @@ class RegistrationController extends AbstractController
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form,
-            'roles' => $roles,
+            'roles'=> $roles
+        
         ]);
     }
 }
