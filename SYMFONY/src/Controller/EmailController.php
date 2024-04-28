@@ -2,31 +2,35 @@
 
 namespace App\Controller;
 
+use App\Form\ContactType;
+use App\Service\MailService;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Service\MailService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class EmailController extends AbstractController
 {
     #[Route("/contact", name: "app_contact")]
-    public function contact(MailService $mailService): Response
+    public function contact(Request $request, MailService $mailService): Response
     {
-        $mailService->sendMail(
-            "cleanthis153@gmail.com",
-            "mail via un service",
-            'email/contact.html.twig',
-            [
-                'userName' => "John Doe",
-                'message' => "lorem ipsum dolor sit amet consectetur adipicing elit.lib Atque",
-            ],
-            "coursinsy2s@gmail.com"
-        );
+        // Création de l'instance du formulaire
+        $form = $this->createForm(ContactType::class);
+
+        // Traitement de la soumission du formulaire
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Logique de traitement du formulaire ici
+
+            // Envoi de l'e-mail de bienvenue
+            $mailService->sendWelcomeMail();
+
+            // Redirection ou autre action après soumission réussie
+        }
 
         return $this->render('email/contact.html.twig', [
             'controller_name' => 'EmailController',
-            'userName' => 'John Doe', // Pass data to the template
-            'message' => 'Lorem ipsum dolor sit amet consectetur adipicing elit.lib Atque' // Pass data to the template
+            'form' => $form->createView(), // Transmission du formulaire au template
         ]);
     }
 }

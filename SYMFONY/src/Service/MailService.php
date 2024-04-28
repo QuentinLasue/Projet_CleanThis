@@ -8,25 +8,27 @@ use Twig\Environment;
 
 class MailService
 {
+    private string $adminEmail;
     private MailerInterface $mailer;
     private Environment $twig;
 
-    public function __construct(MailerInterface $mailer, Environment $twig)
+    public function __construct(string $adminEmail, MailerInterface $mailer, Environment $twig)
     {
+        $this->adminEmail = $adminEmail;
         $this->mailer = $mailer;
         $this->twig = $twig;
     }
 
-    public function sendMail(string $from, string $subject, string $template, array $context, string $to)
+    public function sendWelcomeMail(): void
     {
-        $htmlContent = $this->twig->render($template, $context);
-
         $email = (new Email())
-            ->from($from)
-            ->subject($subject)
-            ->to($to)
-            ->html($htmlContent); // Utilisation de la méthode html() pour définir le contenu HTML de l'email
+            ->from($this->adminEmail)
+            ->to($this->adminEmail)
+            ->subject('Welcome')
+            ->text('Welcome to our website!');
 
         $this->mailer->send($email);
     }
 }
+
+    
