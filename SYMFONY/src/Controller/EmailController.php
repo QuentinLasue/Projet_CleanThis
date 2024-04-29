@@ -14,23 +14,21 @@ class EmailController extends AbstractController
     #[Route("/contact", name: "app_contact")]
     public function contact(Request $request, MailService $mailService): Response
     {
-        // Création de l'instance du formulaire
         $form = $this->createForm(ContactType::class);
 
-        // Traitement de la soumission du formulaire
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            // Logique de traitement du formulaire ici
+           
+            $submittedEmail = $form->get('email')->getData();
+            
+            $mailService->sendWelcomeMail($submittedEmail);
 
-            // Envoi de l'e-mail de bienvenue
-            $mailService->sendWelcomeMail();
-
-            // Redirection ou autre action après soumission réussie
+            return $this->redirectToRoute('confirmation');
         }
 
         return $this->render('email/contact.html.twig', [
             'controller_name' => 'EmailController',
-            'form' => $form->createView(), // Transmission du formulaire au template
+            'form' => $form->createView(),
         ]);
     }
 }

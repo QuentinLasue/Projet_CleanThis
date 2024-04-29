@@ -19,11 +19,11 @@ class MailService
         $this->twig = $twig;
     }
 
-    public function sendWelcomeMail(): void
+    public function sendWelcomeMail(string $recipientEmail): void
     {
         $email = (new Email())
             ->from($this->adminEmail)
-            ->to($this->adminEmail)
+            ->to($recipientEmail)
             ->subject('Welcome')
             ->text('Welcome to our website!');
 
