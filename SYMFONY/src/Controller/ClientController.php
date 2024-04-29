@@ -140,13 +140,70 @@ class ClientController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $operation->setStatut('En attente');
+            // Vérification si l'adresse existe en base de donnée 
+            // Récupération des donnée du formulaire
+            $number = $form->get('adresse')['number']->getData();
+            $street = $form->get('adresse')['street']->getData();
+            $city = $form->get('adresse')['city']->getData();
+            $county = $form->get('adresse')['county']->getData();
+            $country = $form->get('adresse')['country']->getData();
+ 
+            $adresseExistante = $em->getRepository(Adresse::class)->findOneBy([
+                'number'=>$number,
+                'street'=>$street,
+                'city'=>$city,
+                'county'=>$county,
+                'country'=>$country
+            ]);
+            // si elle existe alors on remplace $adresse pour qu'il récupére l'id 
+            if($adresseExistante){
+                $adresse = $adresseExistante;
+            }else{
+                // si non on enregistre et envoi
+                $em->persist($adresse);
+                $em->flush();
+            }
 
-            $em->persist($adresse);
-            $em->flush();
-            $client->setAdresse($adresse);
-            $em->persist($client);
-            $em->flush();
+            // Vérificatoin si le client existe dans la base de donnée
+            //Récupération des donnée du formulaire et stockage dans $mail
+            $mail = $form->get('client')['mail']->getData();
+            $name = $form->get('client')['name']->getData();
+            $firstname = $form->get('client')['firstname']->getData();
+            //Récupérer les infos de la base de donnée si il existe
+            $clientExist = $em->getRepository(Client::class)->findOneBy([
+                'mail' => $mail,
+                'name'=>$name,
+                'firstname'=>$firstname
+            ]);
+            //si le client exist 
+            if($clientExist){
+                // on vérifie l'adresse 
+                $clientAdresse = $clientExist->getAdresse();
+                //si c'est la même 
+                if($clientAdresse &&
+                $clientAdresse->getNumber() === $adresse->getNumber() &&
+                $clientAdresse->getStreet() === $adresse->getStreet() &&
+                $clientAdresse->getCity() === $adresse->getCity() &&
+                $clientAdresse->getCounty() === $adresse->getCounty() &&
+                $clientAdresse->getCountry() === $adresse->getCountry()
+                ){
+                        $client = $clientExist; 
+                    }else{
+                        //si elle est différente  on la met a jour
+                        $clientExist->setAdresse($adresse);
+                        $em->persist($clientExist);
+                        $em->flush();
+                        $client= $clientExist;
+                    }
+            }else{
+                //si le client exist pas on lie avec l'adresse, on enregistre et on envoi
+                $client->setAdresse($adresse);
+                $em->persist($client);
+                $em->flush();
+            }
+
+            $operation->setStatut('En attente');
+            // On lie avec l'adresse et le client et on enregistre envoi 
             $operation->setAdresse($adresse);
             $operation->setClient($client);
             $em->persist($operation);
@@ -154,11 +211,10 @@ class ClientController extends AbstractController
 
             $this->addFlash('success',"Votre demande d'opération a été prise en compte.");
             return $this->redirectToRoute('home');
+        }else if ($form->isSubmitted() && !$form->isValid()){
+            $this->addFlash('error',"Votre demande d'opération n'a pas pu être prise en compte.");
+            return $this->redirectToRoute('demande');
         }
-        // else if ($form->isSubmitted() && !$form->isValid()){
-        //     $this->addFlash('error',"Votre demande d'opération n'a pas pu être prise en compte.");
-        //     return $this->redirectToRoute('demande');
-        // }
 
         return $this->render('client/demande.html.twig', [
             'form' => $form->createView()

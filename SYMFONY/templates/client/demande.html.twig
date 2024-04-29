@@ -13,6 +13,8 @@
 		<div>
 			<div class="doubleChamp">
 				{{ form_row(form.client.name)}}
+				{{ form_errors(form.client.name)}}
+
 				{{ form_row(form.client.firstname)}}
 
 			</div>
@@ -39,6 +41,7 @@
 			{{ form_row(form.operation.dateForecast)}}
 			{{ form_row(form.operation.description)}}
 		</div>
+
 		 {{form_end(form)}}
 	</div> 
 {% endblock %}
