@@ -12,34 +12,34 @@
 		{{form_start(form)}}
 		<div>
 			<div class="doubleChamp">
-				{{ form_row(form.client.name)}}
+				{{ form_row(form.client.name, {'attr':{'placeholder':"Doe"}})}}
 				{{ form_errors(form.client.name)}}
 
-				{{ form_row(form.client.firstname)}}
+				{{ form_row(form.client.firstname, {'attr':{'placeholder':"John"}})}}
 
 			</div>
-			{{ form_row(form.client.mail)}}
+			{{ form_row(form.client.mail,{'attr':{'placeholder':"john.doe@gmail.com"}})}}
 		</div>
 
 		<div>
 			<p class="titleForm">Adesse :
 			</p>
 			<div class="doubleChamp">
-				{{ form_row(form.adresse.number)}}
-				{{ form_row(form.adresse.street)}}
+				{{ form_row(form.adresse.number,{'attr':{'placeholder':"7"}})}}
+				{{ form_row(form.adresse.street,{'attr':{'placeholder':"Rue de la gare"}})}}
 			</div>
 			<div class="doubleChamp">
-				{{ form_row(form.adresse.city)}}
-				{{ form_row(form.adresse.county)}}
+				{{ form_row(form.adresse.city,{'attr':{'placeholder':"Lille"}})}}
+				{{ form_row(form.adresse.county,{'attr':{'placeholder':"Nord"}})}}
 			</div>
-			{{ form_row(form.adresse.country)}}
+			{{ form_row(form.adresse.country,{'attr':{'placeholder':"France"}})}}
 		</div>
 		<div>
 			<p class="titleForm">
 				Votre demande :</p>
 			{{ form_row(form.operation.type)}}
 			{{ form_row(form.operation.dateForecast)}}
-			{{ form_row(form.operation.description)}}
+			{{ form_row(form.operation.description,{'attr':{'placeholder':"Description de votre demande..."}})}}
 		</div>
 
 		 {{form_end(form)}}

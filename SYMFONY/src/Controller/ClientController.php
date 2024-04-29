@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Form\ClientFormType;
 use App\Form\OperationFormType;
 use App\Form\AdresseFormType;
+use App\Form\ClientsType;
+use App\Form\TestType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -211,10 +213,11 @@ class ClientController extends AbstractController
 
             $this->addFlash('success',"Votre demande d'opération a été prise en compte.");
             return $this->redirectToRoute('home');
-        }else if ($form->isSubmitted() && !$form->isValid()){
-            $this->addFlash('error',"Votre demande d'opération n'a pas pu être prise en compte.");
-            return $this->redirectToRoute('demande');
         }
+        // else if ($form->isSubmitted() && !$form->isValid()){
+            // $this->addFlash('error',"Votre demande d'opération n'a pas pu être prise en compte.");
+            // return $this->redirectToRoute('demande');
+        // }
 
         return $this->render('client/demande.html.twig', [
             'form' => $form->createView()
