@@ -41,6 +41,9 @@ class Operation
     #[ORM\ManyToOne(inversedBy: 'operations')]
     private ?user $user = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $OperationPrendre = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -150,6 +153,18 @@ class Operation
     public function setUser(?user $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getOperationPrendre(): ?string
+    {
+        return $this->OperationPrendre;
+    }
+
+    public function setOperationPrendre(string $OperationPrendre): static
+    {
+        $this->OperationPrendre = $OperationPrendre;
 
         return $this;
     }

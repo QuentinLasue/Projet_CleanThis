@@ -3,3 +3,6 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+operation:
+    path: /operation
+    controller: App\Controller\OperationController::operation
