@@ -75,6 +75,7 @@ body {
     width: 960px; /* Largeur de 960px */
     margin: 0 auto; /* Marge automatique sur les côtés pour centrer */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: calc(100vh - 125px); /* Hauteur de la fenêtre moins la hauteur de la navbar */
@@ -84,6 +85,10 @@ body {
 }
 .form-containerCo {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 input[type="emailCo"], input[type="passwordCo"] {
@@ -154,7 +159,7 @@ button:hover {
 #h1Co {
     font-size: 50px;
     color: #2678D1;
-    margin-bottom: 25%;
+    
 }
 
 .input-iconCo {
@@ -243,7 +248,9 @@ button:hover {
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+    appearance: none;
     -webkit-appearance: none;
+    user-select: none;
     background-color: #f2f2f2;
     background-image: none;
     border: none;
@@ -346,4 +353,3 @@ button:hover {
     background-color: #001d35;
     opacity: 8%;
   }
-  

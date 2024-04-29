@@ -16,7 +16,8 @@ security:
         main:
             lazy: true
             provider: database_users
-            custom_authenticator: App\Security\LoginFormAuthenticator
+            custom_authenticator:
+                - App\Security\LoginFormAuthenticator
             logout:
                 path: app_logout
                 # where to redirect after logout
@@ -26,6 +27,7 @@ security:
                 secret: '%kernel.secret%'
                 lifetime: 604800
                 path: /
+                #always_remember_me: true
                 # by default, the feature is enabled by checking a checkbox in the
                 # login form, uncomment the following line to always enable it.
                 #always_remember_me: true

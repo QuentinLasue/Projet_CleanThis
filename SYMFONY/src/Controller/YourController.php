@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class YourController extends AbstractController
 {
    
-    #[Route("base", name:"base_route")]
+    #[Route("/", name:"base_route")]
     public function yourAction(): Response
     {
 
