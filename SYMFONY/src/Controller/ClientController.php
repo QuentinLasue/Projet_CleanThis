@@ -32,7 +32,7 @@ class ClientController extends AbstractController{
             'typesOperations'=>$typesOperations
         ]);
     }
-    
+
     #[Route('/client', name: 'client')]
     // On demande a l'utilisateur si il a déja était client
     public function askClient(Request $request): Response
