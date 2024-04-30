@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+{% block title %}Êtes-vous client ?
+{% endblock %}
+{% block body %}
+    {% set titre = "Êtes-vous déjà client chez nous ?" %}
+	{% include "base/blueBar.html.twig" %}
+    {% include "base/flash.html.twig" %}
+    <div class="formClient">
+        {{form_start(form)}}
+        
+        {{form_label(form.client)}}
+            {{form_widget(form.client)}}
+        {{form_row(form.submit)}}
+        {{form_end(form)}}
+    </div>
+{% endblock %}
