@@ -1,0 +1,9 @@
+<pre>
+    {{ dump(userList) }}
+</pre>
+{% for user in userList %}
+
+    <p>{{user.name}}</p>
+    <p>{{user.roles[0]}}</p>
+   
+{% endfor %}
