@@ -13,8 +13,6 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Form\ClientFormType;
 use App\Form\OperationFormType;
 use App\Form\AdresseFormType;
-use App\Form\ClientsType;
-use App\Form\TestType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
