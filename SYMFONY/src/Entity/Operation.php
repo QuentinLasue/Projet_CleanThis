@@ -30,19 +30,16 @@ class Operation
     private ?\DateTimeInterface $dateForecast = null;
 
     #[ORM\ManyToOne(inversedBy: 'operations')]
-    private ?adresse $adresse = null;
+    private ?Adresse $adresse = null;
 
     #[ORM\ManyToOne(inversedBy: 'operations')]
-    private ?client $client = null;
+    private ?Client $client = null;
 
     #[ORM\ManyToOne(inversedBy: 'operations')]
-    private ?typeOperation $type = null;
+    private ?TypeOperation $type = null;
 
     #[ORM\ManyToOne(inversedBy: 'operations')]
-    private ?user $user = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $OperationPrendre = null;
+    private ?User $user = null;
 
     public function getId(): ?int
     {
@@ -157,15 +154,5 @@ class Operation
         return $this;
     }
 
-    public function getOperationPrendre(): ?string
-    {
-        return $this->OperationPrendre;
-    }
-
-    public function setOperationPrendre(string $OperationPrendre): static
-    {
-        $this->OperationPrendre = $OperationPrendre;
-
-        return $this;
-    }
+ 
 }

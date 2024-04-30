@@ -16,17 +16,17 @@
     </nav>
     
     <div class="contourOp">
-        {% for operation in operations %}
-            <div class="custom-block">
-                <img src="{{ operation.imageUrl }}" alt="Image" width="7%">
-                <div class="date">{{ operation.date }}</div>
-                <div class="status">{{ operation.status }}</div>
-                <div class="description">
-                    <img src="{{ operation.iconUrl }}" alt="Icone" width="20%">
-                    {{ operation.description }}
-                </div>
-                <button class="buttonOp">Prendre</button>
-            </div>
-        {% endfor %}
+    <pre>
+        {{ dump(operations) }}
+    </pre>
+{% for operation in operations %}
+    <div class="custom-block">
+        <div class="date">{{ operation.dateStart|date('d/m/Y') }}</div>
+        <div class="status">{{ operation.statut }}</div>
+        <div class="description">{{ operation.description }}</div>
+        <button class="buttonOp">Prendre</button>
+    </div>
+{% endfor %}
+
     </div>
 {% endblock %}
