@@ -7,9 +7,6 @@
 {% block body %}
 
     <h1>Register</h1>
-    <pre>
-        {{ dump(roles) }}
-    </pre>
 
     {{ form_errors(registrationForm) }}
 
@@ -21,9 +18,6 @@
     {{ form_row(registrationForm.name) }}
     {{ form_row(registrationForm.firstname) }}
     {{ form_row(registrationForm.email) }}
-    {{ form_row(registrationForm.plainPassword, {
-        label: 'Password'
-    }) }}
     {{ form_row(registrationForm.agreeTerms) }}
 
     <button type="submit" class="btn">Register</button>
