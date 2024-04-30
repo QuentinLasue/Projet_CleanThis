@@ -13,8 +13,6 @@
 		<div>
 			<div class="doubleChamp">
 				{{ form_row(form.client.name, {'attr':{'placeholder':"Doe"}})}}
-				{{ form_errors(form.client.name)}}
-
 				{{ form_row(form.client.firstname, {'attr':{'placeholder':"John"}})}}
 
 			</div>
@@ -41,7 +39,7 @@
 			{{ form_row(form.operation.dateForecast)}}
 			{{ form_row(form.operation.description,{'attr':{'placeholder':"Description de votre demande..."}})}}
 		</div>
-
+	
 		 {{form_end(form)}}
 	</div> 
 {% endblock %}

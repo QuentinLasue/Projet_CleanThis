@@ -49,7 +49,7 @@ class ClientController extends AbstractController
             if ($client === 'yes') {
                 // Rediriger vers le formulaire de client déjà membre
                 return $this->redirectToRoute('getClient');
-            } else {
+            } else if($client === 'no'){
                 // Rediriger vers le formulaire complet
                 return $this->redirectToRoute('demande');
             }
@@ -214,10 +214,6 @@ class ClientController extends AbstractController
             $this->addFlash('success',"Votre demande d'opération a été prise en compte.");
             return $this->redirectToRoute('home');
         }
-        // else if ($form->isSubmitted() && !$form->isValid()){
-            // $this->addFlash('error',"Votre demande d'opération n'a pas pu être prise en compte.");
-            // return $this->redirectToRoute('demande');
-        // }
 
         return $this->render('client/demande.html.twig', [
             'form' => $form->createView()

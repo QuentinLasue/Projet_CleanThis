@@ -75,9 +75,7 @@
 {% block form_errors %}
 	{% if errors|length > 0 %}
 		{% for error in errors %}
-			<div class="flash">
-				<p class="messageFlash error">{{error.message}}</p>
-			</div>
+				<p class="messageError">{{error.message}}</p>
         {% endfor %}
     {% endif %}
 {% endblock %}

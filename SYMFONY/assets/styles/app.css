@@ -16,7 +16,7 @@
   font-size: 30px;
 }
 
-/* Message Flash */
+/* Message Flash  et erreur */
 .messageFlash{
     font-size: 20px;
 }
@@ -28,6 +28,11 @@ background-color: #F88170;
 }
 .success{
 background-color: #BBF7D4;
+}
+.messageError{
+  color: #F88170;
+  font-size: 12;
+  font-weight: bold;
 }
 
 /* Formulaire */
