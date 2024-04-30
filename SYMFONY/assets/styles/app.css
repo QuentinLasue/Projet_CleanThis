@@ -221,3 +221,120 @@ label {
 .btn:hover {
   box-shadow: 0px 4px 4px #4a4a4a inset;
 }
+
+
+/* Listepage */
+
+.navbarLi {
+  height: 125px;
+  background-color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbarL {
+  background-color: #77B800;
+  margin-right: auto;
+  margin-left: auto;
+  height: 121px;
+  width: 1596px;
+  display: flex;
+  align-items: center;
+  border-radius: 1cqmax;
+  justify-content: center;
+}
+.navL-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex; 
+}
+.navL-links li {
+  padding: 10px 20px;
+  margin-right: 35px;
+}
+.navL-links li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  font-family: bold italic;
+  font-size: 20px;
+}
+.navL-links li a:hover {
+  color: #000;
+  background-color: #fff;
+}
+
+.table-containerL {
+  display: flex;
+  justify-content: center;
+ 
+}
+
+.tableL {
+  border-collapse: collapse;
+  width: 1132px; 
+}
+
+th, td {
+  border: 1px solid black;
+  height: 115px;
+  width: 283px;
+}
+
+th {
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+th.clientL {
+  width: 283px;
+}
+
+th.typeOperationL {
+  width: 283px;
+}
+
+th.prioriteL {
+  width: 283px;
+}
+
+th.statutL {
+  width: 283px;
+}
+
+
+.buttonTerminer {
+  width: 155px;
+  height: 43px;
+  background-color: #ED3939;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  border-radius: 30px;
+}
+
+.buttonTerminer:hover {
+  background-color: #C62828;
+}
+
+
+
+.material-symbols-outlined {
+  color: #BDDA88;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.arrow-icon {
+  position: relative;
+  top: 8px; 
+}
+
+.statutL2{
+color: #77B800;
+  }
