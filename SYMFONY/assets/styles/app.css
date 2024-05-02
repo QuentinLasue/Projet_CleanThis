@@ -221,3 +221,29 @@ label {
 .btn:hover {
   box-shadow: 0px 4px 4px #4a4a4a inset;
 }
+ /* Liste Personnel */
+ .divTable{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+ }
+ .tableListePersonnel{
+  width: 60%;
+  border-collapse: collapse;
+ }
+
+ th, td,tr{
+  border: 2px solid #85ba22;
+  font-size: 21px;
+  padding: 20px;
+ }
+ .btnModif{
+  padding: 8px;
+  padding-left: 13px;
+  padding-right: 13px;
+  margin: 5px;
+  border-radius: 25px;
+ }
+ .btnSup{
+  background-color: #ED3939;
+ }

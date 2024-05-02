@@ -1,9 +1,33 @@
-<pre>
-    {{ dump(userList) }}
-</pre>
-{% for user in userList %}
+{% extends "base.html.twig" %}
+{% block title %}Liste du personnel{% endblock %}
+{% block body %}
 
-    <p>{{user.name}}</p>
-    <p>{{user.roles[0]}}</p>
-   
-{% endfor %}
+	{% set titre = "Liste du personnel" %}
+	{% include "base/blueBar.html.twig" %}
+    <div class="divTable">
+        <table class="tableListePersonnel">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Rôle</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            {% for user in userList %}
+                <tr>
+                    <td>{{user.name}}</td>
+                    <td>{{user.firstname}}</td>
+                    <td>{{user.roles[0]}}</td>
+                    <td>
+                    <div class="divTable">
+                        <a href="{{ path('admin.modifierPersonel', { id: user.id })}}" class="btn btnBack btnModif">Modifier</a>
+                        <button class="btn btnSup btnModif">Supprimer</button>
+                    </div>
+                    </td>
+                </tr>
+
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
