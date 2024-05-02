@@ -224,8 +224,14 @@ label {
  /* Liste Personnel */
  .divTable{
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+ }
+ .divTableBtn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
  }
  .tableListePersonnel{
   width: 60%;
@@ -246,4 +252,25 @@ label {
  }
  .btnSup{
   background-color: #ED3939;
+ }
+/* pagination liste personnel*/
+ .pagination{
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px;
+  width: 60%;
+ }
+ .btnPagination{
+  color: #2678d1;
+  background-color: white;
+  border: 1px solid #2678d1;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-decoration: none;
+ }
+ .pageActuelle{
+  color: white;
+  background-color: #2678d1;
+  border: none;
  }

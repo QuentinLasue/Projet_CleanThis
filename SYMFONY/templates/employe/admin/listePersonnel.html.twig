@@ -1,33 +1,59 @@
 {% extends "base.html.twig" %}
-{% block title %}Liste du personnel{% endblock %}
+{% block title %}Liste du personnel
+{% endblock %}
 {% block body %}
 
 	{% set titre = "Liste du personnel" %}
 	{% include "base/blueBar.html.twig" %}
-    <div class="divTable">
-        <table class="tableListePersonnel">
-            <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Rôle</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            {% for user in userList %}
-                <tr>
-                    <td>{{user.name}}</td>
-                    <td>{{user.firstname}}</td>
-                    <td>{{user.roles[0]}}</td>
-                    <td>
-                    <div class="divTable">
-                        <a href="{{ path('admin.modifierPersonel', { id: user.id })}}" class="btn btnBack btnModif">Modifier</a>
-                        <button class="btn btnSup btnModif">Supprimer</button>
-                    </div>
-                    </td>
-                </tr>
+	<div class="divTable">
+		<table class="tableListePersonnel">
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Rôle</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			{% for user in userList %}
+				<tr>
+					<td>{{user.name}}</td>
+					<td>{{user.firstname}}</td>
+					<td>{{user.roles[0]}}</td>
+					<td>
+						<div class="divTableBtn">
+							<a href="{{ path('admin.modifierPersonel', { id: user.id })}}" class="btn btnBack btnModif">Modifier</a>
+							<button class="btn btnSup btnModif">Supprimer</button>
+						</div>
+					</td>
+				</tr>
 
-            {% endfor %}
-        </table>
-    </div>
+			{% endfor %}
+		</table>
+	<div class="pagination">
+		{% if page > 1 %}
+			<a href="{{ path('admin.listePersonnel', {page:page-1})}}" class="btn btnPagination">Page précédente</a>
+		{% endif %}
+		{% if page == 1 %}
+			<a href="" class="btn btnPagination pageActuelle" >Page min : 1</a>
+		{% endif %}
+
+
+		{% if page is not same as 1 %}
+			<a href="{{ path('admin.listePersonnel', {page:1})}}" class="btn btnPagination">1</a>
+		{% endif %}
+
+		<a href="{{ path('admin.listePersonnel', {page:page})}}" class="btn btnPagination pageActuelle">{{page}}</a>
+
+
+		{% if page < maxPage %}
+			<a href="{{ path('admin.listePersonnel', {page:page+1})}}" class="btn btnPagination">Page suivante</a>
+		{% endif %}
+        {% if page == maxPage %}
+        			<a href="" class="btn btnPagination pageActuelle" >Page max : {{maxPage}}</a>
+        {% endif %}
+        
+
+	</div>
+	</div>
 {% endblock %}

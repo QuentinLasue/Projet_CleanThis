@@ -14,11 +14,18 @@ class AdminController extends AbstractController
     #[Route('/admin/listePersonnel', name: 'admin.listePersonnel')]
     public function index(Request $request, UserRepository $repo): Response
     {
-        $userList = $repo->findAll();
+        $page= $request->query->getInt('page',1); // je regarde si j'ai un entier qui s'appelle pasge sinon je lui attribu 1 par default
+        $limit=1; // nombre d'élément par page
+        // find avec la pagination mis en place dans UserRepository
+        $userList = $repo->paginateUser($page, $limit);
+        $maxPage = ceil($userList->count()/$limit); // $limit est le nombre d'éléments par page
+
 
         return $this->render('employe/admin/listePersonnel.html.twig', [
             'controller_name' => 'AdminController',
-            'userList'=>$userList
+            'userList'=>$userList,
+            'maxPage'=>$maxPage,
+            'page'=>$page
         ]);
     }
 
