@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Modifier employé{% endblock %}
+
+{% block body %}
+{% set titre = 'Modifier '~user.name~' '~user.firstname %}
+{% include "base/blueBar.html.twig" %}
+
+{{form_start(form)}}
+{{form_end(form)}}
+
+{% endblock %}

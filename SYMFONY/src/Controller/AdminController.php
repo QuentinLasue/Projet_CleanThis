@@ -3,15 +3,17 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 class AdminController extends AbstractController
 {
-    #[Route('/admin/listePersonnel', name: 'admin.listePersonnel')]
+    #[Route('/listePersonnel', name: 'admin.listePersonnel')]
     public function index(Request $request, UserRepository $repo): Response
     {
         $page= $request->query->getInt('page',1); // je regarde si j'ai un entier qui s'appelle pasge sinon je lui attribu 1 par default
@@ -29,11 +31,15 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('admin/listePersonnel/{id}/modifier', name:'admin.modifierPersonel')]
+    #[Route('listePersonnel/{id}/modifier', name:'admin.modifierPersonel')]
     public function Update(User $user):Response
     {
+        $form = $this->createForm(RegistrationFormType::class,$user)
+        ->add('submit', SubmitType::class, ['label' => 'Envoyer']);
+
         return $this->render('employe/admin/modifier.html.twig',[
-            'user'=>$user
+            'user'=>$user,
+            'form'=>$form
         ]);
     }
 }
