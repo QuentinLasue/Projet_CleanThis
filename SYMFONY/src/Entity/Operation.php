@@ -40,6 +40,8 @@ class Operation
     private ?TypeOperation $type = null;
 
     #[ORM\ManyToOne(inversedBy: 'operations')]
+
+ 
     private ?User $user = null;
 
     public function getId(): ?int
@@ -107,48 +109,48 @@ class Operation
         return $this;
     }
 
-    public function getAdresse(): ?adresse
+    public function getAdresse(): ?Adresse
     {
         return $this->adresse;
     }
 
-    public function setAdresse(?adresse $adresse): static
+    public function setAdresse(?Adresse $adresse): static
     {
         $this->adresse = $adresse;
 
         return $this;
     }
 
-    public function getClient(): ?client
+    public function getClient(): ?Client
     {
         return $this->client;
     }
 
-    public function setClient(?client $client): static
+    public function setClient(?Client $client): static
     {
         $this->client = $client;
 
         return $this;
     }
 
-    public function getType(): ?typeOperation
+    public function getType(): ?TypeOperation
     {
         return $this->type;
     }
 
-    public function setType(?typeOperation $type): static
+    public function setType(?TypeOperation $type): static
     {
         $this->type = $type;
 
         return $this;
     }
 
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?user $user): static
+    public function setUser(?User $user): static
     {
         $this->user = $user;
 

@@ -20,16 +20,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Validator\Constraints\Email;
 
 class ClientController extends AbstractController{
-    
-    #[Route('/', name:'home')]
-    public function home(TypeOperationRepository $repo ): Response
-    {
-        $typesOperations = $repo->findAll();
 
-        return $this->render('base.html.twig', [
-            'typesOperations'=>$typesOperations
-        ]);
-    }
 
     #[Route('/client', name: 'client')]
     // On demande a l'utilisateur si il a déja était client
