@@ -10,6 +10,8 @@ services:
         public: true
 
     # default configuration for services in *this* file
+    App\Domain\Service\PasswordMailer:
+        autowire: true
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
