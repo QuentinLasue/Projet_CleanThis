@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+
 use App\Repository\RoleRepository;
 use App\Domain\Service\PasswordMailer;
 use Doctrine\ORM\EntityManagerInterface;
@@ -12,6 +13,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+
+use App\Security\UserAuthenticator;
+
 
 class RegistrationController extends AbstractController
 {
@@ -28,10 +32,19 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $generatedPassword = $this->generateRandomPassword();
+
+    
+        $user = new User();
+        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
+
                     $generatedPassword
                 )
             );
@@ -50,6 +63,7 @@ class RegistrationController extends AbstractController
             'registrationForm' => $form->createView(),
             'roles' => $roles
         ]);
+        }
     }
 
     private function generateRandomPassword(int $length = 8): string
@@ -62,4 +76,5 @@ class RegistrationController extends AbstractController
         }
         return $password;
     }
+
 }

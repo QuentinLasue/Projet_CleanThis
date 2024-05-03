@@ -5,6 +5,9 @@
         "This file is @generated automatically"
     ],
     "content-hash": "32b04df7d3794f3fd7e02b5ee198e3f3",
+
+    
+
     "packages": [
         {
             "name": "composer/semver",
@@ -2817,6 +2820,7 @@
             "time": "2024-04-28T11:44:19+00:00"
         },
         {
+
             "name": "symfony/doctrine-messenger",
             "version": "v7.0.7",
             "source": {
@@ -2889,6 +2893,7 @@
             "time": "2024-04-18T09:29:19+00:00"
         },
         {
+
             "name": "symfony/dotenv",
             "version": "v7.0.7",
             "source": {
@@ -3697,6 +3702,72 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/google-mailer.git",
+                "reference": "afa051a4ae1f76609024708ad1a65b2b1c64c9ae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/google-mailer/zipball/afa051a4ae1f76609024708ad1a65b2b1c64c9ae",
+                "reference": "afa051a4ae1f76609024708ad1a65b2b1c64c9ae",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "symfony/mailer": "^6.4|^7.0"
+            },
+            "require-dev": {
+                "symfony/http-client": "^6.4|^7.0"
+            },
+            "type": "symfony-mailer-bridge",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Mailer\\Bridge\\Google\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Google Mailer Bridge",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/google-mailer/tree/v7.0.3"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-01-23T15:02:46+00:00"
+        },
+        {
+            "name": "symfony/http-client",
+            "version": "v7.0.6",
+
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/google-mailer.git",
                 "reference": "3ae9bf19e13f015651e8e1c0e919833d24b19b17"
             },
             "dist": {
@@ -4279,52 +4350,34 @@
             ],
             "time": "2024-04-18T09:29:19+00:00"
         },
-        {
-            "name": "symfony/messenger",
-            "version": "v7.0.7",
+        
+            {
+
+            "name": "symfony/mailjet-mailer",
+            "version": "v7.0.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/messenger.git",
-                "reference": "90c217478f85d5289aae597551e2a4251e4d08c3"
+                "url": "https://github.com/symfony/mailjet-mailer.git",
+                "reference": "259754061bc1b6b3ebf251f2aa4df465bd0e2a2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/messenger/zipball/90c217478f85d5289aae597551e2a4251e4d08c3",
-                "reference": "90c217478f85d5289aae597551e2a4251e4d08c3",
+                "url": "https://api.github.com/repos/symfony/mailjet-mailer/zipball/259754061bc1b6b3ebf251f2aa4df465bd0e2a2c",
+                "reference": "259754061bc1b6b3ebf251f2aa4df465bd0e2a2c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.2",
-                "psr/log": "^1|^2|^3",
-                "symfony/clock": "^6.4|^7.0"
-            },
-            "conflict": {
-                "symfony/console": "<6.4",
-                "symfony/event-dispatcher": "<6.4",
-                "symfony/event-dispatcher-contracts": "<2.5",
-                "symfony/framework-bundle": "<6.4",
-                "symfony/http-kernel": "<6.4",
-                "symfony/serializer": "<6.4"
+                "symfony/mailer": "^6.4|^7.0"
             },
             "require-dev": {
-                "psr/cache": "^1.0|^2.0|^3.0",
-                "symfony/console": "^6.4|^7.0",
-                "symfony/dependency-injection": "^6.4|^7.0",
-                "symfony/event-dispatcher": "^6.4|^7.0",
-                "symfony/http-kernel": "^6.4|^7.0",
-                "symfony/process": "^6.4|^7.0",
-                "symfony/property-access": "^6.4|^7.0",
-                "symfony/rate-limiter": "^6.4|^7.0",
-                "symfony/routing": "^6.4|^7.0",
-                "symfony/serializer": "^6.4|^7.0",
-                "symfony/service-contracts": "^2.5|^3",
-                "symfony/stopwatch": "^6.4|^7.0",
-                "symfony/validator": "^6.4|^7.0"
+                "symfony/http-client": "^6.4|^7.0",
+                "symfony/webhook": "^6.4|^7.0"
             },
-            "type": "library",
+            "type": "symfony-mailer-bridge",
             "autoload": {
                 "psr-4": {
-                    "Symfony\\Component\\Messenger\\": ""
+                    "Symfony\\Component\\Mailer\\Bridge\\Mailjet\\": ""
                 },
                 "exclude-from-classmap": [
                     "/Tests/"
@@ -4336,18 +4389,20 @@
             ],
             "authors": [
                 {
-                    "name": "Samuel Roze",
-                    "email": "samuel.roze@gmail.com"
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
                 },
                 {
                     "name": "Symfony Community",
                     "homepage": "https://symfony.com/contributors"
                 }
             ],
-            "description": "Helps applications send and receive messages to/from other applications or via message queues",
+            "description": "Symfony Mailjet Mailer Bridge",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/messenger/tree/v7.0.7"
+
+                "source": "https://github.com/symfony/mailjet-mailer/tree/v7.0.3"
+ 
             },
             "funding": [
                 {
@@ -4363,7 +4418,10 @@
                     "type": "tidelift"
                 }
             ],
+
             "time": "2024-04-18T09:29:19+00:00"
+        
+
         },
         {
             "name": "symfony/mime",

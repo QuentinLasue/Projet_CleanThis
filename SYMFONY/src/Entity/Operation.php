@@ -30,6 +30,7 @@ class Operation
     #[Assert\GreaterThan("today")]
     private ?\DateTimeInterface $dateForecast = null;
 
+<<<<<<< HEAD
     #[ORM\ManyToOne(inversedBy: 'operations')] 
     private ?Adresse $adresse = null;
 
@@ -42,6 +43,18 @@ class Operation
     #[ORM\ManyToOne(inversedBy: 'operations')]
 
  
+=======
+    #[ORM\ManyToOne(inversedBy: 'operations')]
+    private ?Adresse $adresse = null;
+
+    #[ORM\ManyToOne(inversedBy: 'operations')]
+    private ?Client $client = null;
+
+    #[ORM\ManyToOne(inversedBy: 'operations')]
+    private ?TypeOperation $type = null;
+
+    #[ORM\ManyToOne(inversedBy: 'operations')]
+>>>>>>> registration
     private ?User $user = null;
 
     public function getId(): ?int
