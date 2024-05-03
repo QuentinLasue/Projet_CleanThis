@@ -27,14 +27,14 @@ class UserFormType extends AbstractType
                 'label' => 'Prénom :',
             ])
             ->add('roles', ChoiceType::class, [
-                'choices' => array_combine($options['roles'], $options['roles']),
+                'choices' => array_merge([$options['role'] => $options['role']], array_combine($options['roles'],$options['roles'])),
                 'multiple' => false,
                 'expanded' => false,
-                'label' => 'Selectionner le rôle :'
+                'label' => 'Selectionner le rôle :',
             ])
             ->add('submit', SubmitType::class, ['label' => 'Modifier']);;
 
-        // // Transformation des rôles entre tableau et chaîne de caractères
+        // Transformation des rôles entre tableau et chaîne de caractères
         $builder->get('roles')
             ->addModelTransformer(new CallbackTransformer(
                 function ($rolesArray) {
@@ -46,6 +46,7 @@ class UserFormType extends AbstractType
                     return explode(', ', $rolesString);
                 }
             ));
+
     }
 
 
@@ -53,8 +54,8 @@ class UserFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
-            'nom' => null, // Définir la valeur par défaut pour le nom
             'roles' => [], // Définir l'option roles avec une valeur par défaut
+            'role'=>null
         ]);
     }
 }

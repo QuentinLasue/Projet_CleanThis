@@ -34,12 +34,18 @@ class AdminController extends AbstractController
     }
 
     #[Route('listePersonnel/{id}/modifier', name:'admin.modifierPersonel')]
-    public function Update(User $user, RoleRepository $roleRepository,UserRepository $userRepository, Request $request, EntityManagerInterface $em):Response
+    public function Update(int $id, RoleRepository $roleRepository,UserRepository $userRepository, Request $request, EntityManagerInterface $em):Response
     {
+        $user = $userRepository->find($id);
+        $nom = $user->getName();
+        $prenom = $user->getFirstname();
+        $roleTab = $user->getRoles();
+        $role= $roleTab[0];
 
         $roles = $roleRepository->findAll();
         $form = $this->createForm(UserFormType::class,$user,[
             'roles' => $roles,
+            'role'=> $role
         ]);
         $form->handleRequest($request);
 
@@ -54,7 +60,10 @@ class AdminController extends AbstractController
 
         return $this->render('employe/admin/modifier.html.twig',[
             'form'=>$form->createView(),
-            'user'=>$user
+            'user'=>$user,
+            'nom'=>$nom,
+            'prenom'=>$prenom,
+            'role'=>$role
         ]);
     }
 }
