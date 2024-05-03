@@ -59,16 +59,16 @@
                     <th class="statutL">Statut</th>
                 </tr>
             </thead>
-            <tbody>
-                {% for operation in operationsTerminees %}
-                <tr>
-                    <td>{{ operation.client }}</td>
-                    <td>{{ operation.type }}</td>
-                    <td>{{ operation.priorite }}</td>
-                    <td>{{ operation.statut }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
+<tbody>
+    {% for operation in operationsEnCours %}
+    <tr>
+        <td>{{ operation.description }}</td>
+        <td>{{ operation.statut }}</td>
+        <td>{{ operation.dateForecast|date('Y-m-d') }}</td>
+        <!-- Affichez d'autres propriétés si nécessaire -->
+    </tr>
+    {% endfor %}
+</tbody>
         </table>
     </div>
 </html>
