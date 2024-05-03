@@ -11,7 +11,8 @@
 <div class="formClient">
     <a href="{{path('admin.listePersonnel')}}" class="btnBack btn">Retour</a>
     {{form_start(form)}}
-        {{form_row(form.name, {'attr':{'value':nom}})}}
+
+        {{form_row(form.name, {'attr':{'value':nom}})}}git 
 		{{form_row(form.firstname, {'attr':{'placeholder':user.firstname}})}}
         {{form_row(form.email)}}
         {{form_row(form.roles, {'attr':{'placeholder':user.firstname}})}}
