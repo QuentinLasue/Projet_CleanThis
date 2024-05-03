@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\RegistrationFormType;
+use App\Form\UserFormType;
+use App\Repository\RoleRepository;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,14 +34,35 @@ class AdminController extends AbstractController
     }
 
     #[Route('listePersonnel/{id}/modifier', name:'admin.modifierPersonel')]
-    public function Update(User $user):Response
+    public function Update(int $id, RoleRepository $roleRepository,UserRepository $userRepository, Request $request, EntityManagerInterface $em):Response
     {
-        $form = $this->createForm(RegistrationFormType::class,$user)
-        ->add('submit', SubmitType::class, ['label' => 'Envoyer']);
+
+        $user = $userRepository->find($id);
+        $nom = $user->getName();
+        // $user= new User();
+        // $nom = $user->getName();
+        // $prenom= $user->getFirstname();
+        // $roles = $roleRepository->findAll();
+        $form = $this->createForm(UserFormType::class,$user,[
+            // 'roles' => $roles,
+            'nom'=>$nom,
+            // 'prenom'=>$prenom,
+        ]);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($user);
+            $em->flush();
+            $this->addFlash('success',"Votre modification a étéprise en compte");
+    
+            return $this->redirectToRoute('admin.listePersonnel');
+        }
+
 
         return $this->render('employe/admin/modifier.html.twig',[
+            'form'=>$form->createView(),
             'user'=>$user,
-            'form'=>$form
+            'nom'=>$nom
         ]);
     }
 }

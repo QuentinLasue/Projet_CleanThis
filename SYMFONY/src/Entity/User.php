@@ -7,6 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
@@ -19,6 +21,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 180)]
+    #[Assert\NotBlank()]
+    #[Assert\Email(message: "Votre email n'est pas valide.")]
+
     private ?string $email = null;
 
     /**
@@ -34,9 +39,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank()]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: 'Votre nom est trop court.',
+        maxMessage: 'Votre nom est trop long, il ne doit pas dépasser 50 caractères.'
+    )]
     private ?string $name = null;
 
     #[ORM\Column(length: 50)]
+     #[Assert\NotBlank()]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: 'Votre nom est trop court.',
+        maxMessage: 'Votre nom est trop long, il ne doit pas dépasser 50 caractères.'
+    )]
     private ?string $firstname = null;
 
     public function getId(): ?int

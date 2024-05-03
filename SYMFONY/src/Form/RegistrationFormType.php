@@ -14,6 +14,9 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\CallbackTransformer; // Ajout de l'importation manquante
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -24,18 +27,19 @@ class RegistrationFormType extends AbstractType
                 'choices' => array_combine($options['roles'], $options['roles']),
                 'multiple' => false,
                 'expanded' => false,
+                'label'=>'Selectionner le rôle :'
             ])
-            ->add('name')
-            ->add('firstname')
-            ->add('email')
-            ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'You should agree to our terms.',
-                    ]),
-                ],
+            ->add('name', TextType::class,[
+                'label'=>'Nom :'
             ])
+            ->add('firstname', TextType::class,[
+                'label'=>'Prénom :'
+            ])
+            ->add('email', EmailType::class, [
+                'label' => 'Email :'
+            ])
+            ->add('submit', SubmitType::class, ['label' => 'Envoyer']);
+
             // ->add('plainPassword', PasswordType::class, [
             //     'mapped' => false,
             //     'attr' => ['autocomplete' => 'new-password'],

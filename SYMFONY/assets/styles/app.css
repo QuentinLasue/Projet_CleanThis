@@ -166,6 +166,7 @@ select {
   box-shadow: 0px 4px 4px #85ba22;
   border-radius: 20px;
   margin-bottom: 10px;
+  margin-left: 20px;
 }
 input,
 textarea,
@@ -183,6 +184,7 @@ select:focus {
   margin-bottom: 20px;
 }
 label {
+  margin-left: 20px;
   font-size: 20px;
 }
 .doubleChamp {
@@ -212,6 +214,7 @@ label {
   font-size: 31px;
   padding: 20px;
   width: 300px;
+  height: auto;
 }
 .btnBack {
   padding: 0.5%;
@@ -227,10 +230,7 @@ label {
 body {
     margin: 0;
     padding: 0;
-    background-color: #D9D9D9
- ;
-   
-
+    background-color: #D9D9D9;
 }
 /* general */
 
