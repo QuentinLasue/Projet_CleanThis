@@ -22,34 +22,30 @@ class UserFormType extends AbstractType
             ])
             ->add('name', TextType::class, [
                 'label' => 'Nom :',
-                'required'=>true,
-                'data' => $options['nom'], // Utiliser le nom pré-rempli ici
             ])
             ->add('firstname', TextType::class, [
                 'label' => 'Prénom :',
-                // 'attr'=>['autocomplete'=>'data']
-
             ])
-            // ->add('roles', ChoiceType::class, [
-            //     'choices' => array_combine($options['roles'], $options['roles']),
-            //     'multiple' => false,
-            //     'expanded' => false,
-            //     'label' => 'Selectionner le rôle :'
-            // ])
+            ->add('roles', ChoiceType::class, [
+                'choices' => array_combine($options['roles'], $options['roles']),
+                'multiple' => false,
+                'expanded' => false,
+                'label' => 'Selectionner le rôle :'
+            ])
             ->add('submit', SubmitType::class, ['label' => 'Modifier']);;
 
         // // Transformation des rôles entre tableau et chaîne de caractères
-        // $builder->get('roles')
-        //     ->addModelTransformer(new CallbackTransformer(
-        //         function ($rolesArray) {
-        //             // Transforme le tableau en chaîne de caractères
-        //             return implode(', ', $rolesArray);
-        //         },
-        //         function ($rolesString) {
-        //             // Transforme la chaîne de caractères en tableau
-        //             return explode(', ', $rolesString);
-        //         }
-        //     ));
+        $builder->get('roles')
+            ->addModelTransformer(new CallbackTransformer(
+                function ($rolesArray) {
+                    // Transforme le tableau en chaîne de caractères
+                    return implode(', ', $rolesArray);
+                },
+                function ($rolesString) {
+                    // Transforme la chaîne de caractères en tableau
+                    return explode(', ', $rolesString);
+                }
+            ));
     }
 
 
