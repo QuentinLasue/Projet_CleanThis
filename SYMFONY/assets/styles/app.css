@@ -338,3 +338,37 @@ th.statutL {
 .statutL2{
 color: #77B800;
   }
+
+  .tableL {
+    border-collapse: collapse;
+    width: 1132px; 
+  }
+  
+  th, td {
+    border: 1px solid black;
+    height: 115px;
+    width: 283px;
+    text-align: center; 
+    vertical-align: middle; 
+  }
+  
+  th {
+    background-color: rgb(255, 255, 255);
+  }
+  
+  th.clientL,
+  td.clientL {
+    width: 283px;
+  }
+  
+  th.typeOperationL,
+  td.typeOperationL {
+    width: 283px;
+  }
+  
+  th.statutL,
+  td.statutL {
+    width: 283px;
+  }
+  
+  
