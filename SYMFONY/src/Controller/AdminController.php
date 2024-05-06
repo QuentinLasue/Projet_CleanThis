@@ -56,7 +56,8 @@ class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($user);
             $em->flush();
-            $this->addFlash('success', "Votre modification a étéprise en compte");
+            // Ajout d'un message de réussite
+            $this->addFlash('success', "Votre modification a été prise en compte");
 
             return $this->redirectToRoute('admin.listePersonnel');
         }
@@ -69,5 +70,17 @@ class AdminController extends AbstractController
             'prenom' => $prenom,
             'role' => $role
         ]);
+    }
+    #[Route('listePersonnel/delete/{id}', name: 'admin.delete')]
+    public function delete(User $user, EntityManagerInterface $em): Response
+    {
+        //après confirmation avec la function confirm() en js sur le twig 
+        $em->remove($user);
+        $em->flush();
+        // Ajout d'un message de réussite
+        $this->addFlash('success', "L'employé" . $user->getName() . " " . $user->getFirstname() . "a bien été supprimé.");
+
+
+        return $this->redirectToRoute('admin.listePersonnel');
     }
 }
