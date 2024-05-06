@@ -27,6 +27,8 @@ class UserFormType extends AbstractType
                 'label' => 'Prénom :',
             ])
             ->add('roles', ChoiceType::class, [
+                //array_merge qui fusionne une liste de tableau, l'option 'role' pour le préremplissage et le tableau 'roles' pour la liste déroulante
+                // array_combine créer un tableau a partir de deux tableau tableau 1 la clé tableau 2 la valeur
                 'choices' => array_merge([$options['role'] => $options['role']], array_combine($options['roles'],$options['roles'])),
                 'multiple' => false,
                 'expanded' => false,
@@ -55,7 +57,7 @@ class UserFormType extends AbstractType
         $resolver->setDefaults([
             'data_class' => User::class,
             'roles' => [], // Définir l'option roles avec une valeur par défaut
-            'role'=>null
+            'role'=>null // définir le role de l'utilisateur a une valeur par défaut
         ]);
     }
 }

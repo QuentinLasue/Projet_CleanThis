@@ -16,54 +16,58 @@ use Symfony\Component\Routing\Attribute\Route;
 class AdminController extends AbstractController
 {
     #[Route('/listePersonnel', name: 'admin.listePersonnel')]
-    public function index(Request $request, UserRepository $repo): Response
+    public function ListePersonnel(Request $request, UserRepository $repo): Response
     {
-        $page= $request->query->getInt('page',1); // je regarde si j'ai un entier qui s'appelle pasge sinon je lui attribu 1 par default
-        $limit=5; // nombre d'élément par page
+        $page = $request->query->getInt('page', 1); // je regarde si j'ai un entier qui s'appelle pasge sinon je lui attribu 1 par default
+        $limit = 5; // nombre d'élément par page
         // find avec la pagination mis en place dans UserRepository
         $userList = $repo->paginateUser($page, $limit);
-        $maxPage = ceil($userList->count()/$limit); // $limit est le nombre d'éléments par page
+        $maxPage = ceil($userList->count() / $limit); // $limit est le nombre d'éléments par page
 
-
+        // on render la bon fichier twig en lui envoyant la liste le nombre de page et la page actuelle
         return $this->render('employe/admin/listePersonnel.html.twig', [
             'controller_name' => 'AdminController',
-            'userList'=>$userList,
-            'maxPage'=>$maxPage,
-            'page'=>$page
+            'userList' => $userList,
+            'maxPage' => $maxPage,
+            'page' => $page
         ]);
     }
 
-    #[Route('listePersonnel/{id}/modifier', name:'admin.modifierPersonel')]
-    public function Update(int $id, RoleRepository $roleRepository,UserRepository $userRepository, Request $request, EntityManagerInterface $em):Response
+    #[Route('listePersonnel/{id}/modifier', name: 'admin.modifierPersonel')]
+    public function Update(int $id, RoleRepository $roleRepository, UserRepository $userRepository, Request $request, EntityManagerInterface $em): Response
     {
+        // on va chercher l'utilisateur grace a l'id puis on récupére son nom et prénom, ici pour l'utiliser dans le préremplissage des champs
         $user = $userRepository->find($id);
         $nom = $user->getName();
         $prenom = $user->getFirstname();
+        // on récupére le tableau des rôles
         $roleTab = $user->getRoles();
-        $role= $roleTab[0];
-
+        //le role d'indice 0 étant le role que l'on a attribué
+        $role = $roleTab[0];
+        // on récupére tous les roles pour la liste déroulante 
         $roles = $roleRepository->findAll();
-        $form = $this->createForm(UserFormType::class,$user,[
+        // création du formulaire avec envoi des roles pour la liste déroulante et du role de l'utilisateur pour le préremplissage
+        $form = $this->createForm(UserFormType::class, $user, [
             'roles' => $roles,
-            'role'=> $role
+            'role' => $role
         ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($user);
             $em->flush();
-            $this->addFlash('success',"Votre modification a étéprise en compte");
-    
+            $this->addFlash('success', "Votre modification a étéprise en compte");
+
             return $this->redirectToRoute('admin.listePersonnel');
         }
 
-
-        return $this->render('employe/admin/modifier.html.twig',[
-            'form'=>$form->createView(),
-            'user'=>$user,
-            'nom'=>$nom,
-            'prenom'=>$prenom,
-            'role'=>$role
+        // on render en envoyant le formulaire l'utilisateur pour la blueBar et les infos (nom,prenom,role) pour le préremplissage 
+        return $this->render('employe/admin/modifier.html.twig', [
+            'form' => $form->createView(),
+            'user' => $user,
+            'nom' => $nom,
+            'prenom' => $prenom,
+            'role' => $role
         ]);
     }
 }
