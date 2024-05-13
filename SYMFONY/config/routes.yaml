@@ -18,7 +18,7 @@ login_vue:
 # config/routes.yaml
 app_login:
     path: /login
-    controller: App\Controller\SecurityController::login
+    controller: App\Controller\LoginController::login
 
 confirmation:
     path: /confirmation

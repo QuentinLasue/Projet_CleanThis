@@ -2,25 +2,18 @@
 {# registration/register.html.twig #}
 
 
-registration
+
 {% extends 'base.html.twig' %}
 
 {% block title %}Register{% endblock %}
 
 {% block body %}
-
     <h1>Register</h1>
-
-    {{ form_errors(registrationForm) }}
-
     {{ form_start(registrationForm) }}
-    
-    {# Afficher le champ de sélection des rôles #}
-
-    {# Autres champs du formulaire #}
+    {# Form rendering logic #}
     {{ form_row(registrationForm.name) }}
     {{ form_row(registrationForm.firstname) }}
     {{ form_row(registrationForm.email) }}
- 
-
+    {# Additional form fields can be added here #}
     {{ form_end(registrationForm) }}
+{% endblock %}

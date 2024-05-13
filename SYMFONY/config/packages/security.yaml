@@ -21,9 +21,7 @@ security:
             provider: database_users
             custom_authenticator:
                 - App\Security\LoginFormAuthenticator
-
-            provider: app_user_provider
-            custom_authenticator: App\Security\UserAuthenticator
+                # - App\Security\UserAuthenticator
 
             logout:
                 path: app_logout

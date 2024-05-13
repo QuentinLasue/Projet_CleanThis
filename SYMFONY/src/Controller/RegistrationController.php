@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
-
 use App\Repository\RoleRepository;
 use App\Domain\Service\PasswordMailer;
 use Doctrine\ORM\EntityManagerInterface;
@@ -14,44 +13,42 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-use App\Security\UserAuthenticator;
-
-
 class RegistrationController extends AbstractController
 {
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, PasswordMailer $passwordMailer, EntityManagerInterface $entityManager, RoleRepository $roleRepository): Response
     {
-        $user = new User();
+        // Récupérer tous les rôles
         $roles = $roleRepository->findAll();
+
+        // Créer une nouvelle instance de l'entité User
+        $user = new User();
+
+        // Créer le formulaire avec les rôles passés en option
         $form = $this->createForm(RegistrationFormType::class, $user, [
             'roles' => $roles
         ]);
 
+        // Gérer la soumission du formulaire
         $form->handleRequest($request);
 
+        // Vérifier si le formulaire a été soumis et est valide
         if ($form->isSubmitted() && $form->isValid()) {
+            // Générer un mot de passe aléatoire
             $generatedPassword = $this->generateRandomPassword();
 
-    
-        $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            // encode the plain password
+            // Encoder le mot de passe
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
-
                     $generatedPassword
                 )
             );
 
-            // Envoi de l'e-mail avec le mot de passe généré
+            // Envoyer l'e-mail avec le mot de passe généré
             $passwordMailer->sendPasswordEmail($user->getEmail(), $generatedPassword);
 
+            // Persister l'utilisateur en base de données
             $entityManager->persist($user);
             $entityManager->flush();
 
@@ -59,16 +56,16 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('login_vue');
         }
 
+        // Rendre le formulaire et les rôles disponibles dans le template
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
             'roles' => $roles
         ]);
-        }
     }
 
     private function generateRandomPassword(int $length = 8): string
     {
-        // Génération d'une chaîne de caractères aléatoire pour le mot de passe
+        // Générer une chaîne de caractères aléatoire pour le mot de passe
         $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         $password = '';
         for ($i = 0; $i < $length; $i++) {
@@ -76,5 +73,4 @@ class RegistrationController extends AbstractController
         }
         return $password;
     }
-
 }
