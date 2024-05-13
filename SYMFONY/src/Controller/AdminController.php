@@ -78,7 +78,7 @@ class AdminController extends AbstractController
         $em->remove($user);
         $em->flush();
         // Ajout d'un message de réussite
-        $this->addFlash('success', "L'employé" . $user->getName() . " " . $user->getFirstname() . "a bien été supprimé.");
+        $this->addFlash('success', "L'employé " . $user->getName() . " " . $user->getFirstname() . " a bien été supprimé.");
 
 
         return $this->redirectToRoute('admin.listePersonnel');
