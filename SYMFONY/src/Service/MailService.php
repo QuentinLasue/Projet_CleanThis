@@ -24,11 +24,22 @@ class MailService
         $email = (new Email())
             ->from($this->adminEmail)
             ->to($recipientEmail)
-            ->subject('Welcome')
-            ->text('Welcome to our website!');
+            ->subject('Bienvenue')
+            ->text('Bienvenue sur notre site web !');
 
         $this->mailer->send($email);
     }
+
+    public function sendFormContent(string $recipientEmail, string $formContent, string $userEmail): void
+{
+    $email = (new Email())
+        ->from($this->adminEmail)
+        ->to($recipientEmail)
+        ->subject('Nouvelle soumission de formulaire')
+        ->text('Adresse e-mail de l\'utilisateur : ' . $userEmail . "\n\n" . 'message: ' . $formContent);
+
+    $this->mailer->send($email);
 }
 
-    
+
+}

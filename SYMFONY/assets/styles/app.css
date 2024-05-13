@@ -1,3 +1,139 @@
 body {
-    background-color: skyblue;
+    margin: 0;
+    padding: 0;
+    background-color: #D9D9D9
+}
+
+.navbarE {
+    background-color: #77B800;
+    margin-right: auto;
+    margin-left: auto;
+    height: 121px;
+    width: 1596px;
+    display: flex;
+    align-items: center;
+    border-radius: 1cqmax;
+    justify-content: center;
+}
+
+.navE-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex; 
+    
+
+    
+    
+}
+
+.navE-links li {
+    padding: 10px 20px;
+    margin-right: 35px;
+   
+}
+
+.navE-links li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-family: bold italic;
+    font-size: 20px;
+    
+    
+   
+}
+
+.navE-links li a:hover {
+    color: #000;
+    background-color: #fff;
+}
+
+
+
+
+.navE-links li:nth-child(1) {
+    margin-left: 40px; 
+}
+
+
+.titleAll{
+    display: flex;  
+    align-items:  center;
+    flex-direction: column;
+    background-color:#2678D1 ;
+    color: white;
+  
+}
+
+.titleAll h1{
+    font-size: 50px;
+    margin-bottom: -10px;
+}
+
+.titleAll h3{
+    font-size: 1.5rem;
+}
+
+
+
+h2{
+    display: flex;
+    justify-content: center;
+    color: #2678D1;
+    font-size: 50px;
+}
+
+
+.formulaire-container {
+    
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #EEEEEE;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+}
+
+#contact_email{
+    width: 90%;
+
+
+}
+
+
+
+
+/* .form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+}
+
+/* Modifier les styles du champ email */
+.form-group input[type="email"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+/* Modifier les styles du champ content */
+.form-group2 textarea {
+    resize: none;
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 150px; /* Taille personnalisée pour la zone de texte */
+} 
+/*twig repertoire */
+.result{
+    display: flex;
 }

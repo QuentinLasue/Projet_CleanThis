@@ -1,0 +1,38 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Repertoire{% endblock %}
+
+{% block body %}
+
+    <div class="titleAll">
+        <h3>Répertoire</h3>
+    </div>
+
+    <div class="formulaire-repertoire">
+        <form method="post">
+            {{ form_start(form) }}
+            <div class="form-group">
+                <label for="repertoire">Trier par:</label>
+                {{ form_widget(form.repertoire, {'attr': {'class': 'form-control', 'id': 'repertoire'}}) }}
+            </div>
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+            {{ form_end(form) }}
+        </form>
+    </div>
+
+    {# Afficher les résultats de la recherche #}
+    <div class="resultats-recherche">
+        <h4>Résultats de la recherche</h4>
+       
+            {% for result in results %}
+            <div class= "result">
+                {{ result.id}} {# Remplacez "description" par le nom de la propriété que vous souhaitez afficher #}
+                {{ result.statut}} {# Remplacez "description" par le nom de la propriété que vous souhaitez afficher #}
+                {# <li>{{ result.dateStart}}</li> Remplacez "description" par le nom de la propriété que vous souhaitez afficher #}
+            </div>    
+            {% endfor %}
+           
+        </ul>
+    </div>
+{% endblock %}
