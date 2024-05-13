@@ -631,3 +631,42 @@ button:hover {
   background-color: #2678d1;
   border: none;
  }
+
+ .navbar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.navbar-item {
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 40rem;
+}
+
+.nav-item {
+  text-align: center;
+  
+}
+
+.nav-link img {
+  display: block;
+  margin: auto;
+  margin-bottom: 5px;
+  padding-bottom: 10px;
+}
+
+.nav-link p {
+  font-family: 'Roboto', sans-serif;
+  color: black; 
+  border-radius: 30px;
+  
+  
+}
+
+.nav-link p:hover {
+  background-color: white;
+}
