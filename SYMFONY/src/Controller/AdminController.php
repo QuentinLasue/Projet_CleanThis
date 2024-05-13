@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class AdminController extends AbstractController
 {
-    #[Route('/listePersonnel', name: 'admin.listePersonnel')]
+    #[Route('admin/listePersonnel', name: 'admin.listePersonnel')]
     public function ListePersonnel(Request $request, UserRepository $repo): Response
     {
         $page = $request->query->getInt('page', 1); // je regarde si j'ai un entier qui s'appelle pasge sinon je lui attribu 1 par default
@@ -33,7 +33,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('listePersonnel/{id}/modifier', name: 'admin.modifierPersonel')]
+    #[Route('admin/listePersonnel/{id}/modifier', name: 'admin.modifierPersonel')]
     public function Update(int $id, RoleRepository $roleRepository, UserRepository $userRepository, Request $request, EntityManagerInterface $em): Response
     {
         // on va chercher l'utilisateur grace a l'id puis on récupére son nom et prénom, ici pour l'utiliser dans le préremplissage des champs
@@ -71,7 +71,7 @@ class AdminController extends AbstractController
             'role' => $role
         ]);
     }
-    #[Route('listePersonnel/delete/{id}', name: 'admin.delete')]
+    #[Route('admin/listePersonnel/delete/{id}', name: 'admin.delete')]
     public function delete(User $user, EntityManagerInterface $em): Response
     {
         //après confirmation avec la function confirm() en js sur le twig 
