@@ -23,17 +23,14 @@ class ListeController extends AbstractController
     #[Route('/liste', name: 'app_liste')]
     public function app_operation(Request $request): Response
     {
-        // Vérifier si une opération doit être marquée comme terminée
         if ($request->request->has('operation_id')) {
             $entityManager = $this->entityManager;
-            // Récupérer l'ID de l'opération à terminer depuis la requête
             $operationId = $request->request->get('operation_id');
 
-            // Récupérer l'opération en cours
+          
             $operation = $this->operationRepository->find($operationId);
 
             if ($operation) {
-                // Mettre à jour le statut de l'opération en cours à "Terminé"
                 $operation->setStatut('Terminé');
                 $entityManager->flush();
             }
