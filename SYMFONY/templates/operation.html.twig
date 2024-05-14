@@ -16,17 +16,17 @@
     </nav>
     
     <div class="contourOp">
-    <pre>
-        {{ dump(operations) }}
-    </pre>
-{% for operation in operations %}
-    <div class="custom-block">
-        <div class="date">{{ operation.dateStart|date('d/m/Y') }}</div>
-        <div class="status">{{ operation.statut }}</div>
-        <div class="description">{{ operation.description }}</div>
-        <button class="buttonOp">Prendre</button>
-    </div>
-{% endfor %}
+
+    {% for operation in operations %}
+        <div class="custom-block">
+            <div class="date">{{ operation.dateStart|date('d/m/Y') }}</div>
+            <div class="status">{{ operation.statut }}</div>
+            <div class="description">{{ operation.description }}</div>
+            <form action="{{ path('app_operation_prendre', {'id': operation.id}) }}" method="post">
+                <button class="buttonOp" type="submit">Prendre</button>
+            </form>
+        </div>
+    {% endfor %}
 
     </div>
 {% endblock %}
