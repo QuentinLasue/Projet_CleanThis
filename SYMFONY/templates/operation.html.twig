@@ -1,30 +1,28 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="navbarOp"></div>
-    
-    <nav class="navbarE">
-        <ul class="navE-links">
-            <li><a href="#">Opérations</a></li>
-            <li><a href="#">Ma Liste</a></li>
-            <li><a href="#">Ajout Opération</a></li>
-            <li><a href="#">Liste Personnel</a></li>
-            <li><a href="#">Ajout Personnel</a></li>
-            <li><a href="#">Statistique</a></li>
-            <li><a href="#">Répertoire</a></li>
-        </ul>
-    </nav>
-    
+  <div class="navbarOp"></div>
+
+<nav class="navbarE">
+    <ul class="navE-links">
+        <li><a href="#">Opérations</a></li>
+        <li><a href="#">Ma Liste</a></li>
+        <li><a href="#">Ajout Opération</a></li>
+        <li><a href="#">Liste Personnel</a></li>
+        <li><a href="#">Ajout Personnel</a></li>
+        <li><a href="#">Statistique</a></li>
+        <li><a href="#">Répertoire</a></li>
+    </ul>
+
+</nav>
     <div class="contourOp">
 
 {% for operation in operations %}
-<div class="custom-block">
-    <div class="date">{{ operation.dateStart|date('d/m/Y') }}</div>
-    <div class="status">{{ operation.statut }}</div>
-    <div class="description">{{ operation.description }}</div>
-    <form action="{{ path('app_operation_prendre', {'id': operation.id}) }}" method="post" class="operation-form">
-        <button class="buttonOp prendre-button" type="button">Prendre</button>
-    </form>
+    <div class="custom-block">
+        <div class="date">{{ operation.dateStart|date('d/m/Y') }}</div>
+        <div class="status">{{ operation.statut }}</div>
+        <div class="description">{{ operation.description }}</div>
+        <button class="buttonOp">Prendre</button>
     </div>
 {% endfor %}
 
