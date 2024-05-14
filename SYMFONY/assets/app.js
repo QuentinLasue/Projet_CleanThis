@@ -1,4 +1,5 @@
-// import './bootstrap.js';
+
+import './bootstrap.js';
 /*
  * Welcome to your app's main JavaScript file!
  *
@@ -62,5 +63,41 @@ document.addEventListener('DOMContentLoaded', function() {
 
     googleButton.addEventListener('click', function() {
         window.location.href = "https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&scope=email%20profile&state=YOUR_STATE";
+
+    });
+});
+    
+
+const prendreButtons = document.querySelectorAll('.prendre-button');
+
+
+prendreButtons.forEach(button => {
+    button.addEventListener('click', function(event) {
+     
+        event.preventDefault();
+        
+       
+        const formUrl = this.closest('.operation-form').getAttribute('action');
+        
+       
+        fetch(formUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => {
+           
+            if (!response.ok) {
+                throw new Error('Erreur lors de la prise de l\'opération.');
+            }
+            
+           
+            this.closest('.custom-block').remove();
+        })
+        .catch(error => {
+            console.error('Erreur:', error);
+        });
+
     });
 });

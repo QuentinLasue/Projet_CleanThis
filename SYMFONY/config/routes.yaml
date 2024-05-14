@@ -5,6 +5,7 @@ controllers:
     type: attribute
 
 
+
 redirection_vue:
     path: /redirection
     controller: App\Controller\YourController::yourAction
@@ -23,4 +24,5 @@ app_login:
 confirmation:
     path: /confirmation
     controller: App\Controller\ConfirmationController::index
+
 

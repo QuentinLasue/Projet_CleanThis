@@ -6,6 +6,7 @@ use App\Repository\OperationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+
 #[ORM\Entity(repositoryClass: OperationRepository::class)]
 class Operation
 {
@@ -31,10 +32,13 @@ class Operation
     private ?\DateTimeInterface $dateForecast = null;
 
 
-    #[ORM\ManyToOne(inversedBy: 'operations')] 
-    private ?Adresse $adresse = null;
 
     #[ORM\ManyToOne(inversedBy: 'operations')] 
+
+
+    private ?Adresse $adresse = null;
+
+    #[ORM\ManyToOne(inversedBy: 'operations')]
     private ?Client $client = null;
 
     #[ORM\ManyToOne(inversedBy: 'operations')]
