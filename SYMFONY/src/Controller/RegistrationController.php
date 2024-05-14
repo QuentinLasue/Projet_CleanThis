@@ -53,7 +53,7 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
 
             // Redirection vers la page de connexion après l'inscription
-            return $this->redirectToRoute('login_vue');
+            return $this->redirectToRoute('app_login');
         }
 
         // Rendre le formulaire et les rôles disponibles dans le template

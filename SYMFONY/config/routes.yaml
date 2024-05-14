@@ -4,17 +4,6 @@ controllers:
         namespace: App\Controller
     type: attribute
 
-
-redirection_vue:
-    path: /redirection
-    controller: App\Controller\YourController::yourAction
-
-login_vue:
-    path: /Login
-    controller: App\Controller\LoginController::login
-
-
-
 # config/routes.yaml
 app_login:
     path: /login
