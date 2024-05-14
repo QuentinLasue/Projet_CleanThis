@@ -38,7 +38,10 @@
                     <td class="clientL">{{ operation.client.name }}</td> {# Afficher le nom du client #}
                     <td class="typeOperationL">{{ operation.type.name }}</td> 
                     <td class="statutL">{{ operation.statut }} 
-                        <button class="buttonTerminer">Terminer</button>
+                        <form action="{{ path('app_liste') }}" method="post">
+                            <input type="hidden" name="operation_id" value="{{ operation.id }}">
+                            <button type="submit" class="buttonTerminer">Terminer</button>
+                        </form>
                     </td>
                 </tr>
                 {% endfor %}
