@@ -142,14 +142,15 @@ class ClientController extends AbstractController{
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Vérification si l'adresse existe en base de donnée 
             // Récupération des donnée du formulaire
             $number = $form->get('adresse')['number']->getData();
             $street = $form->get('adresse')['street']->getData();
             $city = $form->get('adresse')['city']->getData();
             $county = $form->get('adresse')['county']->getData();
             $country = $form->get('adresse')['country']->getData();
- 
+            $photo = $form->get('operation')['photo']->getData();
+            
+            // Vérification si l'adresse existe en base de donnée 
             $adresseExistante = $em->getRepository(Adresse::class)->findOneBy([
                 'number'=>$number,
                 'street'=>$street,
@@ -211,6 +212,11 @@ class ClientController extends AbstractController{
             $em->persist($operation);
             $em->flush();
 
+            // Vérification si une photo a été envoyé
+            if($photo){
+                
+            }
+            // message succes et redirection
             $this->addFlash('success',"Votre demande d'opération a été prise en compte.");
             return $this->redirectToRoute('home');
         }
