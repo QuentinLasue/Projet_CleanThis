@@ -12,13 +12,12 @@ h6 {
 /* home */
 .container {
   padding-inline: 10%;
+  background-color: white;
 }
 .divIntro {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 5%;
-  margin-bottom: 5%;
 }
 .intro {
   font-size: 32px;
@@ -649,4 +648,58 @@ tr {
   color: white;
   background-color: #2678d1;
   border: none;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  background-color: white;
+}
+
+.navbar-item {
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 30rem;
+  margin-right: 15%;
+}
+
+.nav-item {
+  text-align: center;
+}
+
+.nav-link img {
+  display: block;
+  margin: auto;
+  margin-bottom: 5px;
+  padding-bottom: 10px;
+}
+
+.nav-link p {
+  font-family: "Roboto", sans-serif;
+  color: #85ba22;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.nav-link p:hover {
+  background-color: #2678d1;
+  color: white;
+}
+
+.bandeau img {
+  width: 100%;
+  transform: rotate(180deg);
+}
+.nav-link {
+  text-decoration: none; /* Supprimer le soulignement des liens */
+}
+.nav-item.espace-salarie {
+  position: absolute; /* Permet de positionner l'élément absolument par rapport à son conteneur */
+  top: 0; /* Positionner l'élément tout en haut */
+  right: 0; /* Positionner l'élément tout à droite */
 }
