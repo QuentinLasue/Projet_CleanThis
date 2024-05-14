@@ -17,16 +17,16 @@
     
     <div class="contourOp">
 
-    {% for operation in operations %}
-        <div class="custom-block">
-            <div class="date">{{ operation.dateStart|date('d/m/Y') }}</div>
-            <div class="status">{{ operation.statut }}</div>
-            <div class="description">{{ operation.description }}</div>
-            <form action="{{ path('app_operation_prendre', {'id': operation.id}) }}" method="post">
-                <button class="buttonOp" type="submit">Prendre</button>
-            </form>
-        </div>
-    {% endfor %}
+{% for operation in operations %}
+<div class="custom-block">
+    <div class="date">{{ operation.dateStart|date('d/m/Y') }}</div>
+    <div class="status">{{ operation.statut }}</div>
+    <div class="description">{{ operation.description }}</div>
+    <form action="{{ path('app_operation_prendre', {'id': operation.id}) }}" method="post" class="operation-form">
+        <button class="buttonOp prendre-button" type="button">Prendre</button>
+    </form>
+    </div>
+{% endfor %}
 
     </div>
 {% endblock %}

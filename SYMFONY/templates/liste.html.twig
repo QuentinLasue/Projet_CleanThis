@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<div class="navbarLi">
+        
+</div>
+    
+<nav class="navbarL">
+    <ul class="navL-links">
+        <li><a href="#">Opérations</a></li>
+        <li><a href="#">Ma Liste</a></li>
+        <li><a href="#">Ajout Opération</a></li>
+        <li><a href="#">Liste Personnel</a></li>
+        <li><a href="#">Ajout Personnel</a></li>
+        <li><a href="#">Statistique</a></li>
+        <li><a href="#">Répertoire</a></li>
+    </ul>
+</nav>
+
+{% set titre = "Liste de vos taches en cours" %}
+{% include 'base/blueBar.html.twig' %}
+
+<html lang="en">
+    <div class="table-containerL">
+        <table class="tableL">
+            <thead>
+                <tr>
+                    <th class="clientL">Client</th>
+                    <th class="typeOperationL">Type d'opération</th>
+                    <th class="statut">Statut</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for operation in operationsEnCours %}
+                <tr>
+                    <td class="clientL">{{ operation.client.name }}</td> 
+                    <td class="typeOperationL">{{ operation.type.name }}</td> 
+                    <td class="statutL">{{ operation.statut }} 
+  <form action="{{ path('app_liste') }}" method="post">
+    <input type="hidden" name="operation_id" value="{{ operation.id }}">
+    <button type="submit" class="buttonTerminer">Terminer</button>
+    <input type="hidden" name="_turbo" value="false">
+</form>
+
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% set titre = "Liste de vos taches terminées" %}
+    {% include 'base/blueBar.html.twig' %}
+
+    <div class="table-containerL">
+        <table class="tableL">
+            <thead>
+                <tr>
+                    <th class="clientL">Client</th>
+                    <th class="typeOperationL">Type d'opération</th>
+                    <th class="statutL">Statut</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for operation in operationsTerminees %}
+                <tr>
+                    <td class="clientL">{{ operation.client.name }}</td>
+                    <td class="typeOperationL">{{ operation.type.name }}</td>
+                    <td class="statutL">{{ operation.statut }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</html>
+{% endblock %}

@@ -6,6 +6,8 @@ use App\Repository\ClientRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: ClientRepository::class)]
 class Client
@@ -16,17 +18,39 @@ class Client
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank()]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: 'Votre nom est trop court.',
+        maxMessage: 'Votre nom est trop long, il ne doit pas dépasser 50 caractères.'
+    )]
     private ?string $name = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank()]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: 'Votre prénom est trop court.',
+        maxMessage: 'Votre prénom est trop long, il ne doit pas dépasser 50 caractères.'
+    )]
     private ?string $firstname = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank()]
+    #[Assert\Length(
+        min: 6,
+        max: 255,
+        minMessage: 'Votre email est trop court.',
+        maxMessage: 'Votre email est trop long, il ne doit pas dépasser 255 caractères.'
+    )]
+    #[Assert\Email(message: "Votre email n'est pas valide.")]
     private ?string $mail = null;
 
     #[ORM\ManyToOne(inversedBy: 'clients')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?adresse $adresse = null;
+    private ?Adresse $adresse = null;
 
     /**
      * @var Collection<int, Operation>
@@ -80,12 +104,12 @@ class Client
         return $this;
     }
 
-    public function getAdresse(): ?adresse
+    public function getAdresse(): ?Adresse
     {
         return $this->adresse;
     }
 
-    public function setAdresse(?adresse $adresse): static
+    public function setAdresse(?Adresse $adresse): static
     {
         $this->adresse = $adresse;
 

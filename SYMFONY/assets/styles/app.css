@@ -1,89 +1,342 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
-/* operation */
+/* Global */
+p, h1, h2, h3, h4, h5, h6 {
+  font-family: "Roboto";
+}
 
+/* home */
+.container {
+  padding-inline: 10%;
+}
+.divIntro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.intro {
+  font-size: 32px;
+  font-style: italic;
+}
+.btnDevis {
+  background-color: #2678d1;
+  color: white;
+  padding: 1%;
+  font-size: 32px;
+  text-decoration: none;
+  border-radius: 30px;
+  box-shadow: 0px 4px 4px #4a4a4a;
+}
+.btnDevis:hover {
+  box-shadow: 0px 4px 4px #4a4a4a inset;
+}
+.cardList {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.flipperFront h4,
+.flipperBack h4 {
+  color: #2678d1;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+.flipperBack p {
+  color: #2678d1;
+  font-size: 21px;
+  padding: 10px;
+}
+.flipperFront img {
+  width: 300px;
+  height: 300px;
+  border-radius: 30px 30px 0px 0px;
+}
+.flipContainer {
+  perspective: 1000px; /* Perspective pour l'effet de profondeur lors du retournement */
+  margin-bottom: 5%;
+  display: flex;
+  justify-content: center;
+}
+.flipper {
+  width: 300px;
+  height: 400px;
+  position: relative;
+  transform-style: preserve-3d; /* Indique que les enfants doivent être rendus en 3D (flipperFront et Back) */
+  transition: transform 0.8s; /* Transition fluide */
+}
+.flipContainer:hover .flipper {
+  transform: rotateY(180deg); /* Retournement de 180 degrés lors du survol */
+}
+.flip {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden; /* Cache le côté arrière pendant le retournement */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 30px;
+  box-shadow: 0px 4px 4px 0px #77b800;
+}
+.flipperFront {
+  transform: rotateY(0deg); /* Face avant initiale, non retournée */
+}
+.flipperBack {
+  transform: rotateY(180deg); /* Face arrière initiale, retournée à 180deg */
+  text-align: center;
+}
+
+/* blueBar */
+.titleDiv {
+  display: flex;
+  justify-content: center;
+}
+.blueBar {
+  width: 1000px;
+  background-color: #2678d1;
+  padding: 0.5%;
+  padding-left: 5%;
+  border-radius: 0 150px 0 0;
+  margin: 2%;
+}
+.blueBar h2 {
+  color: white;
+  font-size: 30px;
+}
+
+/* Message Flash et erreur */
+.messageFlash {
+  font-size: 20px;
+}
+.flash {
+  text-align: center;
+}
+.error {
+  background-color: #f88170;
+}
+.success {
+  background-color: #bbf7d4;
+}
+.messageError {
+  color: #f88170;
+  font-size: 12;
+  font-weight: bold;
+}
+
+/* Formulaire */
+.titleForm {
+  font-size: 20px;
+}
+input {
+  width: 300px;
+  height: 30px;
+}
+textarea {
+  width: 600px;
+  height: 200px;
+}
+select, .widgetDate {
+  width: 300px;
+  height: 30px;
+  font-size: 20px;
+  padding-left: 20px;
+}
+.radioInput {
+  width: 20px;
+  height: 20px;
+  box-shadow: none;
+}
+input, textarea, select {
+  border: none;
+  box-shadow: 0px 4px 4px #85ba22;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+input, textarea, select:focus {
+  outline: none;
+  border: #85ba22 1px;
+  font-size: 20px;
+}
+.divInput {
+  width: 350px;
+}
+.divLabel, .divInput {
+  margin-bottom: 20px;
+}
+label {
+  font-size: 20px;
+}
+.doubleChamp {
+  display: flex;
+}
+.formClient {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.divBtnSend {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+.btn {
+  background-color: #2678d1;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 20px;
+  box-shadow: 0px 4px 4px #4a4a4a;
+  font-weight: bold;
+}
+.btnSend {
+  border-radius: 10px;
+  font-size: 31px;
+  padding: 20px;
+  width: 300px;
+}
+.btnBack {
+  padding: 0.5%;
+  text-decoration: none;
+  margin-left: 11%;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  align-self: flex-start;
+}
+.btn:hover {
+  box-shadow: 0px 4px 4px #4a4a4a inset;
+}
+
+/* Operation */
 .navbarOp {
-    height: 125px;
-    background-color: #FFFFFF;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 125px;
+  background-color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .navbarE {
-    background-color: #77B800;
-    margin-right: auto;
-    margin-left: auto;
-    height: 121px;
-    width: 1596px;
-    display: flex;
-    align-items: center;
-    border-radius: 1cqmax;
-    justify-content: center;
+  background-color: #77B800;
+  margin-right: auto;
+  margin-left: auto;
+  height: 121px;
+  width: 1596px;
+  display: flex;
+  align-items: center;
+  border-radius: 1cqmax;
+  justify-content: center;
 }
-.navE-links {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex; 
+.navE-links, .navL-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
 }
-.navE-links li {
-    padding: 10px 20px;
-    margin-right: 35px;
+.navE-links li, .navL-links li {
+  padding: 10px 20px;
+  margin-right: 35px;
 }
-.navE-links li a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-    font-family: bold italic;
-    font-size: 20px;
+.navE-links li a, .navL-links li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  font-family: bold italic;
+  font-size: 20px;
 }
-.navE-links li a:hover {
-    color: #000;
-    background-color: #fff;
+.navE-links li a:hover, .navL-links li a:hover {
+  color: #000;
+  background-color: #fff;
 }
-.custom-block {
-    
-    margin: 0 auto;
-    display: flex;
-    width: 1596px;
-    height: 100px;
-    justify-content: space-around;
-    align-items: center;
-    border: solid;
+.custom-block, .custom-block2 {
+  margin: 0 auto;
+  display: flex;
+  width: 1596px;
+  height: 100px;
+  justify-content: space-around;
+  align-items: center;
+  border: solid;
 }
 .custom-block img {
-    margin-right: 10px;
+  margin-right: 10px;
 }
-.custom-block .date {
-    margin-right: 10px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+.custom-block .date, .custom-block2 .date {
+  margin-right: 10px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
-.custom-block .status {
-    margin-right: 10px;
-    color: red;
+.custom-block .status, .custom-block2 .status {
+  margin-right: 10px;
+  color: red;
 }
-.custom-block .description {
-    margin-right: 10px;
-    color: #2678D1;
-    margin-top: -5px;
+.custom-block .description, .custom-block2 .description {
+  margin-right: 10px;
+  color: #2678D1;
+  margin-top: -5px;
 }
-
-
-.custom-block .buttonOp {
-    background-color: #2678D1;
-    width: 214.61px;
-    height: 43px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.3s ease-in-out;
-    color: #fff;
+.custom-block .buttonOp, .custom-block2 .buttonOp {
+  background-color: #2678D1;
+  width: 214.61px;
+  height: 43px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease-in-out;
+  color: #fff;
 }
-
-.custom-block .buttonOp:hover {
-    background-color: #205084; 
+.custom-block .buttonOp:hover, .custom-block2 .buttonOp:hover {
+  background-color: #205084;
 }
-
-
-.contourOp{
-    margin-top: 5%;
+.contourOp {
+  margin-top: 5%;
+}
+.buttonTerminer {
+  width: 155px;
+  height: 43px;
+  background-color: #ED3939;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  border-radius: 30px;
+}
+.buttonTerminer:hover {
+  background-color: #C62828;
+}
+.material-symbols-outlined {
+  color: #BDDA88;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.arrow-icon {
+  position: relative;
+  top: 8px;
+}
+.statutL, .statutL2 {
+  color: #77B800;
+}
+.table-containerL {
+  display: flex;
+  justify-content: center;
+}
+.tableL {
+  border-collapse: collapse;
+  width: 1132px;
+}
+th, td {
+  border: 1px solid black;
+  height: 115px;
+  width: 283px;
+  text-align: center;
+  vertical-align: middle;
+}
+th {
+  background-color: rgb(255, 255, 255);
+}
+th.clientL, td.clientL {
+  width: 283px;
+}
+th.typeOperationL, td.typeOperationL {
+  width: 283px;
+}
+th.statutL, td.statutL {
+  width: 283px;
 }

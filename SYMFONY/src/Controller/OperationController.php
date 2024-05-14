@@ -10,8 +10,15 @@ use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Operation;
 
+
 class OperationController extends AbstractController
 {
+
+    public function terminerOperation($id): Response
+{
+    return $this->redirectToRoute('app_liste');
+}
+
     private $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager)
@@ -19,9 +26,7 @@ class OperationController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    /**
-     * @Route("/operation", name="app_operation")
-     */
+    #[Route("/operation", name: "app_operation")]
     public function operation(OperationRepository $repo): Response
     {
         $operations = $repo->findAll();
@@ -31,9 +36,7 @@ class OperationController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/operation/prendre/{id}", name="app_operation_prendre")
-     */
+    #[Route("/operation/prendre/{id}", name: "app_operation_prendre")]
     public function prendreOperation(Operation $operation, Request $request): Response
     {
         // Traitement pour transférer l'opération à "Ma Liste"
@@ -44,7 +47,6 @@ class OperationController extends AbstractController
         $this->entityManager->flush();
 
         // Redirection vers la page "Ma Liste" après avoir pris l'opération
-        return $this->redirectToRoute('app_ma_liste');
+        return $this->redirectToRoute('app_operation');
     }
 }
- 

@@ -6,6 +6,7 @@ use App\Repository\AdresseRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AdresseRepository::class)]
 class Adresse
@@ -16,18 +17,40 @@ class Adresse
     private ?int $id = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank()]
+    #[Assert\Positive()]
     private ?int $number = null;
 
     #[ORM\Column(length: 125)]
+    #[Assert\NotBlank()]
+    #[Assert\Length(
+        max: 125,
+        maxMessage: "Votre nom de rue est trop long. Il ne doit pas dépasser 125 caractères."
+    )]
     private ?string $street = null;
 
     #[ORM\Column(length: 100)]
+    #[Assert\NotBlank()]
+    #[Assert\Length(
+        max: 100,
+        maxMessage: "Votre nom de Ville est trop long. Il ne doit pas dépasser 100 caractères."
+    )]
     private ?string $city = null;
 
     #[ORM\Column(length: 125)]
+    #[Assert\NotBlank()]
+    #[Assert\Length(
+        max: 125,
+        maxMessage: "Votre nom de département est trop long. Il ne doit pas dépasser 125 caractères."
+    )]
     private ?string $county = null;
 
     #[ORM\Column(length: 125)]
+    #[Assert\NotBlank()]
+    #[Assert\Length(
+        max: 125,
+        maxMessage: "Votre nom de pays est trop long. Il ne doit pas dépasser 125 caractères."
+    )]
     private ?string $country = null;
 
     /**
