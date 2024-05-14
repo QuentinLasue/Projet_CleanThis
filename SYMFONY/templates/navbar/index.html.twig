@@ -1,48 +1,43 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Hello NavbarController!{% endblock %}
 {% block header %}
-<nav class="navbar">
-    {# <div class="nav-container"> #}
-        
-        <a class="navbar-logo" href={{ path("home") }}>
-            <img src="{{ asset('image/LOGO.png') }}" alt="Votre Logo">
-        </a>
-        
-       
-        <div class="navbar-item">
-            
-                
-                 <div class="nav-item">
-                    <a class="nav-link" href={{ path("client") }}>
-                        <img src="{{ asset('image/image_devis.png') }}" alt="Devis"> 
-                        <p>Devis</p>
-                    </a>
-                </div>
-                 <div class="nav-item">
-                    <a class="nav-link" href="">
-                        <img src="{{ asset('image/image_operations.png') }}" alt="Opérations">
-                        <p>Opérations</p> 
-                    </a>
-                </div>
-                <div class="nav-item">
-                    <a class="nav-link" href={{ path("app_contact") }}>
-                        <img src="{{ asset('image/image_aide.png') }}" alt="Aide">
-                        <p>Aide</p> 
-                    </a>
-                </div>
-                <div class="nav-item">
-                    <a class="nav-link" href={{ path("app_login") }}>
-                        <p>Espace salarié</p> 
-                    </a>
-                </div>
-           
-        </div>
-   
-</nav>
+
+	<nav
+		class="navbar">
+		{# <div class="nav-container"> #}
+
+		<a class="navbar-logo" href={{ path("home") }}>
+			<img src="{{ asset('image/LOGO.png') }}" alt="Votre Logo">
+		</a>
 
 
+		<div class="navbar-item">
+
+
+			<div class="nav-item">
+				<a class="nav-link" href={{ path("client") }}>
+					<img src="{{ asset('image/image_devis.png') }}" alt="Devis">
+					<p>Devis</p>
+				</a>
+			</div>
+			<div class="nav-item">
+				<a class="nav-link" href="">
+					<img src="{{ asset('image/image_operations.png') }}" alt="Opérations">
+					<p>Opérations</p>
+				</a>
+			</div>
+			<div class="nav-item">
+				<a class="nav-link" href={{ path("app_contact") }}>
+					<img src="{{ asset('image/image_aide.png') }}" alt="Aide">
+					<p>Aide</p>
+				</a>
+			</div>
+			<div class="nav-item espace-salarie">
+				<a class="nav-link" href={{ path("app_login") }}>
+					<p>Espace salarié</p>
+				</a>
+			</div>
+
+		</div>
+
+	</nav>
 {% endblock %}
-{% block body %}
 
-{% endblock %}
