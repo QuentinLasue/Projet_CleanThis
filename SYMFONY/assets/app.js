@@ -1,14 +1,4 @@
-<<<<<<< HEAD
-// import './bootstrap.js';
-/*
- * Welcome to your app's main JavaScript file!
- *
- * This file will be included onto the page via the importmap() Twig function,
- * which should already be in your base.html.twig.
- */
-=======
 import './bootstrap.js';
->>>>>>> connexion
 import './styles/app.css';
 
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
@@ -67,3 +57,5 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = "https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&scope=email%20profile&state=YOUR_STATE";
     });
 });
+
+

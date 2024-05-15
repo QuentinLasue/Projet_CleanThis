@@ -8,6 +8,8 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
+<a href="{{ path('generate_pdf') }}" target="_blank">Générer PDF</a>
+
     <h1>Register</h1>
     {{ form_start(registrationForm) }}
     {# Form rendering logic #}

@@ -34,3 +34,7 @@ services:
             $adminEmail: '%admin_email%'
             $mailer: '@Symfony\Component\Mailer\MailerInterface'
             $twig: '@twig'
+
+    App\Service\PdfGenerator:
+        arguments:
+            $twig: '@twig'
