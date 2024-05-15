@@ -1,23 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello StatController!{% endblock %}
-<script src="path/to/chartjs/dist/chart.umd.js"></script>
-<script>
-    const myChart = new Chart(ctx, {...});
-</script>
+
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/achou/OneDrive/Bureau/tuto symfony grakiart/Projet_CleanThis/SYMFONY/src/Controller/StatController.php</code></li>
-        <li>Your template at <code>C:/Users/achou/OneDrive/Bureau/tuto symfony grakiart/Projet_CleanThis/SYMFONY/templates/stat/index.html.twig</code></li>
-    </ul>
+<H1>STATISTIQUE </H1>
+<div class="form-stat">
+    <label for="chartType" class="form-label">Choisir le type de graphique :</label>
+    <select name="chartType" id="chartType" class="form-select">
+        <option value={{ path("app_login") }}>Liste du Personnel</option>
+        <option value="bar">Chiffre d'Affaires</option>
+        <option value="radar">Statistique</option>
+    </select>
+    <button type="submit" class="form-button">Afficher</button>
 </div>
+<div class="example-wrapper">
+{{ render_chart(chart) }}
+</div>
+
 {% endblock %}
