@@ -46,9 +46,11 @@ security:
 
     # Access control configuration
     access_control:
-<<<<<<< HEAD
-        - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/profile, roles: ROLE_USER }
+
+        - { path: ^/admin, roles: ROLE_EXPERT }
+        - { path: ^/profile, roles: ROLE_SENIOR }
+        - { path: ^/profile, roles: ROLE_JUNIOR }
+
      
 
 when@test:
@@ -63,6 +65,4 @@ when@test:
                 cost: 4 # Lowest possible value for bcrypt
                 time_cost: 3 # Lowest possible value for argon
                 memory_cost: 10 # Lowest possible value for argon
-=======
-        # Add your access control rules here
->>>>>>> operation
+
