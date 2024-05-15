@@ -27,9 +27,9 @@ class RepertoireController extends AbstractController
         $operations = $this->entityManager->getRepository(Operation::class)->findAll();
 
         $operations = $paginator->paginate(
-            $operations, /* query NOT result */
+            $operations,
             $request->query->getInt('page', 1),
-            5/*limit per page*/
+            5
         );
         
         return $this->render('repertoire/index.html.twig', [
@@ -37,3 +37,4 @@ class RepertoireController extends AbstractController
         ]);
     }
 }
+

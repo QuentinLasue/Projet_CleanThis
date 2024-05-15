@@ -6,12 +6,14 @@
     <h1>Répertoire</h1>
     <table class="table">
         <thead>
-            <tr><th>{{ knp_pagination_sortable(operations, 'ID', 'r.id') }}</th>
-                <th>{{ knp_pagination_sortable(operations, 'Statut', 'r.statut') }}</th>
-                <th>{{ knp_pagination_sortable(operations, 'Date prévisionnelle', 'r.dateForecast') }}</th>
-                <th>Client</th>
-                <th>Utilisateur</th>
-                <th>Rôle</th>
+            <tr>
+                <th>{{ knp_pagination_sortable(operations, 'ID', 'id') }}</th>
+                <th>{{ knp_pagination_sortable(operations, 'Statut', 'statut') }}</th>
+                <th>{{ knp_pagination_sortable(operations, 'Date prévisionnelle', 'dateForecast') }}</th>
+                <th>{{ knp_pagination_sortable(operations, 'Client', 'client') }}</th>
+                <th>{{ knp_pagination_sortable(operations, 'Utilisateur', 'user') }}</th>
+                <th>{{ knp_pagination_sortable(operations, 'Rôle', 'roles') }}</th>
+                
                 <th>Description</th>
             </tr>
         </thead>
@@ -29,5 +31,5 @@
             {% endfor %}
         </tbody>
     </table>
-    {{knp_pagination_render(operations) }}
+    {{ knp_pagination_render(operations) }}
 {% endblock %}
