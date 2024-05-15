@@ -4,6 +4,7 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
     admin_email: 'cleanthis154@gmail.com'
+    photo_directory: '%kernel.project_dir%/public/photoClient' # chemin vers la où on veut stocker les photos, %kerne..% represente le repertoire racine du projet
 
 services:
     # Déclarez votre contrôleur en tant que service public

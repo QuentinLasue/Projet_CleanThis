@@ -36,7 +36,7 @@ class OperationFormType extends AbstractType
             ])
             ->add('photo',FileType::class,[
                 'label'=> 'Ajoutez une photo :',
-                'required'=> 'false',
+                'required'=> false,
                 'mapped'=> false, // Ne pas mappez ce champ à une propriété de l'entité Opération
                 'constraints'=>[
                     // contraintes pour les File : https://symfony.com/doc/current/reference/constraints/File.html

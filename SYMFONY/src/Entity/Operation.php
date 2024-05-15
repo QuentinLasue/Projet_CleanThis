@@ -46,6 +46,9 @@ class Operation
 
     private ?User $user = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $namePhoto = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -155,6 +158,18 @@ class Operation
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getNamePhoto(): ?string
+    {
+        return $this->namePhoto;
+    }
+
+    public function setNamePhoto(?string $namePhoto): static
+    {
+        $this->namePhoto = $namePhoto;
 
         return $this;
     }
