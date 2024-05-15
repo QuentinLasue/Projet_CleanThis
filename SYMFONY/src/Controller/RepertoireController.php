@@ -3,42 +3,37 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request; // Ajout de l'importation de Request
 use Symfony\Component\Routing\Annotation\Route;
-use App\Form\RepertoireSearchType;
-use App\Repository\OperationRepository; // Importez le repository
-
+use App\Entity\Operation;
+use App\Repository\OperationRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 
 class RepertoireController extends AbstractController
 {
-    private $operationRepository;
+    private $entityManager;
 
-    public function __construct(OperationRepository $operationRepository)
+    public function __construct(EntityManagerInterface $entityManager)
     {
-        $this->operationRepository = $operationRepository;
+        $this->entityManager = $entityManager;
     }
 
     #[Route('/repertoire', name: 'app_repertoire')]
-    public function index(Request $request, OperationRepository $operationRepository): Response
+    public function index(Request $request, OperationRepository $operationRepository, PaginatorInterface $paginator): Response
     {
-        $form = $this->createForm(RepertoireSearchType::class);
-        $form->handleRequest($request);
+        $operations = $operationRepository->findAll();
+        $operations = $this->entityManager->getRepository(Operation::class)->findAll();
 
-        $results = $operationRepository->findAll();
-
-        if ($form->isSubmitted() && $form->isValid()) {
-           
-           $criteria = $form->getData();
-          
-            $results = $this->operationRepository->search($criteria);
-        }
-
+        $operations = $paginator->paginate(
+            $operations, /* query NOT result */
+            $request->query->getInt('page', 1),
+            5/*limit per page*/
+        );
+        
         return $this->render('repertoire/index.html.twig', [
-            'form' => $form->createView(),
-            'results' => $results,
-      
-
+            'operations' => $operations,
         ]);
     }
 }

@@ -1,38 +1,33 @@
-
 {% extends 'base.html.twig' %}
 
-{% block title %}Repertoire{% endblock %}
+{% block title %}Répertoire{% endblock %}
 
 {% block body %}
-
-    <div class="titleAll">
-        <h3>Répertoire</h3>
-    </div>
-
-    <div class="formulaire-repertoire">
-        <form method="post">
-            {{ form_start(form) }}
-            <div class="form-group">
-                <label for="repertoire">Trier par:</label>
-                {{ form_widget(form.repertoire, {'attr': {'class': 'form-control', 'id': 'repertoire'}}) }}
-            </div>
-            <button type="submit" class="btn btn-primary">Envoyer</button>
-            {{ form_end(form) }}
-        </form>
-    </div>
-
-    {# Afficher les résultats de la recherche #}
-    <div class="resultats-recherche">
-        <h4>Résultats de la recherche</h4>
-       
-            {% for result in results %}
-            <div class= "result">
-                {{ result.id}} {# Remplacez "description" par le nom de la propriété que vous souhaitez afficher #}
-                {{ result.statut}} {# Remplacez "description" par le nom de la propriété que vous souhaitez afficher #}
-                {# <li>{{ result.dateStart}}</li> Remplacez "description" par le nom de la propriété que vous souhaitez afficher #}
-            </div>    
+    <h1>Répertoire</h1>
+    <table class="table">
+        <thead>
+            <tr><th>{{ knp_pagination_sortable(operations, 'ID', 'r.id') }}</th>
+                <th>{{ knp_pagination_sortable(operations, 'Statut', 'r.statut') }}</th>
+                <th>{{ knp_pagination_sortable(operations, 'Date prévisionnelle', 'r.dateForecast') }}</th>
+                <th>Client</th>
+                <th>Utilisateur</th>
+                <th>Rôle</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for operation in operations %}
+                <tr>
+                    <td>{{ operation.id }}</td>
+                    <td>{{ operation.statut }}</td>
+                    <td>{{ operation.dateForecast ? operation.dateForecast.format('d-m-Y') : 'N/A' }}</td>
+                    <td>{{ operation.client.name }}</td> {# Affiche le nom du client associé à cette opération #}
+                    <td>{{ operation.user.name }}</td> {# Affiche le nom de l'utilisateur associé à cette opération #}
+                    <td>{{ operation.user.roles[0] }}</td> {# Affiche le nom de l'utilisateur associé à cette opération #}
+                    <td>{{ operation.description }}</td>
+                </tr>
             {% endfor %}
-           
-        </ul>
-    </div>
+        </tbody>
+    </table>
+    {{knp_pagination_render(operations) }}
 {% endblock %}

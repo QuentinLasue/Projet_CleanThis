@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Form;
 
 use App\Entity\Operation;
@@ -11,19 +10,19 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RepertoireSearchType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('repertoire', ChoiceType::class, [
-                'label' => 'Trier par:',
-                'choices' => $this->getPropertiesChoices(),
-                'attr' => ['class' => 'form-control'],
+            ->add('tri_par', ChoiceType::class, [
+                'choices' => array_merge(
+                    ['id' => 'id', 'Statut' => 'statut'],
+                    $this->getPropertiesChoices()
+                ),
             ]);
     }
 
-    private function getPropertiesChoices()
+    private function getPropertiesChoices(): array
     {
-        
         $reflClass = new \ReflectionClass(Operation::class);
         $properties = $reflClass->getProperties(\ReflectionProperty::IS_PRIVATE);
 
@@ -36,7 +35,7 @@ class RepertoireSearchType extends AbstractType
         return $choices;
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'csrf_protection' => false,
