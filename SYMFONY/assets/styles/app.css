@@ -322,7 +322,7 @@ label {
   width: 1132px;
 }
 th, td {
-  border: 1px solid black;
+  border: 1px solid rgb(157, 255, 0);
   height: 115px;
   width: 283px;
   text-align: center;
@@ -340,3 +340,106 @@ th.typeOperationL, td.typeOperationL {
 th.statutL, td.statutL {
   width: 283px;
 }
+
+/* Styles pour le menu burger */
+.burger-menu {
+    display: none; /* Caché par défaut */
+    cursor: pointer;
+  }
+  
+  .burger-icon {
+    width: 30px;
+    height: 3px;
+    background-color: #000;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+@media screen and (max-width: 850px) {
+
+    
+    .navbarE {
+      height: 75px;
+      padding: 0 10px;
+    }
+  
+    .navE-links li,
+    .navL-links li {
+      padding: 5px 5px;
+      margin-right: 10px;
+    }
+  
+    .navE-links li a,
+    .navL-links li a {
+      font-size: 14px;
+    }
+  
+    .custom-block,
+    .custom-block2 {
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .custom-block .buttonOp,
+    .custom-block2 .buttonOp {
+      width: 100%;
+      margin-top: 10px;
+    }
+  
+    .tableL {
+      width: 100%;
+    }
+  
+    th,
+    td {
+      width: 100%;
+    }
+  }
+
+  
+  @media screen and (min-width: 850px) and (max-width: 1450px) {
+    .navbarE {
+      height: 90px;
+      padding: 0 20px;
+      width: 70%;
+    }
+  
+    .navE-links li, .navL-links li {
+        padding: 10px 20px;
+        margin-right: auto;
+    }
+
+    .navE-links li,
+    .navL-links li {
+      padding: 10px 15px;
+      margin-right: 10px;
+    }
+  
+    .navE-links li a,
+    .navL-links li a {
+      font-size: 14px;
+    }
+  
+    .custom-block,
+    .custom-block2 {
+      width: 50%;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .custom-block .buttonOp,
+    .custom-block2 .buttonOp {
+      width: 100%;
+      margin-top: 10px;
+    }
+  
+    .tableL {
+      width: 80%;
+    }
+  
+    th,
+    td {
+      width: 33%;
+    }
+  }
+  

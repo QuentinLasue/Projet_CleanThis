@@ -33,3 +33,15 @@ prendreButtons.forEach(button => {
         });
     });
 });
+
+//menu burger
+
+document.addEventListener('DOMContentLoaded', function() {
+    const burgerMenu = document.querySelector('.burger-menu');
+    const navLinks = document.querySelector('.navE-links');
+  
+    burgerMenu.addEventListener('click', function() {
+      navLinks.classList.toggle('change');
+    });
+  });
+  
