@@ -36,6 +36,7 @@ h6 {
 }
 .btnDevis:hover {
   box-shadow: 0px 4px 4px #4a4a4a inset;
+  background-color: #0056b3;
 }
 .cardList {
   display: flex;
@@ -156,7 +157,21 @@ select,
   height: 20px;
   box-shadow: none;
 }
-
+.fileInput {
+  width: 430px;
+  height: 30px;
+  box-shadow: 0px 4px 4px #85ba22;
+  border-radius: 20px;
+  margin-left: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+  background-color: white;
+  font-size: 20px;
+  cursor:pointer;
+}
+input[type="file"] {
+  display: none;
+}
 input,
 textarea,
 select {
@@ -224,6 +239,16 @@ label {
 }
 .btn:hover {
   box-shadow: 0px 4px 4px #4a4a4a inset;
+  background-color: #0056b3;
+}
+
+.btnInputFile {
+  align-self: center;
+  padding: 10px;
+  margin: 10px;
+}
+textarea, input::placeholder {
+  padding-left: 10px; 
 }
 body {
   margin: 0;
@@ -248,7 +273,6 @@ body {
 }
 .displayBlock {
   display: block;
-
 }
 /* general */
 
@@ -630,15 +654,15 @@ tr {
   padding-right: 13px;
   margin: 5px;
   border-radius: 25px;
- }
- .btnSup{
-  background-color: #ED3939;
-  width: auto; 
+}
+.btnSup {
+  background-color: #ed3939;
+  width: auto;
   height: auto;
- }
- .btnSup:hover{
-  background-color:#ED3939 ;
- }
+}
+.btnSup:hover {
+  background-color: #ed3939;
+}
 /* pagination liste personnel*/
 .pagination {
   display: flex;
