@@ -14,6 +14,7 @@
 
 		{% block javascripts %}
 			<script src="{{ asset('../assets/apiAdresse.js') }}"></script>
+			
 			{% block importmap %}
 				{{ importmap('app') }}
 			{% endblock %}
@@ -22,7 +23,6 @@
 	<body>
 	
 		{% block body %}
-		
 			{% include "home/home.html.twig" %}		
 		{% endblock %}
 	</body>

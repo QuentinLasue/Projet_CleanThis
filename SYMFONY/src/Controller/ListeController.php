@@ -48,7 +48,7 @@ class ListeController extends AbstractController
         $operationsEnCours = $this->operationRepository->findBy(['statut' => 'En cours']);
         $operationsTerminees = $this->operationRepository->findBy(['statut' => 'Terminé']);
     
-        return $this->render('liste.html.twig', [
+        return $this->render('employe/liste.html.twig', [
             'operationsEnCours' => $operationsEnCours,
             'operationsTerminees' => $operationsTerminees,
         ]);
