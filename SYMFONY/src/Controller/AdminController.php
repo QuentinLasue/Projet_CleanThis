@@ -32,7 +32,7 @@ class AdminController extends AbstractController
             'page' => $page
         ]);
     }
-
+    
     #[Route('admin/listePersonnel/{id}/modifier', name: 'admin.modifierPersonel')]
     public function Update(int $id, RoleRepository $roleRepository, UserRepository $userRepository, Request $request, EntityManagerInterface $em): Response
     {

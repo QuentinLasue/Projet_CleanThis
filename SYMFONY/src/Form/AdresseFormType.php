@@ -15,7 +15,10 @@ class AdresseFormType extends AbstractType
     {
         $builder
             ->add('number',IntegerType::class,[
-                'label'=>'Numéro :'
+                'label'=>'Numéro :',
+                'attr'=>[
+                    'min'=>1,
+                    ]
             ])
             ->add('street',TextType::class,[
                 'label'=>'Rue :'
