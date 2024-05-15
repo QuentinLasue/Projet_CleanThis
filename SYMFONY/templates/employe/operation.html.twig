@@ -22,7 +22,9 @@
         <div class="date">{{ operation.dateStart|date('d/m/Y') }}</div>
         <div class="status">{{ operation.statut }}</div>
         <div class="description">{{ operation.description }}</div>
-        <button class="buttonOp">Prendre</button>
+        <form action="{{ path('app_operation_prendre', {'id': operation.id}) }}" method="post" class="operation-form">
+            <button type="submit" class="prendre-button buttonOp">Prendre</button>
+        </form>
     </div>
 {% endfor %}
 
