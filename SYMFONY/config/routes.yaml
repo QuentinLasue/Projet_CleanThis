@@ -16,7 +16,11 @@ confirmation:
     path: /confirmation
     controller: App\Controller\ConfirmationController::index
 
+
 generate_pdf:
     path: /pdf
     controller: App\Controller\PdfController::generatePdf
+
+
+
 
