@@ -1,29 +1,38 @@
 security:
-    # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
+    # Configuration for password hashers and providers
     password_hashers:
-        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
-    # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
+        App\Entity\User:
+            algorithm: auto
+
     providers:
+
         # users_in_memory: { memory: null }
         database_users:
+
+
             entity:
                 class: App\Entity\User
                 property: email
-        # used to reload user from session & other features (e.g. switch_user)
-        # used to reload user from session & other features (e.g. switch_user)
+
+    # Configuration for firewalls
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+
         main:
             lazy: true
+
             provider: database_users
             custom_authenticator:
                 - App\Security\LoginFormAuthenticator
+                # - App\Security\UserAuthenticator
+
             logout:
                 path: app_logout
                 # where to redirect after logout
                 # target: app_any_route
+
 
             remember_me:
                 secret: '%kernel.secret%'
@@ -34,17 +43,14 @@ security:
                 # login form, uncomment the following line to always enable it.
                 #always_remember_me: true
 
-            # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#the-firewall
 
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
-
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
+    # Access control configuration
     access_control:
-        - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/profile, roles: ROLE_USER }
+
+        - { path: ^/admin, roles: ROLE_EXPERT }
+        - { path: ^/profile, roles: ROLE_SENIOR }
+        - { path: ^/profile, roles: ROLE_JUNIOR }
+
      
 
 when@test:
@@ -59,3 +65,4 @@ when@test:
                 cost: 4 # Lowest possible value for bcrypt
                 time_cost: 3 # Lowest possible value for argon
                 memory_cost: 10 # Lowest possible value for argon
+

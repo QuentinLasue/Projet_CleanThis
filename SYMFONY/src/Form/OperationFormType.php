@@ -7,10 +7,11 @@ use App\Entity\TypeOperation;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class OperationFormType extends AbstractType
 {
@@ -32,8 +33,21 @@ class OperationFormType extends AbstractType
             ])
             ->add('description',TextareaType::class ,[
                 'label'=>'Description',
+            ])
+            ->add('photo',FileType::class,[
+                'label'=> 'Ajoutez une photo :',
+                'required'=> false,
+                'mapped'=> false, // Ne pas mappez ce champ à une propriété de l'entité Opération
+                'constraints'=>[
+                    // contraintes pour les File : https://symfony.com/doc/current/reference/constraints/File.html
+                    new File([
+                        'maxSize'=>'2M',
+                        'maxSizeMessage'=>'La taille maximum de votre fichier ne doit pas dépasser 2 Mo.',
+                        'mimeTypes'=>['image/jpeg','image/png'], // type de fichier autorisés
+                        'mimeTypesMessage'=>'Le fichier doit être une image au format JPEG ou PNG.'
+                    ])
+                    ],
             ]);
-
     }
 
     public function configureOptions(OptionsResolver $resolver): void

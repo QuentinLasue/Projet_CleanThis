@@ -3,6 +3,8 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+    admin_email: 'cleanthis154@gmail.com'
+    photo_directory: '%kernel.project_dir%/public/photoClient' # chemin vers la où on veut stocker les photos, %kerne..% represente le repertoire racine du projet
 
 services:
     # Déclarez votre contrôleur en tant que service public
@@ -27,3 +29,13 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Service\MailService:
+        arguments:
+            $adminEmail: '%admin_email%'
+            $mailer: '@Symfony\Component\Mailer\MailerInterface'
+            $twig: '@twig'
+
+    App\Service\PdfGenerator:
+        arguments:
+            $twig: '@twig'

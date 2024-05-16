@@ -8,7 +8,19 @@ redirection_vue:
     path: /redirection
     controller: App\Controller\YourController::yourAction
 
-login_vue:
-    path: /Login
+app_login:
+    path: /login
     controller: App\Controller\LoginController::login
+
+confirmation:
+    path: /confirmation
+    controller: App\Controller\ConfirmationController::index
+
+
+generate_pdf:
+    path: /pdf
+    controller: App\Controller\PdfController::generatePdf
+
+
+
 

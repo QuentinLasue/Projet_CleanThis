@@ -64,6 +64,13 @@
 	</div>
 
 {% endblock %}
+{% block file_widget %}
+<div class="doubleChamp">
+	<label for="fileInput" class="btn btnInputFile">Choisir un fichier</label>
+	<input type="file" id="fileInput"{{ block('widget_attributes') }} accept="image/png,image/jpeg" onchange="displayFileName(this)">
+	<p id="file-name" class="fileInput">Aucun fichier sélectionné.</p>
+</div>
+{% endblock %}
 
 {% block radio_label %}
 	<label {{ block('attributes') }}>{{ label }}</label>

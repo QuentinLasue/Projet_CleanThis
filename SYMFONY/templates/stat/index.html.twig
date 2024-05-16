@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello StatController!{% endblock %}
+
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+   
+    <div class="example-wrapper">
+        <div class="chart1">
+            {{ render_chart(chart3) }}
+            <div class="operation-table">
+                <h2>Nombre d'opérations par type</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Nombre d'opérations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Grosse</td>
+                            <td>{{ countGrosse }}</td>
+                        </tr>
+                        <tr>
+                            <td>Moyenne</td>
+                            <td>{{ countMoyenne }}</td>
+                        </tr>
+                        <tr>
+                            <td>Petite</td>
+                            <td>{{ countPetite }}</td>
+                        </tr>
+                        <tr>
+                            <td>Custom</td>
+                            <td>{{ countCustom }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="chart2">
+          
+            {{ render_chart(chart2) }}
+        </div>
+        <div class="chart3">
+            
+            {{ render_chart(chart1) }}
+        </div>
+    </div>
+{% endblock %}

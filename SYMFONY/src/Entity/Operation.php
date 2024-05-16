@@ -6,6 +6,7 @@ use App\Repository\OperationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+
 #[ORM\Entity(repositoryClass: OperationRepository::class)]
 class Operation
 {
@@ -30,10 +31,14 @@ class Operation
     #[Assert\GreaterThan("today")]
     private ?\DateTimeInterface $dateForecast = null;
 
-    #[ORM\ManyToOne(inversedBy: 'operations')] 
-    private ?Adresse $adresse = null;
+
 
     #[ORM\ManyToOne(inversedBy: 'operations')] 
+
+
+    private ?Adresse $adresse = null;
+
+    #[ORM\ManyToOne(inversedBy: 'operations')]
     private ?Client $client = null;
 
     #[ORM\ManyToOne(inversedBy: 'operations')]
@@ -42,7 +47,11 @@ class Operation
     #[ORM\ManyToOne(inversedBy: 'operations')]
 
  
+
     private ?User $user = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $namePhoto = null;
 
     public function getId(): ?int
     {
@@ -153,6 +162,18 @@ class Operation
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getNamePhoto(): ?string
+    {
+        return $this->namePhoto;
+    }
+
+    public function setNamePhoto(?string $namePhoto): static
+    {
+        $this->namePhoto = $namePhoto;
 
         return $this;
     }

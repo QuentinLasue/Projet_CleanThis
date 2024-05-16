@@ -18,17 +18,26 @@ class RegistrationController extends AbstractController
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, PasswordMailer $passwordMailer, EntityManagerInterface $entityManager, RoleRepository $roleRepository): Response
     {
-        $user = new User();
+        // Récupérer tous les rôles
         $roles = $roleRepository->findAll();
+
+        // Créer une nouvelle instance de l'entité User
+        $user = new User();
+
+        // Créer le formulaire avec les rôles passés en option
         $form = $this->createForm(RegistrationFormType::class, $user, [
             'roles' => $roles
         ]);
 
+        // Gérer la soumission du formulaire
         $form->handleRequest($request);
 
+        // Vérifier si le formulaire a été soumis et est valide
         if ($form->isSubmitted() && $form->isValid()) {
+            // Générer un mot de passe aléatoire
             $generatedPassword = $this->generateRandomPassword();
-            // encode the plain password
+
+            // Encoder le mot de passe
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
@@ -36,16 +45,18 @@ class RegistrationController extends AbstractController
                 )
             );
 
-            // Envoi de l'e-mail avec le mot de passe généré
+            // Envoyer l'e-mail avec le mot de passe généré
             $passwordMailer->sendPasswordEmail($user->getEmail(), $generatedPassword);
 
+            // Persister l'utilisateur en base de données
             $entityManager->persist($user);
             $entityManager->flush();
 
             // Redirection vers la page de connexion après l'inscription
-            return $this->redirectToRoute('login_vue');
+            return $this->redirectToRoute('app_login');
         }
 
+        // Rendre le formulaire et les rôles disponibles dans le template
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
             'roles' => $roles
@@ -54,7 +65,7 @@ class RegistrationController extends AbstractController
 
     private function generateRandomPassword(int $length = 8): string
     {
-        // Génération d'une chaîne de caractères aléatoire pour le mot de passe
+        // Générer une chaîne de caractères aléatoire pour le mot de passe
         $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         $password = '';
         for ($i = 0; $i < $length; $i++) {
