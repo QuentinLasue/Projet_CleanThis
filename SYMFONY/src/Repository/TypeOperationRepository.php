@@ -45,4 +45,6 @@ class TypeOperationRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+   
+    
 }
