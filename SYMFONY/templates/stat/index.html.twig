@@ -8,12 +8,8 @@
 {% endblock %}
 
 {% block body %}
-   
-    <div class="example-wrapper">
-        <div class="chart1">
-            {{ render_chart(chart3) }}
-            <div class="operation-table">
-                <h2>Nombre d'opérations par type</h2>
+   <div class="operation-table">
+                <h2>Chiffre d'Affaires 2024</h2>
                 <table>
                     <thead>
                         <tr>
@@ -34,13 +30,28 @@
                             <td>Petite</td>
                             <td>{{ countPetite }}</td>
                         </tr>
+                        
                         <tr>
                             <td>Custom</td>
                             <td>{{ countCustom }}</td>
                         </tr>
+                        <tr>
+                            <td>Nombre total</td>
+                            <td>{{ totalCount }}</td>
+                        </tr>
+                        <tr>
+                            <td>Chiffre</td>
+                            <td>{{ totalPrix }}</td>
+                        </tr>
+                     
                     </tbody>
                 </table>
             </div>
+    <div class="example-wrapper">
+        <div class="chart1">
+            
+            
+            {{ render_chart(chart3) }}
         </div>
         <div class="chart2">
           

@@ -64,6 +64,9 @@ class StatController extends AbstractController
             }
         }
 
+        $totalPrix = $prixGrosse + $prixMoyenne + $prixPetite + $prixCustom;
+        $totalCount = $countGrosse + $countMoyenne + $countPetite + $countCustom;
+
         // Création des graphiques
         $chart1 = $chartBuilder->createChart(Chart::TYPE_DOUGHNUT);
         $chart1->setData([
@@ -108,6 +111,9 @@ class StatController extends AbstractController
             'countMoyenne' => $countMoyenne,
             'countPetite' => $countPetite,
             'countCustom' => $countCustom,
+            'totalCount' => $totalCount,
+            'totalPrix' => $totalPrix,
+
      
             
         ]);

@@ -4,6 +4,7 @@ import './styles/app.css';
 
 // console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
 
+
 // // Connexion 
 
 // const rememberMeCheckbox = document.getElementById('rememberMeCo');
@@ -67,5 +68,4 @@ import './styles/app.css';
     googleButton.addEventListener('click', function() {
         window.location.href = "https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&scope=email%20profile&state=YOUR_STATE";
     });
-
 

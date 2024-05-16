@@ -873,26 +873,15 @@ td.statutL {
 .example-wrapper{
 
 width: 100%;
-align-items:start;
+align-items:center;
+display: flex;
+flex-direction: column; 
+}
 
-  
-}
-.form-stat {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  
-  
-}
-.form-label, .form-select, .form-button {
-  margin-bottom: 20px;
-}
 .chart1{
   width: 50%;
   margin-top: 5%;
-  display: flex;
-  justify-content: space-evenly;
-  
+  background-color: #77B800;
 }
 .chart2{
   width: 50%;
@@ -904,4 +893,27 @@ align-items:start;
   margin-top: 5%;
   
 }
+
+.operation-table table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ 
+  
+}
+
+.operation-table table thead {
+  display: none;
+}
+
+.operation-table table tbody {
+  display: flex;
+  flex-direction: row;
+}
+
+.operation-table table tbody tr {
+  display: flex;
+  flex-direction: column;
+}
+
 
