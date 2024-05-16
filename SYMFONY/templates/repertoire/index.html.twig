@@ -3,9 +3,20 @@
 {% block title %}Répertoire{% endblock %}
 
 {% block body %}
-    <h1>Répertoire</h1>
-    <table class="table">
-        <thead>
+                <h1>Répertoire</h1>
+                <table class="table">
+                    <thead>
+                    <form method="GET" action="{{ path('app_repertoire') }}">
+                <select name="searchField">
+                    <option value="id">ID</option>
+                    <option value="statut">Statut</option>
+                    <option value="datePrev">Date Prévisionnelle</option>
+                    <!-- Ajoutez d'autres options de recherche selon vos besoins -->
+                </select>
+                <input type="text" name="searchTerm" placeholder="Recherche...">
+                <button type="submit">Rechercher</button>
+            </form>
+
             <tr>
                 <th>{{ knp_pagination_sortable(operations, 'ID', 'id') }}</th>
                 <th>{{ knp_pagination_sortable(operations, 'Statut', 'statut') }}</th>
