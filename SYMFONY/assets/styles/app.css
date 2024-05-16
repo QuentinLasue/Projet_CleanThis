@@ -700,18 +700,31 @@ tr {
   background-color: #2678d1;
   border: none;
 }
-
+/* Ajout Opération */
+.priority{
+  font-family: bold italic;
+}
+.hight{
+  color: #ED3939;
+}
+.medium{
+  color: #FA8530;
+}
+.normal{
+  color: #A39999;
+}
+.imgOperationList{
+  height: 200px;
+  width: 300px;
+  border-radius: 20px;
+}
+/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
   width: 100%;
   align-items: center;
   background-color: white;
-
-
-  
-  
-
 }
 
 .navbar-item {

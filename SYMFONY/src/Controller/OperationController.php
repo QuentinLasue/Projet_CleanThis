@@ -8,15 +8,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Operation;
-
+use Symfony\Component\HttpFoundation\Request;
 
 class OperationController extends AbstractController
 {
 
     public function terminerOperation($id): Response
-{
-    return $this->redirectToRoute('app_liste');
-}
+    {
+        return $this->redirectToRoute('app_liste');
+    }
 
     private $entityManager;
 
@@ -28,7 +28,7 @@ class OperationController extends AbstractController
     #[Route("/operation", name: "app_operation")]
     public function operation(OperationRepository $repo): Response
     {
-        
+
         $operations = $repo->findBy([
             "statut" => "A faire"
         ]);
@@ -51,5 +51,30 @@ class OperationController extends AbstractController
 
         // Redirection vers la page "Ma Liste" après avoir pris l'opération
         return $this->redirectToRoute('app_operation');
+    }
+    #[Route("/AjoutOperation", name: "add_operation_list")]
+    public function AddOperationWait(Request $request, OperationRepository $repo): Response
+    {
+        $page = $request->query->getInt('page', 1); // je regarde si j'ai un entier qui s'appelle pasge sinon je lui attribu 1 par default
+        $limit = 5; // nombre d'élément par page
+        // find avec la pagination mis en place dans OperationRepository et le critère du statut "En attente"
+        $operationList = $repo->paginateOperationWait($page, $limit);
+        $maxPage = ceil($operationList->count() / $limit); // $limit est le nombre d'éléments par page
+
+        // Gestion pour l'affichage de la priorité de l'opération 
+        $today = new \DateTime(); // Date actuelle 
+        $limitHight = new \DateTime();
+        $limitHight->modify('-1 week'); // une semaine avant la date actuelle
+        $limitMedium = new \DateTime();
+        $limitMedium->modify('-2 week'); // deux semaine avant la date actuelle
+
+        return $this->render('employe/admin/ajoutOperation.html.twig', [
+            'operationList' => $operationList,
+            'maxPage' => $maxPage,
+            'page' => $page,
+            'today' => $today,
+            'limitHight' => $limitHight,
+            'limitMedium' => $limitMedium
+        ]);
     }
 }
