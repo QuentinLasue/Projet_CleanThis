@@ -42,7 +42,7 @@ class RoleRepository extends ServiceEntityRepository
     //    public function findByExampleField($value): array
     //    {
     //        return $this->createQueryBuilder('r')
-    //            ->andWhere('r.exampleField = :val')
+    //            ->andWhere('r.exampleField = :val')z
     //            ->setParameter('val', $value)
     //            ->orderBy('r.id', 'ASC')
     //            ->setMaxResults(10)

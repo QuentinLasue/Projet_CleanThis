@@ -2,6 +2,10 @@
 
 namespace App\Entity;
 
+use App\Entity\Adresse;
+use App\Entity\Client;
+use App\Entity\TypeOperation;
+use App\Entity\User;
 use App\Repository\OperationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;

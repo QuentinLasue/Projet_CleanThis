@@ -3,8 +3,38 @@
 {% block title %}Page de contact{% endblock %}
 
 {% block body %}
-    <h1>Contactez-nous! ✅</h1>
-    <div>
-        {{ form(form) }}
+    <nav class="navbarE">
+        <ul class="navE-links">
+            <li><a href="#">Opérations</a></li>
+            <li><a href="#">Ma Liste</a></li>
+            <li><a href="#">Ajout Opération</a></li>
+            <li><a href="#">Liste Personnel</a></li>
+            <li><a href="#">Ajout Personnel</a></li>
+            <li><a href="#">Statistique</a></li>
+            <li><a href="#">Répertoire</a></li>
+        </ul>
+    </nav>
+
+    <div class="titleAll">
+        <h1>Comment pouvons-nous vous aider ?</h1>
+        <h3>Envoyez-nous un message</h3>
+    </div>
+         <h2>Formulaire de contact</h2>
+    
+    <div class="formulaire-container">
+    
+        <form method="post">
+            {{ form_start(form) }}
+            <div class="form-group">
+    {{ form_label(form.email) }}
+    {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Entrez votre adresse e-mail'}}) }}
+            </div>
+
+            <div class="form-group2">
+                {{ form_label(form.content) }}
+                {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            {{ form_end(form) }}
+        </form>
     </div>
 {% endblock %}
