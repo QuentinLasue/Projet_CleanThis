@@ -19,7 +19,7 @@
 				</a>
 			</div>
 			<div class="nav-item">
-				<a class="nav-link" href="">
+				<a class="nav-link" href={{ path("app_operation") }}>
 					<img src="{{ asset('image/image_operations.png') }}" alt="Opérations">
 					<p>Opérations</p>
 				</a>
@@ -30,14 +30,21 @@
 					<p>Aide</p>
 				</a>
 			</div>
+
+			{# Élément de navigation pour Espace Salarié ou Déconnexion #}
 			<div class="nav-item espace-salarie">
-				<a class="nav-link" href={{ path("app_login") }}>
-					<p>Espace salarié</p>
-				</a>
+				{% if app.user %}
+					<a class="nav-link" href="{{ path('app_logout') }}">
+						<p>Déconnexion</p>
+					</a>
+				{% else %}
+					<a class="nav-link" href="{{ path('app_login') }}">
+						<p>Espace salarié</p>
+					</a>
+				{% endif %}
+
 			</div>
 
-		</div>
-
-	</nav>
-{% endblock %}
-
+		</nav>
+	{% endblock %}
+	{% block footer %}{% endblock %}

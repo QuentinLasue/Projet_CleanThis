@@ -701,61 +701,72 @@ tr {
   border: none;
 }
 
+
+/* Conteneur de la barre de navigation */
+
 .navbar {
   display: flex;
   justify-content: space-between;
-  width: 100%;
   align-items: center;
   background-color: white;
-
-
-  
-  
+  padding: 5px 10px; /* Réduire le padding pour diminuer la hauteur */
 
 }
 
+/* Élément de la barre de navigation */
 .navbar-item {
-  margin: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 30rem;
-  margin-right: 15%;
-}
-.nav-item {
-  text-align: center;
+  width: 30rem; /* Ajustez selon vos besoins */
+  margin-right: 15%; /* Considérez de le rendre réactif */
+  margin: 10px 0; /* Réduire les marges pour diminuer la hauteur */
 }
 
+/* Élément individuel de la navigation */
+.nav-item {
+  text-align: center;
+  margin: 0 10px; /* Réduire les marges pour diminuer la hauteur */
+}
+
+/* Images des liens de navigation */
 .nav-link img {
   display: block;
   margin: auto;
-  margin-bottom: 5px;
-  padding-bottom: 10px;
+  margin-bottom: 2px; /* Réduire la marge inférieure pour diminuer la hauteur */
+  padding-bottom: 5px; /* Réduire le padding pour diminuer la hauteur */
 }
 
+/* Texte des liens de navigation */
 .nav-link p {
 font-family: 'Roboto', sans-serif;
 
   color: #85ba22;
   border-radius: 30px;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 16px; /* Ajuster la taille de la police si nécessaire */
+  margin: 0; /* Supprimer les marges pour diminuer la hauteur */
 }
 
+/* Effet de survol pour le texte des liens de navigation */
 .nav-link p:hover {
   background-color: #2678d1;
   color: white;
 }
 
+/* Supprimer la décoration de texte des liens */
 .nav-link {
-  text-decoration: none; /* Supprimer le soulignement des liens */
+  text-decoration: none; /* Supprime le soulignement des liens */
 }
 
+/* Cas spécial pour l'élément 'Espace Salarié' */
 .nav-item.espace-salarie {
-  position: absolute; /* Permet de positionner l'élément absolument par rapport à son conteneur */
-  top: 0; /* Positionner l'élément tout en haut */
-  right: 0; /* Positionner l'élément tout à droite */
+  position: absolute; /* Positionnement absolu par rapport au conteneur */
+  top: 0; /* Position en haut */
+  right: 0; /* Position à droite */
+  margin: 10px; /* Réduire les marges pour diminuer la hauteur */
 }
+
 
 .navE-links li a:hover,
 .navL-links li a:hover {
@@ -867,9 +878,31 @@ td.statutL {
 }
 
 
+
+/* Texte pour 'Espace Salarié' ou 'Déconnexion' */
+
 .nav-item.espace-salarie p {
-  font-size: 20px; /* Ajuster la taille du texte selon vos préférences */
+  font-size: 16px; /* Ajuster la taille de la police si nécessaire */
+  margin: 0; /* Supprimer les marges pour diminuer la hauteur */
 }
+
+/* Design réactif */
+@media (max-width: 768px) {
+  .navbar-item {
+    width: 100%; /* S'adapte à la largeur de l'écran */
+    margin-right: 0; /* Supprime le margin-right pour éviter le débordement */
+    justify-content: center; /* Centre les éléments sur les petits écrans */
+  }
+
+  .nav-item {
+    margin: 10px; /* Réduire les marges sur les petits écrans */
+  }
+}
+
+
+
+/* GRAPHIC STAT */
+
 .example-wrapper{
 
 width: 100%;
@@ -881,7 +914,7 @@ flex-direction: column;
 .chart1{
   width: 50%;
   margin-top: 5%;
-  background-color: #77B800;
+  
 }
 .chart2{
   width: 50%;
