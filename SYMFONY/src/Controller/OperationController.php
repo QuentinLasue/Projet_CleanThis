@@ -54,7 +54,7 @@ class OperationController extends AbstractController
         // Redirection vers la page "Ma Liste" après avoir pris l'opération
         return $this->redirectToRoute('app_operation');
     }
-    #[Route("/AjoutOperation", name: "add_operation_list")]
+    #[Route("admin/AjoutOperation", name: "add_operation_list")]
     public function AddOperationWait(Request $request, OperationRepository $repo): Response
     {
         $page = $request->query->getInt('page', 1); // je regarde si j'ai un entier qui s'appelle pasge sinon je lui attribu 1 par default
@@ -79,14 +79,9 @@ class OperationController extends AbstractController
             'limitMedium' => $limitMedium
         ]);
     }
-    #[Route("/AjoutOperation/Details/{id}",name:"details_operation")]
-    public function detailsOperationUpdate(int $id,Request $request, EntityManagerInterface $em,OperationRepository $operationRepository): Response
+    #[Route("admin/AjoutOperation/Details/{id}",name:"details_operation")]
+    public function detailsOperationUpdate(Operation $operation,Request $request, EntityManagerInterface $em,OperationRepository $operationRepository): Response
     {   
-        //Pour le préremplissage on va cherche toutes les infos pour les passer la à vue
-        $operation = $operationRepository->find($id);
-        $dateForecast = $operation->getDateForecast()->format('d-m-Y');
-        $description = $operation->getDescription();
-
         //Création du formulaire
         $form = $this->createForm(OperationFormType::class, $operation,[]);
         $form->add('submit',SubmitType::class,[
@@ -107,9 +102,7 @@ class OperationController extends AbstractController
 
         return $this->render('employe/admin/modifOperation.html.twig', [
             'form'=>$form->createView(),
-            'operation'=>$operation,
-            'dateForecast'=>$dateForecast,
-            'description'=>$description
+            'operation'=>$operation
         ]);
     }
 }

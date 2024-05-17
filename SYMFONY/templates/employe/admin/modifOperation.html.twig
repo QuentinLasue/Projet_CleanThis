@@ -8,10 +8,6 @@
 {% set titre = "Description de l'opération" %}
 {% include "base/blueBar.html.twig" %}
 
-    {{ dump(description) }}
-    
-    {{ dump(dateForecast) }}
-                
 <div class="formClient">
     <a href="{{path('add_operation_list')}}" class="btnBack btn">Retour</a>
     {% if operation.namePhoto %}
@@ -19,8 +15,8 @@
     {% endif %}
     {{form_start(form)}}
         {{form_row(form.type)}} 
-		{{form_row(form.dateForecast, {'attr':{'value':dateForecast}})}}
-        {{form_row(form.description, {'attr':{'value':operation.description}})}}
+		{{form_row(form.dateForecast,{'attr':{'value':operation.dateForecast|date('Y-m-d')}})}}
+        {{form_row(form.description,{'attr':{'value':operation.description}})}}
         <div class="displayNone">
             {{form_row(form.photo)}} 
         </div>

@@ -32,7 +32,7 @@ class OperationFormType extends AbstractType
                 ]
             ])
             ->add('description',TextareaType::class ,[
-                'label'=>'Description',
+                'label'=>'Description'
             ])
             ->add('photo',FileType::class,[
                 'label'=> 'Ajoutez une photo :',
