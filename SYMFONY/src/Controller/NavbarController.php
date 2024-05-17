@@ -15,4 +15,5 @@ class NavbarController extends AbstractController
             'controller_name' => 'NavbarController',
         ]);
     }
+  
 }
