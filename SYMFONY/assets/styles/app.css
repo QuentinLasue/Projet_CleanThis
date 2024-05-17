@@ -289,13 +289,6 @@ body {
 /* nav e */
 
 /* Operation */
-.navbarOp {
-  height: 125px;
-  background-color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .navbarE {
   background-color: #77b800;
 

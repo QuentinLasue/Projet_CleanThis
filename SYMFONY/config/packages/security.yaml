@@ -48,8 +48,11 @@ security:
     access_control:
 
         - { path: ^/admin, roles: ROLE_EXPERT }
+        - { path: ^/employe, roles: ROLE_EXPERT }
         - { path: ^/profile, roles: ROLE_SENIOR }
+        - { path: ^/employe, roles: ROLE_SENIOR }
         - { path: ^/profile, roles: ROLE_JUNIOR }
+        - { path: ^/employe, roles: ROLE_JUNIOR }
 
      
 
