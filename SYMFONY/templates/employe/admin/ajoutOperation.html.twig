@@ -1,0 +1,69 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Ajout d'opération{% endblock %}
+
+{% block body %}
+
+{% include "base/nave.html.twig" %}
+
+{% set titre = "Acceptation d'opération" %}
+{% include "base/blueBar.html.twig" %}
+{% include "base/flash.html.twig" %}
+
+    <div class="divTable">
+        <table class="tableListePersonnel">
+            {% for operation in operationList %}
+            <tr>
+                <td>
+                {% if operation.namePhoto %}
+                <img src="{{ asset('photoClient/' ~ operation.namePhoto)}}" alt="photo de l'opération n°{{operation.id}}" class="imgOperationList">
+                {% else %}
+                    <p>Pas de photo</p>
+                {% endif %}
+                
+                </td>
+            
+                <td>{{operation.dateForecast|date('d/m/Y')}}</td>
+                <td>
+                {% if operation.dateForecast > limitHight %}
+                <p class="priority hight">Élevée</p>
+                {% elseif operation.dateForecast > limitMedium and operation.dateForecast < limitHight %}
+                <p class="priority medium">Moyenne</p>
+                {% else %}
+                <p class="priority normal">Normal</p>   
+                {% endif %}
+                </td>
+                <td><a href="{{ path('details_operation', { id: operation.id })}}" class="btn btnBack btnModif">Détails</a>
+                </td>
+            </tr>
+                
+            {% endfor %}
+        </table>
+        <div class="pagination">
+			{% if page > 1 %}
+				<a href="{{ path('add_operation_list', {page:page-1})}}" class="btn btnPagination">Page précédente</a>
+			{% endif %}
+			{% if page == 1 %}
+				<a href="" class="btn btnPagination pageActuelle">Page min : 1</a>
+			{% endif %}
+
+
+			{% if page is not same as 1 %}
+				<a href="{{ path('add_operation_list', {page:1})}}" class="btn btnPagination">1</a>
+			{% endif %}
+
+			<a href="{{ path('add_operation_list', {page:page})}}" class="btn btnPagination pageActuelle">{{page}}</a>
+
+
+			{% if page < maxPage %}
+				<a href="{{ path('add_operation_list', {page:page+1})}}" class="btn btnPagination">Page suivante</a>
+			{% endif %}
+			{% if page == maxPage %}
+				<a href="" class="btn btnPagination pageActuelle">Page max :
+					{{maxPage}}</a>
+			{% endif %}
+
+
+		</div>
+    </div>
+{% endblock %}
