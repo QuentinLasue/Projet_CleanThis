@@ -8,6 +8,7 @@
 
 {% set titre = "Acceptation d'opération" %}
 {% include "base/blueBar.html.twig" %}
+{% include "base/flash.html.twig" %}
 
     <div class="divTable">
         <table class="tableListePersonnel">
@@ -32,7 +33,7 @@
                 <p class="priority normal">Normal</p>   
                 {% endif %}
                 </td>
-                <td><a href="" class="btn btnModif">Détails</a>
+                <td><a href="{{ path('details_operation', { id: operation.id })}}" class="btn btnBack btnModif">Détails</a>
                 </td>
             </tr>
                 

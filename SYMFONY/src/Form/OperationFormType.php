@@ -53,7 +53,7 @@ class OperationFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Operation::class,
+            'data_class' => Operation::class
         ]);
     }
 }

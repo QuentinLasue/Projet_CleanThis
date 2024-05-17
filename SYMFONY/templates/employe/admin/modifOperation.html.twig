@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+{% block title %}Modification d'opération{% endblock %}
+
+{% block body %}
+
+{% include "base/nave.html.twig" %}
+
+{% set titre = "Description de l'opération" %}
+{% include "base/blueBar.html.twig" %}
+
+    {{ dump(description) }}
+    
+    {{ dump(dateForecast) }}
+                
+<div class="formClient">
+    <a href="{{path('add_operation_list')}}" class="btnBack btn">Retour</a>
+    {% if operation.namePhoto %}
+        <img src="{{ asset('photoClient/' ~ operation.namePhoto)}}" alt="photo de l'opération n°{{operation.id}}" class="imgOperationDetails">
+    {% endif %}
+    {{form_start(form)}}
+        {{form_row(form.type)}} 
+		{{form_row(form.dateForecast, {'attr':{'value':dateForecast}})}}
+        {{form_row(form.description, {'attr':{'value':operation.description}})}}
+        <div class="displayNone">
+            {{form_row(form.photo)}} 
+        </div>
+    {{form_end(form)}}
+</div>
+
+{% endblock %}

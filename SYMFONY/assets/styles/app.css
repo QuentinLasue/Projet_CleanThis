@@ -718,6 +718,12 @@ tr {
   width: 300px;
   border-radius: 20px;
 }
+.imgOperationDetails{
+  border-radius: 10px;
+  height: 400px;
+  width:600px ;
+  margin: 20px;
+}
 /* Navbar */
 .navbar {
   display: flex;

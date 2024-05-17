@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Operation;
+use App\Form\OperationFormType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 
 class OperationController extends AbstractController
@@ -75,6 +77,39 @@ class OperationController extends AbstractController
             'today' => $today,
             'limitHight' => $limitHight,
             'limitMedium' => $limitMedium
+        ]);
+    }
+    #[Route("/AjoutOperation/Details/{id}",name:"details_operation")]
+    public function detailsOperationUpdate(int $id,Request $request, EntityManagerInterface $em,OperationRepository $operationRepository): Response
+    {   
+        //Pour le préremplissage on va cherche toutes les infos pour les passer la à vue
+        $operation = $operationRepository->find($id);
+        $dateForecast = $operation->getDateForecast()->format('d-m-Y');
+        $description = $operation->getDescription();
+
+        //Création du formulaire
+        $form = $this->createForm(OperationFormType::class, $operation,[]);
+        $form->add('submit',SubmitType::class,[
+            'label'=>'Accepter l\'opération'
+        ]);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $operation->setStatut("A faire");
+            $em->persist($operation);
+            $em->flush();
+            //message flash de succés
+            $this->addFlash('success', "Votre modification a été prise en compte");
+
+            //redirection à la page liste
+            return $this->redirectToRoute('add_operation_list');
+        }
+
+        return $this->render('employe/admin/modifOperation.html.twig', [
+            'form'=>$form->createView(),
+            'operation'=>$operation,
+            'dateForecast'=>$dateForecast,
+            'description'=>$description
         ]);
     }
 }
