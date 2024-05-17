@@ -9,16 +9,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Operation;
-
+use Symfony\Component\Security\Core\Security;
 
 class OperationController extends AbstractController
 {
-
-    public function terminerOperation($id): Response
-{
-    return $this->redirectToRoute('app_liste');
-}
-
     private $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager)
@@ -37,16 +31,13 @@ class OperationController extends AbstractController
     }
 
     #[Route("/operation/prendre/{id}", name: "app_operation_prendre")]
-    public function prendreOperation(Operation $operation, Request $request): Response
+    public function prendreOperation(Operation $operation, Request $request, Security $security): Response
     {
-        // Traitement pour transférer l'opération à "Ma Liste"
-        // Vous pouvez mettre à jour le statut de l'opération ici
-        // et la sauvegarder dans la base de données
-
+        $user = $security->getUser();
+        $operation->setUser($user); // Assigne l'utilisateur actuel à l'opération
         $operation->setStatut("En cours");
         $this->entityManager->flush();
 
-        // Redirection vers la page "Ma Liste" après avoir pris l'opération
         return $this->redirectToRoute('app_operation');
     }
 }

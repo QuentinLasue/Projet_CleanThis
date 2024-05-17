@@ -1,32 +1,42 @@
+{# templates/operation.html.twig #}
+
 {% extends 'base.html.twig' %}
 
+{% block title %}Opérations{% endblock %}
+
 {% block body %}
-  <div class="navbarOp"></div>
+    <h1>Liste des Opérations</h1>
 
-<nav class="navbarE">
-    <ul class="navE-links">
-        <li><a href="#">Opérations</a></li>
-        <li><a href="#">Ma Liste</a></li>
-        <li><a href="#">Ajout Opération</a></li>
-        <li><a href="#">Liste Personnel</a></li>
-        <li><a href="#">Ajout Personnel</a></li>
-        <li><a href="#">Statistique</a></li>
-        <li><a href="#">Répertoire</a></li>
-    </ul>
-
-</nav>
-    <div class="contourOp">
-
-{% for operation in operations %}
-    <div class="custom-block">
-        <div class="date">{{ operation.dateStart|date('d/m/Y') }}</div>
-        <div class="status">{{ operation.statut }}</div>
-        <div class="description">{{ operation.description }}</div>
-        <form action="{{ path('app_operation_prendre', {'id': operation.id}) }}" method="post" class="operation-form">
-            <button type="submit" class="prendre-button buttonOp">Prendre</button>
-        </form>
-    </div>
-{% endfor %}
-
-    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Statut</th>
+                <th>Date de début</th>
+                <th>Date de fin</th>
+                <th>Date prévue</th>
+                <th>Adresse</th>
+                <th>Client</th>
+                <th>Type</th>
+                <th>Utilisateur</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for operation in operations %}
+                {% if operation.user == app.user %}
+                    <tr>
+                        <td>{{ operation.description }}</td>
+                        <td>{{ operation.statut }}</td>
+                        <td>{{ operation.dateStart ? operation.dateStart|date('Y-m-d') : 'N/A' }}</td>
+                        <td>{{ operation.dateEnd ? operation.dateEnd|date('Y-m-d') : 'N/A' }}</td>
+                        <td>{{ operation.dateForecast|date('Y-m-d') }}</td>
+                        <td>{{ operation.adresse.street }}, {{ operation.adresse.city }}</td>
+                        <td>{{ operation.client.firstname }} {{ operation.client.name }}</td>
+                        <td>{{ operation.type.name }}</td>
+                        <td>{{ operation.user.firstname }} {{ operation.user.name }}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
