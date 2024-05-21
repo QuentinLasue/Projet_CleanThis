@@ -715,6 +715,10 @@ tr {
   width:600px ;
   margin: 20px;
 }
+.champAdresse{
+  padding: 20px;
+  font-size: 20px;
+}
 /* Conteneur de la barre de navigation */
 /* Navbar */
 .navbar {
