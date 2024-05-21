@@ -970,3 +970,16 @@ flex-direction: column;
   flex-direction: column;
 }
 
+/* login */
+.modalLogin{
+  position: relative;
+  background-color: red;
+  z-index:1;
+}
+.loginModal{
+  display: flex;
+  flex-direction: column;
+}
+.modalEmailCo{
+  display: none;
+}

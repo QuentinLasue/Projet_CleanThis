@@ -5,7 +5,8 @@ namespace App\Controller;
 use App\Service\PdfGenerator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-
+use App\Entity\Operation;
+use Symfony\Component\Routing\Annotation\Route;
 
 class PdfController extends AbstractController
 {
@@ -16,10 +17,12 @@ class PdfController extends AbstractController
         $this->pdfGenerator = $pdfGenerator;
     }
 
-    public function generatePdf(): Response
+    #[Route("/pdf/{id}", name: "app_pdf")]
+    public function generatePdf(Operation $operation): Response
     {
+        
         $data = [
-            'variable' => 'Valeur à inclure dans le PDF'
+            'operation' => $operation
         ];
 
         // Utiliser le service pour générer le PDF
