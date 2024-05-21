@@ -490,6 +490,14 @@ button:hover {
 ::placeholder {
   color: #999999;
 }
+
+#rememberMeCo{
+  width: 30px;
+  height: 25px;
+}
+.checkRemember{
+  display: flex;
+}
 .remember-meCo,
 .forgot-passwordCo {
   display: inline-block;

@@ -79,6 +79,7 @@
 	<input type="radio" {{ block('widget_attributes') }} class="radioInput" value={{ value }}>
 {% endblock %}
 
+
 {% block form_errors %}
 	{% if errors|length > 0 %}
 		{% for error in errors %}
