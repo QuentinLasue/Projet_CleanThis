@@ -8,28 +8,26 @@
 			{% block title %}Welcome!
 			{% endblock %}
 		</title>
-		
-{% block header %}
-{{ include("/navbar/index.html.twig") }}
-{% endblock %}
+
 
 		{% block javascripts %}
-		
-    
+
+
 			{% block importmap %}
 				{{ importmap('app') }}
 			{% endblock %}
 		{% endblock %}
 	</head>
 	<body>
-	
+		{% block header %}
+			{{ include("/navbar/index.html.twig") }}
+		{% endblock %}
 		{% block body %}
-			{% include "home/home.html.twig" %}		
+			{% include "home/home.html.twig" %}
 		{% endblock %}
 
-		
-	</body>
 
+	</body>
 
 
 </html>

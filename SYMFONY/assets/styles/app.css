@@ -290,13 +290,6 @@ body {
 /* nav e */
 
 /* Operation */
-.navbarOp {
-  height: 125px;
-  background-color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .navbarE {
   background-color: #77b800;
 
@@ -722,6 +715,10 @@ tr {
   height: 400px;
   width:600px ;
   margin: 20px;
+}
+.champAdresse{
+  padding: 20px;
+  font-size: 20px;
 }
 /* Conteneur de la barre de navigation */
 /* Navbar */

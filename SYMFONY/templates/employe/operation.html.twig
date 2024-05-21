@@ -10,20 +10,8 @@
 
 {% block body %}
      
-  <div class="navbarOp"></div>
+    {% include "base/nave.html.twig" %}
 
-<nav class="navbarE">
-    <ul class="navE-links">
-        <li><a href="#">Opérations</a></li>
-        <li><a href="#">Ma Liste</a></li>
-        <li><a href="#">Ajout Opération</a></li>
-        <li><a href="#">Liste Personnel</a></li>
-        <li><a href="#">Ajout Personnel</a></li>
-        <li><a href="#">Statistique</a></li>
-        <li><a href="#">Répertoire</a></li>
-    </ul>
-
-</nav>
     <div class="contourOp">
 
 {% for operation in operations %}

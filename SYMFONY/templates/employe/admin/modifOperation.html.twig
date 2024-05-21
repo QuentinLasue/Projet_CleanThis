@@ -14,11 +14,15 @@
         <img src="{{ asset('photoClient/' ~ operation.namePhoto)}}" alt="photo de l'opération n°{{operation.id}}" class="imgOperationDetails">
     {% endif %}
     {{form_start(form)}}
+    <div class="champAdresse">
+        <p >Adresse :</p>
+        <p>{{operation.adresse.number ~ " " ~ operation.adresse.street ~ " " ~ operation.adresse.city ~ " " ~ operation.adresse.county }}</p>
+    </div>
         {{form_row(form.type)}} 
 		{{form_row(form.dateForecast,{'attr':{'value':operation.dateForecast|date('Y-m-d')}})}}
         {{form_row(form.description,{'attr':{'value':operation.description}})}}
         <div class="displayNone">
-            {{form_row(form.photo)}} 
+            {{form_row(form.photo , {'attr':{'disabled': true}})}} 
         </div>
     {{form_end(form)}}
 </div>

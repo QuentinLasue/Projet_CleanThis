@@ -1,17 +1,11 @@
-
-{% extends "base.html.twig" %}
-
-        
-{% block body %}
-    <nav class="navbarE">
-        <ul class="navE-links">
-            <li><a href="#">Opérations</a></li>
-            <li><a href="#">Ma Liste</a></li>
-            <li><a href="#">Ajout Opération</a></li>
-            <li><a href="#">Liste Personnel</a></li>
-            <li><a href="#">Ajout Personnel</a></li>
-            <li><a href="#">Statistique</a></li>
-            <li><a href="#">Répertoire</a></li>
-        </ul>
-    </nav>
-{% endblock %}
+<nav class="navbarE">
+    <ul class="navE-links">
+        <li><a href="{{ path('app_operation')}}">Opérations</a></li>
+        <li><a href="{{ path('app_liste')}}">Ma Liste</a></li>
+        <li><a href="{{ path('add_operation_list')}}">Ajout Opération</a></li>
+        <li><a href="{{ path('admin.listePersonnel')}}">Liste Personnel</a></li>
+        <li><a href="{{ path('app_register')}}">Ajout Personnel</a></li>
+        <li><a href="{{ path('app_statistique')}}">Statistique</a></li>
+        <li><a href="#">Répertoire</a></li>
+    </ul>
+</nav>
