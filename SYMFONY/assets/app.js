@@ -61,11 +61,27 @@ import './styles/app.css';
 //     });
 // });
     
+    // googleButton.addEventListener('click', function() {
+    //     window.location.href = "https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&scope=email%20profile&state=YOUR_STATE";
+    // });
 
+    //Pour la modal tu footer : 
+    // on cible la modal et son icon de fermeture et le contenue de la modal
+    var modal = document.getElementById("openModal");
+    var close = document.getElementById("closeModal");
+    var modalContent = document.getElementById("myModal");
 
-
-
-    googleButton.addEventListener('click', function() {
-        window.location.href = "https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&scope=email%20profile&state=YOUR_STATE";
-    });
-
+    //on ajoute les événement d'apparition et disparition
+    modal.onclick = function openModal() {
+        modalContent.style.display = "block";
+    }
+    
+    close.onclick =function closeModal() {
+        modalContent.style.display = "none";
+    }
+    // ferme la modal quand l'utilisateur clique en dehors de la modal
+    window.onclick = function(event) {
+        if (event.target == modalContent) {
+            modalContent.style.display = 'none';
+        }
+    }
