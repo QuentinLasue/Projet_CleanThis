@@ -13,7 +13,7 @@ h6 {
 }
 
 /* home */
-.container {
+/* .container {
   padding-inline: 10%;
   background-color: white;
   padding-bottom: 20px;
@@ -26,7 +26,59 @@ h6 {
 .intro {
   font-size: 32px;
   font-style: italic;
+} */
+
+.divIntro {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 85vh; /* Cela rendra la div haute comme la hauteur de l'écran */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: start;
+  margin-top: -1%;
+  
 }
+
+.divIntro h2.intro {
+  color: rgba(0, 0, 0, 0.767); /* Couleur du texte */
+  font-size: 20px; /* Taille de la police */
+  width: 20%;
+  margin-left: -55%;
+  margin-top: -1%;
+  /* Ajoutez d'autres styles CSS selon vos besoins */
+}
+.divIntro h1 {
+  color: rgba(0, 153, 255, 0.856); /* Couleur du texte */
+  font-size: 60px; /* Taille de la police */
+  width: 30%;
+  margin-left: -45%;
+  margin-top: -8%;
+  /* Ajoutez d'autres styles CSS selon vos besoins */
+}
+
+.btnDecouvrir{
+    margin-left: -63.6%;
+    margin-top: 0.5%;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    text-decoration: none; /* Supprimer les soulignements */
+    border: none;
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transition en douceur */
+}
+
+/* Style au survol */
+.btnDecouvrir:hover {
+    background-color: #0056b3; /* Couleur de fond au survol */
+}
+
+
 .btnDevis {
   background-color: #2678d1;
   color: white;
@@ -40,11 +92,28 @@ h6 {
   box-shadow: 0px 4px 4px #4a4a4a inset;
   background-color: #0056b3;
 }
+
+.presta{
+  display: flex;
+  justify-content: center;
+  font-size: 3rem;
+  margin-top: 7%;
+}
+
 .cardList {
+  margin-top: 4%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
+
+.divIntro1{
+  margin-top: 2%;
+  margin-bottom: 3%;
+ display: flex;
+ justify-content: center;
+}
+
 .flipperFront h4,
 .flipperBack h4 {
   color: #2678d1;
@@ -733,18 +802,19 @@ tr {
   justify-content: space-between;
   align-items: center;
   padding: 5px 10px; /* Réduire le padding pour diminuer la hauteur */
+  height: 90px;
  
 }
 
 .navbar h1{
  margin-right: 63% ;
- font-size: xx-large;
+ font-size: x-large;
  color: #2678d1;
 
 }
 
 .navbar-logo img{
-width: 80px;
+width: 190px;
 }
 
 .nav-item .nav-link img{
