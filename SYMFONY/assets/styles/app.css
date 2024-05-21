@@ -726,28 +726,53 @@ tr {
 }
 /* Conteneur de la barre de navigation */
 /* Navbar */
+
 .navbar {
+  background-color: rgba(255, 255, 255, 0.788);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
   padding: 5px 10px; /* Réduire le padding pour diminuer la hauteur */
+ 
 }
+
+.navbar h1{
+ margin-right: 63% ;
+ font-size: xx-large;
+ color: #2678d1;
+
+}
+
+.navbar-logo img{
+width: 80px;
+}
+
+.nav-item .nav-link img{
+  width: 20px;
+}
+
+
+
 
 /* Élément de la barre de navigation */
 .navbar-item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 30rem; /* Ajustez selon vos besoins */
-  margin-right: 15%; /* Considérez de le rendre réactif */
-  margin: 10px 0; /* Réduire les marges pour diminuer la hauteur */
+  justify-content: space-around;
+  width: 25rem; /* Ajustez selon vos besoins */
+  margin-right: 1%; /* Considérez de le rendre réactif */
+
+ 
 }
 
 /* Élément individuel de la navigation */
 .nav-item {
   text-align: center;
   margin: 0 10px; /* Réduire les marges pour diminuer la hauteur */
+}
+
+.nav-item img{
+width: 20px;
 }
 
 /* Images des liens de navigation */
@@ -784,7 +809,7 @@ tr {
 .nav-item.espace-salarie {
   position: absolute; /* Positionnement absolu par rapport au conteneur */
   top: 0; /* Position en haut */
-  right: 0; /* Position à droite */
+  right: 1%; /* Position à droite */
   margin: 10px; /* Réduire les marges pour diminuer la hauteur */
 }
 

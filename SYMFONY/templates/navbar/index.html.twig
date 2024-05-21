@@ -7,7 +7,7 @@
 		<a class="navbar-logo" href={{ path("home") }}>
 			<img src="{{ asset('image/LOGO.png') }}" alt="Votre Logo">
 		</a>
-
+			<h1>Clean This</h1>
 
 		<div class="navbar-item">
 
@@ -30,15 +30,15 @@
 					<p>Aide</p>
 				</a>
 			</div>
-
+			<div class="nav-item">
 			{# Élément de navigation pour Espace Salarié ou Déconnexion #}
-			<div class="nav-item espace-salarie">
 				{% if app.user %}
 					<a class="nav-link" href="{{ path('app_logout') }}">
 						<p>Déconnexion</p>
 					</a>
 				{% else %}
-					<a class="nav-link" href="{{ path('app_login') }}">
+					<a class="nav-link salarie" href="{{ path('app_login') }}">
+				<img src="{{ asset('image/codicon_account.png') }}" alt="Aide">
 						<p>Espace salarié</p>
 					</a>
 				{% endif %}
