@@ -13,7 +13,7 @@ h6 {
 }
 
 /* home */
-.container {
+/* .container {
   padding-inline: 10%;
   background-color: white;
   padding-bottom: 20px;
@@ -26,7 +26,66 @@ h6 {
 .intro {
   font-size: 32px;
   font-style: italic;
+} */
+  
+
+
+.message-titre{
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+  align-items: center;
+  width: 70%;
+  padding-top: 3%;
+  
 }
+
+
+.bg-img{
+  width: 720px;
+}
+
+.divIntro{
+  display: flex;
+}
+
+
+
+.divIntro h2.intro {
+  color: rgba(0, 0, 0, 0.767); /* Couleur du texte */
+  font-size: 20px; /* Taille de la police */
+  width: 60%;
+ 
+  /* Ajoutez d'autres styles CSS selon vos besoins */
+}
+.divIntro h1 {
+  color: rgba(0, 153, 255, 0.856); /* Couleur du texte */
+  font-size: 60px; /* Taille de la police */
+  width: 60%;
+  /* Ajoutez d'autres styles CSS selon vos besoins */
+}
+
+.btnDecouvrir{
+
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    text-decoration: none; /* Supprimer les soulignements */
+    border: none;
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transition en douceur */
+    margin-left: -42%; 
+    margin-top: 2% ;
+}
+
+/* Style au survol */
+.btnDecouvrir:hover {
+    background-color: #0056b3; /* Couleur de fond au survol */
+}
+
+
 .btnDevis {
   background-color: #2678d1;
   color: white;
@@ -40,11 +99,28 @@ h6 {
   box-shadow: 0px 4px 4px #4a4a4a inset;
   background-color: #0056b3;
 }
+
+.presta{
+  display: flex;
+  justify-content: center;
+  font-size: 3rem;
+  margin-top: 7%;
+}
+
 .cardList {
+  margin-top: 4%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
+
+.divIntro1{
+  margin-top: 2%;
+  margin-bottom: 3%;
+ display: flex;
+ justify-content: center;
+}
+
 .flipperFront h4,
 .flipperBack h4 {
   color: #2678d1;
@@ -726,28 +802,54 @@ tr {
 }
 /* Conteneur de la barre de navigation */
 /* Navbar */
+
 .navbar {
+  background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
   padding: 5px 10px; /* Réduire le padding pour diminuer la hauteur */
+  height: 100px;
+ 
 }
+
+.navbar h1{
+ margin-right: 63% ;
+ font-size: x-large;
+ color: #2678d1;
+
+}
+
+.navbar-logo img{
+width: 190px;
+}
+
+.nav-item .nav-link img{
+  width: 20px;
+}
+
+
+
 
 /* Élément de la barre de navigation */
 .navbar-item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 30rem; /* Ajustez selon vos besoins */
-  margin-right: 15%; /* Considérez de le rendre réactif */
-  margin: 10px 0; /* Réduire les marges pour diminuer la hauteur */
+  justify-content: space-around;
+  width: 25rem; /* Ajustez selon vos besoins */
+  margin-right: 1%; /* Considérez de le rendre réactif */
+
+ 
 }
 
 /* Élément individuel de la navigation */
 .nav-item {
   text-align: center;
   margin: 0 10px; /* Réduire les marges pour diminuer la hauteur */
+}
+
+.nav-item img{
+width: 20px;
 }
 
 /* Images des liens de navigation */
@@ -784,7 +886,7 @@ tr {
 .nav-item.espace-salarie {
   position: absolute; /* Positionnement absolu par rapport au conteneur */
   top: 0; /* Position en haut */
-  right: 0; /* Position à droite */
+  right: 1%; /* Position à droite */
   margin: 10px; /* Réduire les marges pour diminuer la hauteur */
 }
 

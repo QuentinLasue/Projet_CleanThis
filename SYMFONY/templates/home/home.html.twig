@@ -1,20 +1,55 @@
-  {% include "base/flash.html.twig" %}
-<div class="container" >
-  {# Paragraphe intro #}
-  <div class="divIntro">
-    <h2 class="intro">
-		Depuis un demi-siècle, Clean This définit l'excellence en nettoyage. Avec 50 ans d'expérience, notre savoir-faire inégalé garantit un service de qualité supérieure à chaque intervention. Faites confiance à notre héritage pour des résultats impeccables à chaque fois.
-	</h2>
-  </div>
-
-  {# Card prestation #}
+{% include "base/flash.html.twig" %}
+<div class="container">
+  {# Section Introduction #}
   
-  <div class="cardList">
+  <div class="divIntro">
+  <div class="message-titre">
+    <h1>Éclat garanti, sans compromis</h1>
+    <h2 class="intro">
+      Depuis un demi-siècle, Clean This définit l'excellence en nettoyage. Avec 50 ans d'expérience, notre savoir-faire inégalé garantit un service de qualité supérieure à chaque intervention. Faites confiance à notre héritage pour des résultats impeccables à chaque fois.
+    </h2>
+    <a class="btnDecouvrir" href="#cardList">Découvrez nos offres</a>
+    </div>
+    
+  <div class="image-home">
+    <img class="bg-img" src="{{ asset('image/bg2.png') }}" alt="Image de fond montrant des services de nettoyage">
+    </div>
+   
+</div>
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {# Section Prestation #}
+  <h2 class="presta">Choisissez Parmi Nos Prestations</h2>
+  <div id="cardList" class="cardList">
     {% for typeOperation in typesOperations %}
       <div class="flipContainer">
         <div class="flipper">
           <div class="flipperFront flip">
-            <img src="https://th.bing.com/th/id/OIP.CmTZmPvJbpQq4Gvr44Fn9AHaEW?rs=1&pid=ImgDetMain" alt="Image de presentation de l'opération" />
+            <img src="https://th.bing.com/th/id/OIP.CmTZmPvJbpQq4Gvr44Fn9AHaEW?rs=1&pid=ImgDetMain" alt="Image de présentation de l'opération {{ typeOperation.name }}">
             <div>
               <h4>{{ typeOperation.name }}</h4>
             </div>
@@ -23,11 +58,10 @@
             <h4>{{ typeOperation.name }}</h4>
             <p>{{ typeOperation.description }}</p>
             <p>
-              Prix :{% if typeOperation.prix == 0 %}
+              Prix : {% if typeOperation.prix == 0 %}
                 Personnalisé
               {% else %}
-                {{ typeOperation.prix }}
-                €
+                {{ typeOperation.prix }} €
               {% endif %}
             </p>
           </div>
@@ -36,8 +70,8 @@
     {% endfor %}
   </div>
 
-  {# btn devis #}
-  <div class="divIntro">
-    <a class="btnDevis" href="{{ path('client')}}">DEMANDER VOTRE DEVIS</a>
+  {# Bouton Demande de Devis #}
+  <div class="divIntro1">
+    <a class="btnDevis" href="{{ path('client') }}">DEMANDER VOTRE DEVIS</a>
   </div>
 </div>
