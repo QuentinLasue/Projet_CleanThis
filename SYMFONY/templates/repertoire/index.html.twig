@@ -4,7 +4,6 @@
 
 {% block body %}
     <a href="{{ path('app_repertoire') }}"><h1>Répertoire</h1></a>
-    {{ dump(searchField, searchValue) }}
 
     <form method="GET" action="{{ path('app_repertoire') }}">
         <select name="searchField" id="searchField" onchange="updateSearchOptions()">
@@ -51,7 +50,7 @@
                     <td>{{ operation.client.name }} {{ operation.client.firstname }}</td>
                     <td>{{ operation.user.name }} {{ operation.user.firstname }}</td>
                     <td>{{ operation.user.roles[0] }}</td>
-                    <td><a href="{{ path('generate_pdf') }}" target="_blank">Générer PDF</a></td>
+                    <td><a href="{{ path('generate_pdf' , { 'id': operation.id }) }}" target="_blank">Générer PDF</a></td>
                 </tr>
             {% endfor %}
         </tbody>

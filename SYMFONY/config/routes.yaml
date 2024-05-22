@@ -18,8 +18,9 @@ confirmation:
 
 
 generate_pdf:
-    path: /pdf
+    path: user/pdf/{id}
     controller: App\Controller\PdfController::generatePdf
+    methods: get
 
 
 
