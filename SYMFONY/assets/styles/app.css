@@ -12,37 +12,22 @@ h6 {
   font-family: "Roboto";
 }
 
-/* home */
-/* .container {
-  padding-inline: 10%;
-  background-color: white;
-  padding-bottom: 20px;
-}
-.divIntro {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.intro {
-  font-size: 32px;
-  font-style: italic;
-} */
-  
-
-
 .message-titre{
   display: flex;
   flex-direction: column;
-  margin-left: 5%;
-  align-items: center;
+  margin-left: 15%;
+  margin-top: 3%;
+  align-items: flex-start;
   width: 70%;
-  padding-top: 3%;
+  height: 500px;
+
+
   
 }
 
 
 .bg-img{
-  width: 720px;
+  width: 800px;
 }
 
 .divIntro{
@@ -52,33 +37,34 @@ h6 {
 
 
 .divIntro h2.intro {
-  color: rgba(0, 0, 0, 0.767); /* Couleur du texte */
-  font-size: 20px; /* Taille de la police */
-  width: 60%;
+  color: rgba(0, 0, 0, 0.842); /* Couleur du texte */
+  font-size: 24px; /* Taille de la police */
+  margin-top: -1%;
+ 
  
   /* Ajoutez d'autres styles CSS selon vos besoins */
 }
 .divIntro h1 {
   color: rgba(0, 153, 255, 0.856); /* Couleur du texte */
-  font-size: 60px; /* Taille de la police */
+  font-size: 4rem; /* Taille de la police */
   width: 60%;
   /* Ajoutez d'autres styles CSS selon vos besoins */
 }
 
 .btnDecouvrir{
-
+    margin-top: 2%;
     display: inline-block;
     padding: 10px 20px;
     background-color: #007bff; /* Couleur de fond */
     color: #fff; /* Couleur du texte */
+    font-size: 20px;
     text-decoration: none; /* Supprimer les soulignements */
     border: none;
     border-radius: 5px; /* Coins arrondis */
     cursor: pointer;
     transition: background-color 0.3s ease; /* Transition en douceur */
-    margin-left: -42%; 
-    margin-top: 2% ;
 }
+
 
 /* Style au survol */
 .btnDecouvrir:hover {
@@ -336,7 +322,7 @@ input::placeholder {
 body {
   margin: 0;
   padding: 0;
-  background-color: #d9d9d9;
+  background-color: #ffffff;
 }
 /* Auto complete adresse */
 #adresse-suggestions {
@@ -804,7 +790,7 @@ tr {
 /* Navbar */
 
 .navbar {
-  background-color: white;
+  background-color: rgb(223, 240, 250);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -823,6 +809,8 @@ tr {
 .navbar-logo img{
 width: 190px;
 }
+
+
 
 .nav-item .nav-link img{
   width: 20px;
@@ -1109,4 +1097,60 @@ list-style-type: none;
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+
+.intro1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%; 
+  margin-left: 20%;
+  margin-top: 10%;
+  font-size: 3.75rem; 
+  color: rgba(0, 153, 255, 0.856);
+  text-align: center; 
+}
+
+
+
+.eco-img1{
+width: 150px;
+height: 150px;
+
+}
+.eco-img2{
+width: 200px;
+height: 150px;
+
+}
+.eco-img3{
+width: 150px;
+
+}
+.eco-img4{
+width: 200px;
+height: 150px;
+
+}
+
+.eco-image{
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-bottom: 5%;
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.eco-texte{
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  width: 76%;
+  margin-left:12%;
+  padding: auto;
+
+
 }
