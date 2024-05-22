@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class RepertoireController extends AbstractController
 {
-    #[Route('/repertoire', name: 'app_repertoire')]
+    #[Route('admin/repertoire', name: 'app_repertoire')]
     public function index(Request $request, OperationRepository $operationRepository, PaginatorInterface $paginator): Response
     {
         $searchField = $request->query->get('searchField');

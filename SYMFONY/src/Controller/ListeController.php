@@ -20,7 +20,7 @@ class ListeController extends AbstractController
         $this->operationRepository = $operationRepository;
     }
 
-    #[Route('/operation/terminer/{id}', name: 'operation_terminer')]
+    #[Route('user/operation/terminer/{id}', name: 'operation_terminer')]
     public function terminerOperation($id): Response
     {
         // Redirection vers la page de liste après avoir terminé l'opération

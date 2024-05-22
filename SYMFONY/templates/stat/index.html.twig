@@ -2,13 +2,18 @@
 
 {% block title %}Hello StatController!{% endblock %}
 
-
+	{% block javascripts %}
+    
+			{% block importmap %}
+				{{ importmap('importBootstrap') }}
+			{% endblock %}
+		{% endblock %}
 {% block head %}
 
 {% endblock %}
 
 {% block body %}
-
+{% include "base/nave.html.twig" %}
 
 
    <div class="operation-table">

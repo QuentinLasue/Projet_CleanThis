@@ -18,6 +18,7 @@ class PdfController extends AbstractController
 
     public function generatePdf(): Response
     {
+        
         $data = [
             'variable' => 'Valeur à inclure dans le PDF'
         ];

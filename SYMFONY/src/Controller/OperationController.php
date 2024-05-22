@@ -27,7 +27,7 @@ class OperationController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    #[Route("/operation", name: "app_operation")]
+    #[Route("user/operation", name: "app_operation")]
     public function operation(OperationRepository $repo): Response
     {
 

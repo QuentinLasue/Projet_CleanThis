@@ -12,6 +12,10 @@
  * The "importmap:require" command can be used to add new entries to this file.
  */
 return [
+    'importBootstrap' => [
+      'path' => './assets/importBootstrap.js',
+      'entrypoint' => true,  
+    ],
     'app' => [
         'path' => './assets/app.js',
         'entrypoint' => true,

@@ -13,7 +13,7 @@ use App\Repository\OperationRepository;
 
 class StatController extends AbstractController
 {
-    #[Route('/stat', name: 'app_statistique')]
+    #[Route('admin/stat', name: 'app_statistique')]
     public function index(TypeOperationRepository $typeOperationRepository, OperationRepository $operationRepository, ChartBuilderInterface $chartBuilder): Response
     {
         $prixGrosse = 0;

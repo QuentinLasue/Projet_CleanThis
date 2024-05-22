@@ -51,7 +51,7 @@
                     <td>{{ operation.client.name }} {{ operation.client.firstname }}</td>
                     <td>{{ operation.user.name }} {{ operation.user.firstname }}</td>
                     <td>{{ operation.user.roles[0] }}</td>
-                    <td>{{ operation.description }}</td>
+                    <td><a href="{{ path('generate_pdf') }}" target="_blank">Générer PDF</a></td>
                 </tr>
             {% endfor %}
         </tbody>

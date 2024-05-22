@@ -4,9 +4,10 @@
 
 
 {% block body %}
-
+{% include "base/nave.html.twig" %}
     {% set titre = 'Modifier '~user.name~' '~user.firstname %}
     {% include "base/blueBar.html.twig" %}
+    
 
 <div class="formClient">
     <a href="{{path('admin.listePersonnel')}}" class="btnBack btn">Retour</a>
