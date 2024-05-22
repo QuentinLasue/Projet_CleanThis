@@ -15,7 +15,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class RegistrationController extends AbstractController
 {
-    #[Route('admin/register', name: 'app_register')]
+    #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, PasswordMailer $passwordMailer, EntityManagerInterface $entityManager, RoleRepository $roleRepository): Response
     {
         // Récupérer tous les rôles

@@ -3,7 +3,8 @@
 {% block title %}Répertoire{% endblock %}
 
 {% block body %}
-    <a href="{{ path('app_repertoire') }}"><h1>Répertoire</h1></a>
+{% include "base/nave.html.twig" %}
+    <h1>Répertoire</h1>
 
     <form method="GET" action="{{ path('app_repertoire') }}">
         <select name="searchField" id="searchField" onchange="updateSearchOptions()">
