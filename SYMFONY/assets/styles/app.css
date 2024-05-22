@@ -27,41 +27,46 @@ h6 {
   font-size: 32px;
   font-style: italic;
 } */
+  
 
-.divIntro {
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 85vh; /* Cela rendra la div haute comme la hauteur de l'écran */
+
+.message-titre{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  margin-left: 5%;
   align-items: center;
-  text-align: start;
-  margin-top: -1%;
+  width: 70%;
+  padding-top: 3%;
   
 }
+
+
+.bg-img{
+  width: 720px;
+}
+
+.divIntro{
+  display: flex;
+}
+
+
 
 .divIntro h2.intro {
   color: rgba(0, 0, 0, 0.767); /* Couleur du texte */
   font-size: 20px; /* Taille de la police */
-  width: 20%;
-  margin-left: -55%;
-  margin-top: -1%;
+  width: 60%;
+ 
   /* Ajoutez d'autres styles CSS selon vos besoins */
 }
 .divIntro h1 {
   color: rgba(0, 153, 255, 0.856); /* Couleur du texte */
   font-size: 60px; /* Taille de la police */
-  width: 30%;
-  margin-left: -45%;
-  margin-top: -8%;
+  width: 60%;
   /* Ajoutez d'autres styles CSS selon vos besoins */
 }
 
 .btnDecouvrir{
-    margin-left: -63.6%;
-    margin-top: 0.5%;
+
     display: inline-block;
     padding: 10px 20px;
     background-color: #007bff; /* Couleur de fond */
@@ -71,6 +76,8 @@ h6 {
     border-radius: 5px; /* Coins arrondis */
     cursor: pointer;
     transition: background-color 0.3s ease; /* Transition en douceur */
+    margin-left: -42%; 
+    margin-top: 2% ;
 }
 
 /* Style au survol */
@@ -797,12 +804,12 @@ tr {
 /* Navbar */
 
 .navbar {
-  background-color: rgba(255, 255, 255, 0.788);
+  background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 5px 10px; /* Réduire le padding pour diminuer la hauteur */
-  height: 90px;
+  height: 100px;
  
 }
 
