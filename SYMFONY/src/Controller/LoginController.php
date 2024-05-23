@@ -51,33 +51,34 @@ class LoginController extends AbstractController
     #[Route(path: '/connect/google_check', name: 'connect_google_check')]
     public function connectGoogleCheck(Request $request, EntityManagerInterface $em): Response
     {
-        // Récupération du code
+        // Récupération du code envoyé par google
         $code = $request->query->get('code');
-        // si il n'existe pas 
+        // si il n'existe pas redirection avec msg d'erreur
         if (!$code) {
             $this->addFlash('error', "Pas de code trouvée.");
             return $this->redirectToRoute('app_login');
         }
         // Construction de la requéte POST pour échanger le code contre un jeton d'accès
         $postData = [
-            'code' => $code,
-            'client_id' => $_ENV['GOOGLE_CLIENT_ID'],
-            'client_secret' => $_ENV['GOOGLE_CLIENT_SECRET'],
-            'redirect_uri' => 'http://127.0.0.1:8000/connect/google_check',
-            'grant_type' => 'authorization_code',
+            'code' => $code, // code d'autorisation reçu de google
+            'client_id' => $_ENV['GOOGLE_CLIENT_ID'], // ID client de l'application
+            'client_secret' => $_ENV['GOOGLE_CLIENT_SECRET'], // le secret client de l'pplication
+            'redirect_uri' => 'http://127.0.0.1:8000/connect/google_check', // URI de redirection
+            'grant_type' => 'authorization_code', //le type de grant pour OAuth2.0
         ];
-
+        //Configuration des options pour la requéte HTTP POST
         $options = [
             'http' => [
                 'method' => 'POST',
-                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-                'content' => http_build_query($postData),
+                'header' => "Content-type: application/x-www-form-urlencoded\r\n", // Définir le type de contenu comme URL encodé
+                'content' => http_build_query($postData), // Encoder les données POST sous forme de chaîne de requête
             ],
         ];
-
+        // Création du contexte de flux basé sur les options définies
         $context = stream_context_create($options);
+        // L'URL du point de terminaison de l'API de Google pour obtenir un jeton d'accès
         $url = 'https://oauth2.googleapis.com/token';
-        $response = file_get_contents($url, false, $context); // requéte, réponse stocker dans response
+        $response = file_get_contents($url, false, $context); // Exécution requéte, réponse stocker dans response
 
         if ($response === false) {
             $this->addFlash('error', "Error during request.");
