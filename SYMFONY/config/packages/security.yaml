@@ -1,16 +1,14 @@
 security:
-    # Configuration for password hashers and providers
     password_hashers:
         App\Entity\User:
             algorithm: auto
 
     providers:
-        app_user_provider:
+        database_users:
             entity:
                 class: App\Entity\User
                 property: email
 
-    # Configuration for firewalls
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -18,8 +16,25 @@ security:
 
         main:
             lazy: true
-            provider: app_user_provider
+            provider: database_users
+            custom_authenticator:
+                - App\Security\LoginFormAuthenticator
+            entry_point: App\Security\LoginFormAuthenticator
+            logout:
+                path: app_logout
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800
+                path: /
+            form_login:
+                login_path: app_login
+                check_path: app_login
+                username_parameter: email
+                password_parameter: password
 
-    # Access control configuration
     access_control:
-        # Add your access control rules here
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/operation, roles: ROLE_USER }
+        - { path: ^/admin, roles: ROLE_EXPERT }
+        - { path: ^/profile, roles: ROLE_SENIOR }
+        - { path: ^/profile, roles: ROLE_JUNIOR }
