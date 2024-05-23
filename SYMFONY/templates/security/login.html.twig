@@ -3,8 +3,7 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<form method="post">
-   
+{% include "base/flash.html.twig" %}   
       
     <div class="contentCo">
      {% if error %}
@@ -44,7 +43,7 @@
 						</div>
 						<div style="width: 160px;"></div>
 						<div class="forgot-passwordCo">
-							<a href="#">Mot de passe oublié?</a>
+							<a href="#">Mot de passe oublié ?</a>
 						</div>
 					</div>
 					<br>
@@ -53,7 +52,7 @@
 				</form>
 				<p class="connect-withCo">Ou connectez-vous avec</p>
 				<div>
-					<button type="submit" class="gsi-material-button" style="min-width: 200px; max-width: 300px;">
+					<button onclick="window.location.href='{{ path('connect_google') }}'" class="gsi-material-button" style="min-width: 200px; max-width: 300px;">
 						<div class="gsi-material-button-state"></div>
 						<div class="gsi-material-button-content-wrapper" style="display: flex;">
 							<div class="gsi-material-button-icon">
@@ -69,9 +68,7 @@
 							<span style="display: none;">Continue with Google</span>
 						</div>
 					</button>
-
 				</div>
 			</div>
 		</div>
-</form>
 {% endblock %}

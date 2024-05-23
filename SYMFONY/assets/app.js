@@ -1,11 +1,8 @@
-
-
 import './styles/app.css';
 
 // console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
 
-
-// // Connexion 
+// // Connexion
 
 // const rememberMeCheckbox = document.getElementById('rememberMeCo');
 // const loginButton = document.getElementById('loginButton');
@@ -31,7 +28,7 @@ import './styles/app.css';
 //     localStorage.setItem('rememberMeCo', rememberMeCheckbox.checked);
 // });
 
-// updateLoginButtonState(); 
+// updateLoginButtonState();
 
 // // Ajout de l'écouteur d'événements pour vérifier si les champs d'email et de mot de passe sont vides ou non
 // emailInput.addEventListener('input', function() {
@@ -50,22 +47,7 @@ import './styles/app.css';
 //     }
 // });
 
-
-// // Google login
-// document.addEventListener('DOMContentLoaded', function() {
-//     const googleButton = document.querySelector('.gsi-material-button');
-
-//     googleButton.addEventListener('click', function() {
-//         window.location.href = "https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&scope=email%20profile&state=YOUR_STATE";
-
-//     });
-// });
-    
-    // googleButton.addEventListener('click', function() {
-    //     window.location.href = "https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&scope=email%20profile&state=YOUR_STATE";
-    // });
-
-//Pour la modal tu footer : 
+//Pour la modal tu footer :
 // on cible la modal et son icon de fermeture et le contenue de la modal
 var modal = document.getElementById("openModal");
 var close = document.getElementById("closeModal");
@@ -73,15 +55,15 @@ var modalContent = document.getElementById("myModal");
 
 //on ajoute les événement d'apparition et disparition
 modal.onclick = function openModal() {
-    modalContent.style.display = "block";
-}
+  modalContent.style.display = "block";
+};
 
-close.onclick =function closeModal() {
-    modalContent.style.display = "none";
-}
+close.onclick = function closeModal() {
+  modalContent.style.display = "none";
+};
 // ferme la modal quand l'utilisateur clique en dehors de la modal
-window.onclick = function(event) {
-    if (event.target == modalContent) {
-        modalContent.style.display = 'none';
-    }
-}
+window.onclick = function (event) {
+  if (event.target == modalContent) {
+    modalContent.style.display = "none";
+  }
+};

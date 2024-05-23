@@ -22,6 +22,8 @@ generate_pdf:
     controller: App\Controller\PdfController::generatePdf
     methods: get
 
-
+connect_google: 
+    path: /connect/google
+    controller: App\Controller\LoginController::connectGoogle
 
 
