@@ -5,7 +5,12 @@
 {% block title %}Opérations{% endblock %}
 
 {% block body %}
+{% include "base/nave.html.twig" %}
     <h1>Liste des Opérations</h1>
+
+    {{ dump(operations) }}
+    
+        {{ dump() }}
 
     <table>
         <thead>
@@ -23,7 +28,7 @@
         </thead>
         <tbody>
             {% for operation in operations %}
-                {% if operation.user == app.user %}
+                {% if app.user == operation.user %}
                     <tr>
                         <td>{{ operation.description }}</td>
                         <td>{{ operation.statut }}</td>

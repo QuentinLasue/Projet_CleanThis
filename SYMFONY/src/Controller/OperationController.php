@@ -34,7 +34,7 @@ class OperationController extends AbstractController
         $role = $roles[0]; // Récupère le premier rôle de l'utilisateur
         $this->logger->info('Rôle attribué: ' . $role);
 
-        $maxOperations = match ($role) { // Détermine le nombre maximal d'opérations autorisées en fonction du rôle
+        $maxOperations = match($role) { // Détermine le nombre maximal d'opérations autorisées en fonction du rôle
             'ROLE_ADMIN' => 5,
             'ROLE_SENIOR' => 3,
             'ROLE_APPRENTI' => 1,
@@ -44,7 +44,7 @@ class OperationController extends AbstractController
 
         $operations = $repo->findBy([ // Récupère les opérations en fonction de leur statut
             'statut' => 'A faire',
-        ], null, $maxOperations);
+        ]);
 
         $this->logger->info('Nombre d\'opérations trouvées: ' . count($operations));
 
