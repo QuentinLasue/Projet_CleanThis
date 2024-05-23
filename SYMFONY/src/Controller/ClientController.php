@@ -18,6 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ClientController extends AbstractController
 {
@@ -68,9 +69,14 @@ class ClientController extends AbstractController
             ->add('mail', EmailType::class, [
                 'label' => 'Votre adresse mail',
                 'required' => true,
-                'constraints' => new Email(
-                    message: "L'email renseigné n'est pas valide",
-                )
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'L\'email est obligatoire.',
+                    ]),
+                    new Email([
+                        'message' => 'L\'email n\'est pas valide.',
+                    ]),
+                ],
             ])
             ->add('submit', SubmitType::class, ['label' => 'Suivant'])
             ->getForm();

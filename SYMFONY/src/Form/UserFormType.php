@@ -21,7 +21,7 @@ class UserFormType extends AbstractType
                 'label' => 'Email :'
             ])
             ->add('name', TextType::class, [
-                'label' => 'Nom :',
+                'label' => 'Nom :'
             ])
             ->add('firstname', TextType::class, [
                 'label' => 'Prénom :',
