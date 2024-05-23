@@ -3,10 +3,6 @@ security:
     password_hashers:
         App\Entity\User:
             algorithm: auto
-    # encoders: 
-    #         App\Entity\User:
-    #             algorithm: auto
-
 
     providers:
         # users_in_memory: { memory: null }
