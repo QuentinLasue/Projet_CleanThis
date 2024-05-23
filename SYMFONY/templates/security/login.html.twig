@@ -2,6 +2,13 @@
 
 {% block title %}Log in!{% endblock %}
 
+{% block javascripts %}
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+	{% block importmap %}
+		{{ importmap('app') }}
+	{% endblock %}
+{% endblock %}
 {% block body %}
 <form method="post">
    
@@ -44,7 +51,7 @@
 						</div>
 						<div style="width: 160px;"></div>
 						<div class="forgot-passwordCo">
-							<a href="#">Mot de passe oublié?</a>
+							<a href="#">Mot de passe oublié ?</a>
 						</div>
 					</div>
 					<br>
@@ -52,8 +59,8 @@
 					<button type="submit" id="loginButton">Connexion</button>
 				</form>
 				<p class="connect-withCo">Ou connectez-vous avec</p>
-				<div>
-					<button type="submit" class="gsi-material-button" style="min-width: 200px; max-width: 300px;">
+				{# <div>
+					<a href="google-oauth.php" class="gsi-material-button" style="min-width: 200px; max-width: 300px;">
 						<div class="gsi-material-button-state"></div>
 						<div class="gsi-material-button-content-wrapper" style="display: flex;">
 							<div class="gsi-material-button-icon">
@@ -68,9 +75,9 @@
 							<span class="gsi-material-button-contents" style="overflow: hidden;">Continue with Google</span>
 							<span style="display: none;">Continue with Google</span>
 						</div>
-					</button>
-
-				</div>
+					</a>
+				</div> #}
+				<div class="g-signin2" data-onsuccess="onSignIn"></div>
 			</div>
 		</div>
 </form>

@@ -85,3 +85,18 @@ window.onclick = function(event) {
         modalContent.style.display = 'none';
     }
 }
+
+// Google Authentification 
+function onSignIn(googleUser){
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log(id_token);
+    // var profile = googleUser.getBasicProfile();
+    // console.log('ID:'+ profile.getId())
+}
+
+// function signOut() {
+//     var auth2 = gapi.auth2.getAuthInstance();
+//     auth2.signOut().then(function () {
+//       console.log('User signed out.');
+//     });
+//   }
