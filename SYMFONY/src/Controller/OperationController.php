@@ -1,4 +1,7 @@
 <?php
+
+// src/Controller/OperationController.php
+
 namespace App\Controller;
 
 use App\Entity\Operation;
@@ -10,31 +13,29 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class OperationController extends AbstractController
 {
-    private LoggerInterface $logger; // Déclaration d'une propriété privée de type LoggerInterface
+    private LoggerInterface $logger;
 
     public function __construct(LoggerInterface $logger)
     {
-        $this->logger = $logger; // Assignation du logger passé en argument au logger de la classe
+        $this->logger = $logger;
     }
 
-    #[Route("/operation", name: "app_operation")] // Annotation pour définir une route
+    #[Route("/operation", name: "app_operation")]
     public function operation(OperationRepository $repo): Response
     {
-        // Enregistre la tentative d'accès aux opérations dans les logs
         $this->logger->info('Tentative d\'accès aux opérations');
+        $this->denyAccessUnlessGranted('ROLE_USER');
 
-        $this->denyAccessUnlessGranted('ROLE_USER'); // Vérifie que l'utilisateur est authentifié
-
-        $user = $this->getUser(); // Récupère l'utilisateur actuel
+        $user = $this->getUser();
         $this->logger->info('Utilisateur authentifié: ' . $user->getUserIdentifier());
 
-        $roles = $user->getRoles(); // Récupère les rôles de l'utilisateur
+        $roles = $user->getRoles();
         $this->logger->info('Rôles de l\'utilisateur: ' . implode(', ', $roles));
 
-        $role = $roles[0]; // Récupère le premier rôle de l'utilisateur
+        $role = $roles[0];
         $this->logger->info('Rôle attribué: ' . $role);
 
-        $maxOperations = match($role) { // Détermine le nombre maximal d'opérations autorisées en fonction du rôle
+        $maxOperations = match ($role) {
             'ROLE_ADMIN' => 5,
             'ROLE_SENIOR' => 3,
             'ROLE_APPRENTI' => 1,
@@ -42,29 +43,29 @@ class OperationController extends AbstractController
         };
         $this->logger->info('Nombre maximal d\'opérations autorisées: ' . $maxOperations);
 
-        $operations = $repo->findBy([ // Récupère les opérations en fonction de leur statut
-            'statut' => 'A faire',
-        ]);
+        $operations = [];
+        if ($maxOperations !== null && $maxOperations > 0) {
+            $operations = $repo->findBy(['statut' => 'A faire'], null, $maxOperations);
+        } else {
+            $operations = $repo->findBy(['statut' => 'A faire']);
+        }
+
+        // Débogage : Affichage du contenu des opérations récupérées
+        dump($operations);
 
         $this->logger->info('Nombre d\'opérations trouvées: ' . count($operations));
 
-        return $this->render('employe/operation.html.twig', [ // Rend la vue avec les opérations récupérées
+        return $this->render('employe/operation.html.twig', [
             'operations' => $operations,
         ]);
     }
 
-    #[Route("/operation/prendre/{id}", name: "app_operation_prendre")] // Annotation pour définir une route
+    #[Route("/operation/prendre/{id}", name: "app_operation_prendre")]
     public function prendreOperation(Operation $operation): Response
     {
-        // Enregistre la tentative de prise d'une opération dans les logs
         $this->logger->info('Tentative de prendre l\'opération avec l\'ID: ' . $operation->getId());
-
-        $this->denyAccessUnlessGranted('ROLE_USER'); // Vérifie que l'utilisateur est authentifié
-
-        // Logique pour prendre l'opération
-        // Ajoutez votre logique personnalisée ici
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $this->logger->info('Opération prise par l\'utilisateur: ' . $this->getUser()->getUserIdentifier());
-
-        return $this->redirectToRoute('app_operation'); // Redirige vers la liste des opérations
+        return $this->redirectToRoute('app_operation');
     }
 }

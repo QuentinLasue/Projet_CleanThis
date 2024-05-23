@@ -2,63 +2,63 @@
 import './bootstrap.js';
 import './styles/app.css';
 
-console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
+// console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
 
-//Connexion 
+// //Connexion 
 
-const rememberMeCheckbox = document.getElementById('rememberMeCo');
-const loginButton = document.getElementById('loginButton');
-const emailInput = document.getElementById('inputEmailCo');
-const passwordInput = document.getElementById('inputPasswordCo');
+// const rememberMeCheckbox = document.getElementById('rememberMeCo');
+// const loginButton = document.getElementById('loginButton');
+// const emailInput = document.getElementById('inputEmailCo');
+// const passwordInput = document.getElementById('inputPasswordCo');
 
-const rememberMe = localStorage.getItem('rememberMeCo') === 'true';
+// const rememberMe = localStorage.getItem('rememberMeCo') === 'true';
 
-rememberMeCheckbox.checked = rememberMe;
+// rememberMeCheckbox.checked = rememberMe;
 
-function updateLoginButtonState() {
-    if (emailInput.value.trim() !== '' && passwordInput.value.trim() !== '') {
-        loginButton.removeAttribute('disabled');
-    } else {
-        loginButton.setAttribute('disabled', 'disabled');
-    }
-}
+// function updateLoginButtonState() {
+//     if (emailInput.value.trim() !== '' && passwordInput.value.trim() !== '') {
+//         loginButton.removeAttribute('disabled');
+//     } else {
+//         loginButton.setAttribute('disabled', 'disabled');
+//     }
+// }
 
-emailInput.addEventListener('input', updateLoginButtonState);
-passwordInput.addEventListener('input', updateLoginButtonState);
+// emailInput.addEventListener('input', updateLoginButtonState);
+// passwordInput.addEventListener('input', updateLoginButtonState);
 
-loginButton.addEventListener('click', function() {
-    localStorage.setItem('rememberMeCo', rememberMeCheckbox.checked);
-});
+// loginButton.addEventListener('click', function() {
+//     localStorage.setItem('rememberMeCo', rememberMeCheckbox.checked);
+// });
 
-updateLoginButtonState(); 
+// updateLoginButtonState(); 
 
-// Ajout de l'écouteur d'événements pour vérifier si les champs d'email et de mot de passe sont vides ou non
-emailInput.addEventListener('input', function() {
-    if (emailInput.value.trim() !== '' && passwordInput.value.trim() !== '') {
-        loginButton.removeAttribute('disabled');
-    } else {
-        loginButton.setAttribute('disabled', 'disabled');
-    }
-});
+// // Ajout de l'écouteur d'événements pour vérifier si les champs d'email et de mot de passe sont vides ou non
+// emailInput.addEventListener('input', function() {
+//     if (emailInput.value.trim() !== '' && passwordInput.value.trim() !== '') {
+//         loginButton.removeAttribute('disabled');
+//     } else {
+//         loginButton.setAttribute('disabled', 'disabled');
+//     }
+// });
 
-passwordInput.addEventListener('input', function() {
-    if (emailInput.value.trim() !== '' && passwordInput.value.trim() !== '') {
-        loginButton.removeAttribute('disabled');
-    } else {
-        loginButton.setAttribute('disabled', 'disabled');
-    }
-});
+// passwordInput.addEventListener('input', function() {
+//     if (emailInput.value.trim() !== '' && passwordInput.value.trim() !== '') {
+//         loginButton.removeAttribute('disabled');
+//     } else {
+//         loginButton.setAttribute('disabled', 'disabled');
+//     }
+// });
 
 
-// Google login
-document.addEventListener('DOMContentLoaded', function() {
-    const googleButton = document.querySelector('.gsi-material-button');
+// // Google login
+// document.addEventListener('DOMContentLoaded', function() {
+//     const googleButton = document.querySelector('.gsi-material-button');
 
-    googleButton.addEventListener('click', function() {
-        window.location.href = "https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&scope=email%20profile&state=YOUR_STATE";
+//     googleButton.addEventListener('click', function() {
+//         window.location.href = "https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&scope=email%20profile&state=YOUR_STATE";
 
-    });
-});
+//     });
+// });
     
 
 const prendreButtons = document.querySelectorAll('.prendre-button');
@@ -95,18 +95,14 @@ prendreButtons.forEach(button => {
     });
 });
 
-<<<<<<< HEAD
-//menu burger
+// //menu burger
 
-document.addEventListener('DOMContentLoaded', function() {
-    const burgerMenu = document.querySelector('.burger-menu');
-    const navLinks = document.querySelector('.navE-links');
+// document.addEventListener('DOMContentLoaded', function() {
+//     const burgerMenu = document.querySelector('.burger-menu');
+//     const navLinks = document.querySelector('.navE-links');
   
-    burgerMenu.addEventListener('click', function() {
-      navLinks.classList.toggle('change');
-    });
-  });
+//     burgerMenu.addEventListener('click', function() {
+//       navLinks.classList.toggle('change');
+//     });
+//   });
   
-=======
-
->>>>>>> dev
