@@ -5,11 +5,8 @@ security:
             algorithm: auto
 
     providers:
-
         # users_in_memory: { memory: null }
         database_users:
-
-
             entity:
                 class: App\Entity\User
                 property: email
