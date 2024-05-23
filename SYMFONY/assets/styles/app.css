@@ -15,14 +15,13 @@ h6 {
 .message-titre{
   display: flex;
   flex-direction: column;
-  margin-left: 15%;
+  margin-left: 11%;
   margin-top: 3%;
   align-items: flex-start;
   width: 70%;
   height: 500px;
 
 
-  
 }
 
 
@@ -32,6 +31,9 @@ h6 {
 
 .divIntro{
   display: flex;
+  margin-top: 80px;
+  height: 100vh;
+
 }
 
 
@@ -305,7 +307,7 @@ label {
 }
 
 body {
-  margin: 0;
+  margin-top: 80px;
   padding: 0;
 }
 
@@ -790,21 +792,20 @@ tr {
 /* Navbar */
 
 .navbar {
+  width: 100%;
   background-color: rgb(223, 240, 250);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 5px 10px; /* Réduire le padding pour diminuer la hauteur */
-  height: 100px;
- 
+  height: 80px;
+  position: fixed; /* Rendre la navbar fixe */
+  top: 0; /* Fixer en haut de la page */
+  left: 0; /* Fixer à gauche de la page */
+  z-index: 1000; /* Assurer que la navbar reste au-dessus des autres éléments */
+  box-sizing: border-box;
 }
 
-.navbar h1{
- margin-right: 63% ;
- font-size: x-large;
- color: #2678d1;
-
-}
 
 .navbar-logo img{
 width: 190px;
@@ -816,29 +817,32 @@ width: 190px;
   width: 20px;
 }
 
-
-
+.esp-salarie{
+  margin-top:10px;
+}
 
 /* Élément de la barre de navigation */
+.nav-itemEnveloppe{
+   display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
 .navbar-item {
+ 
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 25rem; /* Ajustez selon vos besoins */
-  margin-right: 1%; /* Considérez de le rendre réactif */
-
- 
+  width: 37rem; /* Ajustez selon vos besoins */
+  padding-left: 30rem;
 }
 
-/* Élément individuel de la navigation */
-.nav-item {
-  text-align: center;
-  margin: 0 10px; /* Réduire les marges pour diminuer la hauteur */
-}
+
 
 .nav-item img{
 width: 20px;
 }
+
 
 /* Images des liens de navigation */
 .nav-link img {
@@ -883,6 +887,28 @@ width: 20px;
   color: #000;
   background-color: #fff;
 }
+
+
+
+.drapeaux {
+display: flex;
+justify-content: space-between;
+width: 3%;
+
+ 
+}
+
+.drapeaux img {
+ width: 20px;
+ height: 20px; 
+}
+
+
+.nav-item1{
+  margin-right: 1%;
+}
+
+
 .custom-block,
 .custom-block2 {
   margin: 0 auto;
@@ -998,7 +1024,7 @@ td.statutL {
 @media (max-width: 768px) {
   .navbar-item {
     width: 100%; /* S'adapte à la largeur de l'écran */
-    margin-right: 0; /* Supprime le margin-right pour éviter le débordement */
+    margin-left: 5%; /* Supprime le margin-right pour éviter le débordement */
     justify-content: center; /* Centre les éléments sur les petits écrans */
   }
 
@@ -1130,7 +1156,7 @@ width: 150px;
 }
 .eco-img4{
 width: 200px;
-height: 150px;
+height: 300px;
 
 }
 
