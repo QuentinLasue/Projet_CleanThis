@@ -3,13 +3,18 @@ security:
     password_hashers:
         App\Entity\User:
             algorithm: auto
+    # encoders: 
+    #         App\Entity\User:
+    #             algorithm: auto
+
 
     providers:
-
         # users_in_memory: { memory: null }
         database_users:
-
-
+            entity:
+                class: App\Entity\User
+                property: email
+        app_user_provider:
             entity:
                 class: App\Entity\User
                 property: email
@@ -22,7 +27,6 @@ security:
 
         main:
             lazy: true
-
             provider: database_users
             custom_authenticator:
                 - App\Security\LoginFormAuthenticator
@@ -43,6 +47,9 @@ security:
                 # login form, uncomment the following line to always enable it.
                 #always_remember_me: true
 
+        connect_google_check: 
+            pattern: ^/connect/google_check
+            security: false
 
     # Access control configuration
     access_control:
