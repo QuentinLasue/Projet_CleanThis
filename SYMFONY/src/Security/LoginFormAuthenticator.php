@@ -5,6 +5,7 @@ namespace App\Security;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
+
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Http\Authenticator\AbstractLoginFormAuthenticator;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\CsrfTokenBadge;
@@ -12,17 +13,17 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordCredentials;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
-use Symfony\Component\Security\Core\Security; // Importation de la classe Security
-use Psr\Log\LoggerInterface; // Importation de l'interface Logger
+use Psr\Log\LoggerInterface;
+use Symfony\Bundle\SecurityBundle\Security as SecurityBundleSecurity;
 
 class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 {
     use TargetPathTrait;
 
     private RouterInterface $router;
-    private LoggerInterface $logger; // Déclaration de la propriété logger
+    private LoggerInterface $logger;
 
-    public function __construct(RouterInterface $router, LoggerInterface $logger) // Ajout du logger au constructeur
+    public function __construct(RouterInterface $router, LoggerInterface $logger)
     {
         $this->router = $router;
         $this->logger = $logger;
@@ -31,7 +32,8 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
     public function authenticate(Request $request): Passport
     {
         $email = $request->request->get('email', '');
-        $request->getSession()->set(Security::LAST_USERNAME, $email);
+        // Utilisez la constante LAST_USERNAME ici
+        $request->getSession()->set(SecurityBundleSecurity::class, $email);
 
         return new Passport(
             new UserBadge($email),
@@ -47,7 +49,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             // Log target path for debugging
             $this->logger->info('Redirecting to target path: ' . $targetPath);
-            
+
             // Ensure the target path is not the login page to avoid loops
             if ($targetPath !== $this->router->generate('app_login')) {
                 return new RedirectResponse($targetPath);

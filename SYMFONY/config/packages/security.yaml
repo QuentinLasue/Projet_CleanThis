@@ -1,40 +1,45 @@
-security:
-    password_hashers:
-        App\Entity\User:
-            algorithm: auto
+security:  # Section de configuration de sécurité
 
-    providers:
-        database_users:
-            entity:
-                class: App\Entity\User
-                property: email
+    password_hashers:  # Configuration des algorithmes de hachage des mots de passe
 
-    firewalls:
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
+        App\Entity\User:  # Définition de l'entité utilisateur concernée
+            algorithm: auto  # Utilisation automatique de l'algorithme de hachage
 
-        main:
-            lazy: true
-            provider: database_users
-            custom_authenticator:
-                - App\Security\LoginFormAuthenticator
-            entry_point: App\Security\LoginFormAuthenticator
-            logout:
-                path: app_logout
-            remember_me:
-                secret: '%kernel.secret%'
-                lifetime: 604800
-                path: /
-            form_login:
-                login_path: app_login
-                check_path: app_login
-                username_parameter: email
-                password_parameter: password
+    providers:  # Configuration des fournisseurs de données
 
-    access_control:
-        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/operation, roles: ROLE_USER }
-        - { path: ^/admin, roles: ROLE_EXPERT }
-        - { path: ^/profile, roles: ROLE_SENIOR }
-        - { path: ^/profile, roles: ROLE_JUNIOR }
+        database_users:  # Nom du fournisseur de données
+            entity:  # Utilisation d'une entité comme source de données
+                class: App\Entity\User  # Classe de l'entité utilisateur
+                property: email  # Propriété utilisée pour l'authentification
+
+    firewalls:  # Configuration des pare-feux
+
+        dev:  # Pare-feu pour l'environnement de développement
+            pattern: ^/(_(profiler|wdt)|css|images|js)/  # Modèle des URL exclues de l'authentification
+            security: false  # Désactivation de la sécurité pour ces URL
+
+        main:  # Pare-feu principal
+            lazy: true  # Activation du chargement paresseux pour le pare-feu
+            provider: database_users  # Utilisation du fournisseur de données défini précédemment
+            custom_authenticator:  # Liste des authenticateurs personnalisés
+                - App\Security\LoginFormAuthenticator  # Utilisation de l'authentificateur personnalisé
+            entry_point: App\Security\LoginFormAuthenticator  # Point d'entrée de l'authentification
+            logout:  # Configuration de la déconnexion
+                path: app_logout  # Chemin de la déconnexion
+            remember_me:  # Configuration de la fonction "se souvenir de moi"
+                secret: '%kernel.secret%'  # Clé secrète pour la fonctionnalité "se souvenir de moi"
+                lifetime: 604800  # Durée de vie du cookie "se souvenir de moi" en secondes (7 jours)
+                path: /  # Chemin pour lequel le cookie est valable
+            form_login:  # Configuration de l'authentification par formulaire
+                login_path: app_login  # Chemin de la page de connexion
+                check_path: app_login  # Chemin de vérification du formulaire de connexion
+                username_parameter: email  # Nom du paramètre contenant l'e-mail
+                password_parameter: password  # Nom du paramètre contenant le mot de passe
+
+    access_control:  # Configuration du contrôle d'accès
+
+        - { path: ^/login, roles:  }  # Accès anonyme à la page de connexion
+        - { path: ^/operation, roles: ROLE_USER }  # Accès aux opérations uniquement pour les utilisateurs authentifiés
+        - { path: ^/admin, roles: ROLE_EXPERT }  # Accès à la zone d'administration pour les experts
+        - { path: ^/profile, roles: ROLE_SENIOR }  # Accès aux profils pour les utilisateurs seniors
+        - { path: ^/profile, roles: ROLE_JUNIOR }  # Accès aux profils pour les utilisateurs juniors

@@ -4,7 +4,9 @@ namespace App\Repository;
 
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
@@ -37,7 +39,17 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->getEntityManager()->persist($user);
         $this->getEntityManager()->flush();
     }
-
+    //Fonction pagination 
+    public function paginateUser(int $page, int $limit): Paginator
+    {
+        return new Paginator($this
+            ->createQueryBuilder('r')
+            ->setFirstResult(($page -1) * $limit) // spécifie l'offset
+            ->setMaxResults($limit) // nombre maximum de resulstat par page
+            ->getQuery() // convertit en objet query 
+            ->setHint(Paginator::HINT_ENABLE_DISTINCT,false)  // passage d'info a l'objet query pour dire que on n'a pas besoin du distinct
+        );
+    }
     //    /**
     //     * @return User[] Returns an array of User objects
     //     */

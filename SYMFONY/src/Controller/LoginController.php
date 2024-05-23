@@ -1,51 +1,51 @@
-<?php
+<?php 
 
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-use Psr\Log\LoggerInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils; // Utilitaire pour l'authentification
+use Psr\Log\LoggerInterface; // Interface pour l'enregistrement des logs
 
 class LoginController extends AbstractController
 {
-    private LoggerInterface $logger;
+    private LoggerInterface $logger; // Déclaration d'une propriété privée de type LoggerInterface pour l'enregistrement des logs
 
     public function __construct(LoggerInterface $logger)
     {
-        $this->logger = $logger;
+        $this->logger = $logger; // Assignation du logger passé en argument au logger de la classe
     }
 
-    #[Route(path: '/login', name: 'app_login')]
+    #[Route(path: '/login', name: 'app_login')] // Annotation pour définir la route de connexion
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // Log the login attempt
-        $this->logger->info('Login attempt');
+        // Enregistre la tentative de connexion dans les logs
+        $this->logger->info('Tentative de connexion');
 
-        if ($this->getUser()) {
-            $this->logger->info('User already authenticated, redirecting to operation page');
-            return $this->redirectToRoute('app_operation');
+        if ($this->getUser()) { // Vérifie si l'utilisateur est déjà authentifié
+            $this->logger->info('Utilisateur déjà authentifié, redirection vers la page d\'opération');
+            return $this->redirectToRoute('app_operation'); // Redirige vers la page des opérations si l'utilisateur est déjà authentifié
         }
 
-        // get the login error if there is one
+        // Récupère l'erreur de connexion s'il y en a une
         $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
+        // Récupère le dernier nom d'utilisateur saisi par l'utilisateur
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        // Log any login errors
+        // Enregistre les erreurs de connexion dans les logs
         if ($error) {
-            $this->logger->error('Login error: ' . $error->getMessage());
+            $this->logger->error('Erreur de connexion: ' . $error->getMessage());
         }
 
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]); // Rend le template de connexion avec les données nécessaires
     }
 
-    #[Route(path: '/logout', name: 'app_logout')]
+    #[Route(path: '/logout', name: 'app_logout')] // Annotation pour définir la route de déconnexion
     public function logout(): void
     {
-        // Log the logout action
-        $this->logger->info('User logged out');
-        throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+        // Enregistre l'action de déconnexion dans les logs
+        $this->logger->info('Utilisateur déconnecté');
+        throw new \LogicException('Cette méthode peut être vide - elle sera interceptée par la clé de déconnexion de votre pare-feu.'); // Lève une exception logique pour indiquer que cette méthode peut être vide et sera interceptée par la clé de déconnexion du pare-feu.
     }
 }

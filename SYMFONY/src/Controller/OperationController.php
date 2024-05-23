@@ -1,77 +1,70 @@
 <?php
-
 namespace App\Controller;
 
 use App\Entity\Operation;
 use App\Repository\OperationRepository;
-use Doctrine\ORM\EntityManagerInterface;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Psr\Log\LoggerInterface;
 
 class OperationController extends AbstractController
 {
-    private EntityManagerInterface $entityManager;
-    private TokenStorageInterface $tokenStorage;
-    private LoggerInterface $logger;
+    private LoggerInterface $logger; // Déclaration d'une propriété privée de type LoggerInterface
 
-    public function __construct(EntityManagerInterface $entityManager, TokenStorageInterface $tokenStorage, LoggerInterface $logger)
+    public function __construct(LoggerInterface $logger)
     {
-        $this->entityManager = $entityManager;
-        $this->tokenStorage = $tokenStorage;
-        $this->logger = $logger;
+        $this->logger = $logger; // Assignation du logger passé en argument au logger de la classe
     }
 
-    #[Route("/operation", name: "app_operation")]
+    #[Route("/operation", name: "app_operation")] // Annotation pour définir une route
     public function operation(OperationRepository $repo): Response
     {
-        // Log the operation attempt
-        $this->logger->info('Attempting to access operations');
+        // Enregistre la tentative d'accès aux opérations dans les logs
+        $this->logger->info('Tentative d\'accès aux opérations');
 
-        $this->denyAccessUnlessGranted('ROLE_USER');
+        $this->denyAccessUnlessGranted('ROLE_USER'); // Vérifie que l'utilisateur est authentifié
 
-        $user = $this->getUser();
-        $this->logger->info('Authenticated user: ' . $user->getUserIdentifier());
+        $user = $this->getUser(); // Récupère l'utilisateur actuel
+        $this->logger->info('Utilisateur authentifié: ' . $user->getUserIdentifier());
 
-        $roles = $user->getRoles();
-        $this->logger->info('User roles: ' . implode(', ', $roles));
+        $roles = $user->getRoles(); // Récupère les rôles de l'utilisateur
+        $this->logger->info('Rôles de l\'utilisateur: ' . implode(', ', $roles));
 
-        $role = $roles[0];
-        $this->logger->info('Assigned role: ' . $role);
+        $role = $roles[0]; // Récupère le premier rôle de l'utilisateur
+        $this->logger->info('Rôle attribué: ' . $role);
 
-        $maxOperations = match ($role) {
+        $maxOperations = match ($role) { // Détermine le nombre maximal d'opérations autorisées en fonction du rôle
             'ROLE_ADMIN' => 5,
             'ROLE_SENIOR' => 3,
             'ROLE_APPRENTI' => 1,
             default => 0,
         };
-        $this->logger->info('Max operations allowed: ' . $maxOperations);
+        $this->logger->info('Nombre maximal d\'opérations autorisées: ' . $maxOperations);
 
-        $operations = $repo->findBy([
+        $operations = $repo->findBy([ // Récupère les opérations en fonction de leur statut
             'statut' => 'A faire',
         ], null, $maxOperations);
 
-        $this->logger->info('Number of operations found: ' . count($operations));
+        $this->logger->info('Nombre d\'opérations trouvées: ' . count($operations));
 
-        return $this->render('employe/operation.html.twig', [
+        return $this->render('employe/operation.html.twig', [ // Rend la vue avec les opérations récupérées
             'operations' => $operations,
         ]);
     }
 
-    #[Route("/operation/prendre/{id}", name: "app_operation_prendre")]
+    #[Route("/operation/prendre/{id}", name: "app_operation_prendre")] // Annotation pour définir une route
     public function prendreOperation(Operation $operation): Response
     {
-        // Log the take operation attempt
-        $this->logger->info('Attempting to take operation with ID: ' . $operation->getId());
+        // Enregistre la tentative de prise d'une opération dans les logs
+        $this->logger->info('Tentative de prendre l\'opération avec l\'ID: ' . $operation->getId());
 
-        $this->denyAccessUnlessGranted('ROLE_USER');
+        $this->denyAccessUnlessGranted('ROLE_USER'); // Vérifie que l'utilisateur est authentifié
 
-        // Logic to take the operation
-        // Add your custom logic here
-        $this->logger->info('Operation taken by user: ' . $this->getUser()->getUserIdentifier());
+        // Logique pour prendre l'opération
+        // Ajoutez votre logique personnalisée ici
+        $this->logger->info('Opération prise par l\'utilisateur: ' . $this->getUser()->getUserIdentifier());
 
-        return $this->redirectToRoute('app_operation');
+        return $this->redirectToRoute('app_operation'); // Redirige vers la liste des opérations
     }
 }
