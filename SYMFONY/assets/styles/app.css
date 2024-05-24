@@ -195,13 +195,22 @@ h6 {
   font-size: 20px;
 }
 .flash {
+  align-self: center;
   text-align: center;
+  width: 400px;
+  padding: 5px;
+  border-radius: 20px;
+  border: black solid 1px;
 }
 .error {
   background-color: #f88170;
+  color: #6E1717;
+  border-color: #ED6552;
 }
 .success {
   background-color: #bbf7d4;
+  color: #4ED184;
+  border-color: #8BF1B5;
 }
 .messageError {
   color: #f88170;
