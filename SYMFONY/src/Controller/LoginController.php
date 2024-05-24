@@ -124,9 +124,12 @@ class LoginController extends AbstractController
         //Si le client existe 
         if ($user) {
             // si il existe on le connecte
-            $token = new UsernamePasswordToken($user, 'main', $user->getRoles());
+            // création d'un token de'authentification
+            $token = new UsernamePasswordToken($user, 'main', $user->getRoles()); // objet utilisateur, main : firewall name, role associé
+            // stocker le token dans le service de stockage des tokens de sécurité
             $this->container->get('security.token_storage')->setToken($token);
-            $request->getSession()->set('_security_main', serialize($token));
+            // sauvegarde dans la session
+            $request->getSession()->set('_security_main', serialize($token));//récupére la session et stocke 
 
             return $this->redirectToRoute('app_login');
         } else {
