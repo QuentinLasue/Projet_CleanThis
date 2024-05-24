@@ -50,14 +50,14 @@
                     <td>{{ operation.dateForecast ? operation.dateForecast.format('d/m/Y') : 'N/A' }}</td>
                     <td>{{ operation.client.name }} {{ operation.client.firstname }}</td>
                     <td>
-                        {% if operation.user.name and operation.user.firstname %}
+                        {% if operation.user and operation.user.name and operation.user.firstname %}
                             {{ operation.user.name }} {{ operation.user.firstname }}
                         {% else %}
                             Pas de personnel rattaché
                         {% endif %}
                     </td>
                     <td>
-                        {% if operation.user.roles[0] %}
+                        {% if  operation.user and operation.user.roles[0] %}
                             {{ operation.user.roles[0] }}
                         {% else %}
                             Aucun
