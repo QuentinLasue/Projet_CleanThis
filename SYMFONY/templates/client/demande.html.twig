@@ -18,6 +18,8 @@
 		<a href="{{path('client')}}" class="btnBack btn">Retour</a>
 		{{form_start(form)}}
 		<div>
+		<p class="titleForm">Vos coordonées :
+			</p>
 			<div class="doubleChamp">
 				{{ form_row(form.client.name, {'attr':{'placeholder':"Doe"}})}}
 				{{ form_row(form.client.firstname, {'attr':{'placeholder':"John"}})}}
