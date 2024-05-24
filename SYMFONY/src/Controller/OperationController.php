@@ -66,9 +66,9 @@ class OperationController extends AbstractController
         // Gestion pour l'affichage de la priorité de l'opération 
         $today = new \DateTime(); // Date actuelle 
         $limitHight = new \DateTime();
-        $limitHight->modify('-1 week'); // une semaine avant la date actuelle
+        $limitHight->modify('+1 week'); // une semaine après la date actuelle
         $limitMedium = new \DateTime();
-        $limitMedium->modify('-2 week'); // deux semaine avant la date actuelle
+        $limitMedium->modify('+2 week'); // deux semaine après la date actuelle
 
         return $this->render('employe/admin/ajoutOperation.html.twig', [
             'operationList' => $operationList,
