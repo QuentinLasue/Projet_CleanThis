@@ -6,11 +6,7 @@ parameters:
     admin_email: 'cleanthis154@gmail.com'
     photo_directory: '%kernel.project_dir%/public/photoClient' # chemin vers la où on veut stocker les photos, %kerne..% represente le repertoire racine du projet
     google_client_id: '%env(GOOGLE_CLIENT_ID)%' #lien avec la variable d'environement du .env
-# utilisation de variable d'environement dans twig 
-twig:
-    globals:
-        google_client_id: '%google_client_id%' # lien avec le paramétre
-
+    
 services:
     # Déclarez votre contrôleur en tant que service public
     App\Controller\YourController:

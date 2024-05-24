@@ -131,7 +131,7 @@ class LoginController extends AbstractController
             // sauvegarde dans la session
             $request->getSession()->set('_security_main', serialize($token));//récupére la session et stocke 
 
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('app_operation');
         } else {
             // Sinon informe l'utilisateur que le mail n'existe pas et retour sur la page login
             $this->addFlash('error', "Votre adresse mail n'est pas lié à un compte.");
