@@ -18,6 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class RegistrationFormType extends AbstractType
 {
@@ -43,6 +44,10 @@ class RegistrationFormType extends AbstractType
                         'maxMessage'=>'Le nom doit être de 50 caractères maximum.',
                         'minMessage' => 'Le nom doit être de 10 caractères minimum.'
                     ]),
+                    new Regex([
+                        'pattern'=> "/\S+/",
+                        'message'=> "Le champ ne peut pas contenir uniquement des espaces."
+                    ])
                 ],
             ])
             ->add('firstname', TextType::class,[
@@ -57,6 +62,10 @@ class RegistrationFormType extends AbstractType
                         'maxMessage'=>'Le prénom doit être de 50 caractères maximum.',
                         'minMessage' => 'Le prénom doit être de 10 caractères minimum.'
                     ]),
+                    new Regex([
+                        'pattern'=> "/\S+/",
+                        'message'=> "Le champ ne peut pas contenir uniquement des espaces."
+                    ])
                 ],
             ])
             ->add('email', EmailType::class, [

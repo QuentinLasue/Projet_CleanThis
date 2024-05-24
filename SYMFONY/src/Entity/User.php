@@ -36,6 +36,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      */
     #[ORM\Column]
+    #[Assert\NotBlank()]
+    #[Assert\Regex(
+        pattern: "/\S+/",
+        message: "Le champ ne peut pas contenir uniquement des espaces."
+    )]
+    #[Assert\Length(
+        min: 6,
+        max: 50,
+        minMessage: 'Votre mot de passe est trop court.',
+        maxMessage: 'Votre mot de passe est trop long, il ne doit pas dépasser 50 caractères.'
+    )]
     private ?string $password = null;
 
     #[ORM\Column(length: 50)]
@@ -46,6 +57,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         minMessage: 'Votre nom est trop court.',
         maxMessage: 'Votre nom est trop long, il ne doit pas dépasser 50 caractères.'
     )]
+    #[Assert\Regex(
+        pattern: "/\S+/",
+        message: "Le champ ne peut pas contenir uniquement des espaces."
+    )]
     private ?string $name = null;
 
     #[ORM\Column(length: 50)]
@@ -55,6 +70,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         max: 50,
         minMessage: 'Votre nom est trop court.',
         maxMessage: 'Votre nom est trop long, il ne doit pas dépasser 50 caractères.'
+    )]
+    #[Assert\Regex(
+        pattern: "/\S+/",
+        message: "Le champ ne peut pas contenir uniquement des espaces."
     )]
     private ?string $firstname = null;
 

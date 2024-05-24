@@ -11,6 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class ContactType extends AbstractType
 {
@@ -38,6 +39,10 @@ class ContactType extends AbstractType
                         'min'=> 10,
                         'minMessage' => 'La description doit être de 10 caractères minimum.'
                     ]),
+                    new Regex([
+                            'pattern'=> "/\S+/",
+                            'message'=> "La description ne peut pas contenir uniquement des espaces."
+                    ])
                 ],
             ])
             ->add('envoyer', SubmitType::class)

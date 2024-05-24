@@ -27,6 +27,10 @@ class Adresse
         max: 125,
         maxMessage: "Votre nom de rue est trop long. Il ne doit pas dépasser 125 caractères."
     )]
+    #[Assert\Regex(
+        pattern: "/\S+/",
+        message: "Le champ ne peut pas contenir uniquement des espaces."
+    )]
     private ?string $street = null;
 
     #[ORM\Column(length: 100)]
@@ -34,6 +38,10 @@ class Adresse
     #[Assert\Length(
         max: 100,
         maxMessage: "Votre nom de Ville est trop long. Il ne doit pas dépasser 100 caractères."
+    )]
+    #[Assert\Regex(
+        pattern: "/\S+/",
+        message: "Le champ ne peut pas contenir uniquement des espaces."
     )]
     private ?string $city = null;
 
@@ -43,6 +51,10 @@ class Adresse
         max: 125,
         maxMessage: "Votre nom de département est trop long. Il ne doit pas dépasser 125 caractères."
     )]
+    #[Assert\Regex(
+        pattern: "/\S+/",
+        message: "Le champ ne peut pas contenir uniquement des espaces."
+    )]
     private ?string $county = null;
 
     #[ORM\Column(length: 125)]
@@ -50,6 +62,10 @@ class Adresse
     #[Assert\Length(
         max: 125,
         maxMessage: "Votre nom de pays est trop long. Il ne doit pas dépasser 125 caractères."
+    )]
+    #[Assert\Regex(
+        pattern: "/\S+/",
+        message: "Le champ ne peut pas contenir uniquement des espaces."
     )]
     private ?string $country = null;
 
