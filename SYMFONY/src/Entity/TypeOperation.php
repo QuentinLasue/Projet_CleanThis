@@ -31,6 +31,9 @@ class TypeOperation
     #[ORM\OneToMany(targetEntity: Operation::class, mappedBy: 'type')]
     private Collection $operations;
 
+    #[ORM\Column(length: 150, nullable: true)]
+    private ?string $photoOP = null;
+
     public function __construct()
     {
         $this->operations = new ArrayCollection();
@@ -103,6 +106,18 @@ class TypeOperation
                 $operation->setType(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPhotoOP(): ?string
+    {
+        return $this->photoOP;
+    }
+
+    public function setPhotoOP(?string $photoOP): static
+    {
+        $this->photoOP = $photoOP;
 
         return $this;
     }

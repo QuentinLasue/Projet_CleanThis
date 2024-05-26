@@ -48,7 +48,7 @@ h6 {
 }
 .divIntro h1 {
   color: rgba(0, 153, 255, 0.856); /* Couleur du texte */
-  font-size: 4rem; /* Taille de la police */
+  font-size: 3rem; /* Taille de la police */
   width: 60%;
   /* Ajoutez d'autres styles CSS selon vos besoins */
 }
@@ -93,6 +93,7 @@ h6 {
   justify-content: center;
   font-size: 3rem;
   margin-top: 7%;
+  color: rgba(0, 153, 255, 0.856);
 }
 
 .cardList {
@@ -306,10 +307,6 @@ label {
   background-color: #0056b3;
 }
 
-body {
-  margin-top: 80px;
-  padding: 0;
-}
 
 .btnInputFile {
   align-self: center;
@@ -1127,36 +1124,30 @@ list-style-type: none;
 
 
 .intro1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 60%; 
-  margin-left: 20%;
-  margin-top: 10%;
-  font-size: 3.75rem; 
+  font-size: 3rem; 
   color: rgba(0, 153, 255, 0.856);
-  text-align: center; 
+ 
 }
 
 
 
 .eco-img1{
-width: 150px;
-height: 150px;
+width: 100px;
+height: 100px;
 
 }
 .eco-img2{
-width: 200px;
-height: 150px;
+width: 150px;
+height: 100px;
 
 }
 .eco-img3{
-width: 150px;
+width: 100px;
 
 }
 .eco-img4{
-width: 200px;
-height: 300px;
+width: 150px;
+height: 100px;
 
 }
 
@@ -1173,10 +1164,92 @@ height: 300px;
 .eco-texte{
   font-size: 24px;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   width: 76%;
   margin-left:12%;
   padding: auto;
+ 
+}
+
+.eco-texte p{
+  display: flex;
+  font-size: 19px;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 5%;
+}
 
 
+
+.Ecotitre{
+  margin: 2.5%;
+  font-size: 3rem;
+  color: rgb(4, 114, 53);
+}
+
+.EcologyText{
+  width: 60%;
+  color: rgb(1, 49, 8);
+}
+
+
+.logo-why{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.logo-why img{
+  width: 150px;
+
+}
+
+.para-why{
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.valeur{
+  display: flex;
+  justify-content: center;
+  margin-top: 3%;
+  font-size: 24px;
+  color: rgba(0, 153, 255, 0.856);
+}
+
+.titre-para1{
+  color: rgba(3, 153, 65, 0.856);
+  font-weight: bold;
+  font-size: 19px;
+}
+
+
+.classeEco{
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 15%;
+}
+
+.classeEco img{
+  /* padding-left: 10%; */
+  width: 150px;
+  height: 150px;
+}
+
+.commentaire h1{
+  font-size: 3rem; 
+  color: rgba(0, 153, 255, 0.856);
+ display: flex;
+ justify-content: center;
+}
+
+.commentaire img{
+  width: 100px;
 }
