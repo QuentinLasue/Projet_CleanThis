@@ -1,4 +1,16 @@
-Quote : 'Devis'
-Help : 'Aide'
-welcome : 'bienvenue'
-goodbye : 'au revoir'
+form:
+    adresse:
+        number: 'Numéro :'
+        street: 'Rue :'
+        city: 'Ville :'
+        county: 'Département :'
+        country: 'Pays :'
+    client:
+        name: 'Nom :'
+        firstname: 'Prénom :'
+        mail: 'E-mail :'
+    operation:
+        type: 'Type opération :'
+        dateForecast: 'Date prévue :'
+        description: 'Description :'
+        photo: 'Photo :'

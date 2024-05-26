@@ -1,0 +1,16 @@
+form:
+    adresse:
+        number: 'Number:'
+        street: 'Street:'
+        city: 'City:'
+        county: 'County:'
+        country: 'Country:'
+    client:
+        name: 'Name:'
+        firstname: 'First Name:'
+        mail: 'Email:'
+    operation:
+        type: 'Operation Type:'
+        dateForecast: 'Forecast Date:'
+        description: 'Description:'
+        photo: 'Photo:'
