@@ -25,7 +25,7 @@ class RegistrationFormType extends AbstractType
         $builder
 
             ->add('roles', ChoiceType::class, [
-                'choices' => array_combine($options['roles'], $options['roles']),
+                'choices' => $options['roles'],
                 'multiple' => false,
                 'expanded' => false,
                 'label'=>'Selectionner le rôle :'

@@ -46,3 +46,4 @@ class JWTService
 
         $jwt = $base64Header. '.' . $base64Payload . '.' . $signature;
 }
+}
