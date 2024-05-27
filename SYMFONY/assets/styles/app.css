@@ -1110,3 +1110,10 @@ list-style-type: none;
   text-decoration: none;
   cursor: pointer;
 }
+/* Page erreur */
+.divErreur{
+  display: flex ;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh; /* 100% de la hauteur de la vue */
+}

@@ -17,7 +17,7 @@ services:
         public: true
 
     # default configuration for services in *this* file
-    App\Domain\Service\PasswordMailer:
+    App\Service\PasswordMailer:
         autowire: true
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
@@ -41,7 +41,7 @@ services:
             $mailer: '@Symfony\Component\Mailer\MailerInterface'
             $twig: '@twig'
 
-    App\Service\PdfGenerator:
+    App\Service\PdfService:
         arguments:
             $twig: '@twig'
 
