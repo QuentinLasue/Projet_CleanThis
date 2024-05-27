@@ -20,6 +20,11 @@ class Operation
     private ?int $id = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank()]
+    #[Assert\Regex(
+        pattern: "/\S+/",
+        message: "La description ne peut pas contenir uniquement des espaces."
+    )]
     private ?string $description = null;
 
     #[ORM\Column(length: 100)]

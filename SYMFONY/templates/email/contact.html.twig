@@ -15,13 +15,11 @@
         <form method="post">
             {{ form_start(form) }}
             <div class="form-group">
-    {{ form_label(form.email) }}
-    {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Entrez votre adresse e-mail'}}) }}
+                {{ form_row(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Entrez votre adresse e-mail'}}) }}
             </div>
 
             <div class="form-group2">
-                {{ form_label(form.content) }}
-                {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+                {{ form_row(form.content, {'attr': {'class': 'form-control'}}) }}
             </div>
             {{ form_end(form) }}
         </form>

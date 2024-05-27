@@ -17,6 +17,8 @@ use Symfony\Component\Form\CallbackTransformer; // Ajout de l'importation manqua
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class RegistrationFormType extends AbstractType
 {
@@ -24,22 +26,60 @@ class RegistrationFormType extends AbstractType
     {
         $builder
 
-            ->add('roles', ChoiceType::class, [
-                'choices' => array_combine($options['roles'], $options['roles']),
-                'multiple' => false,
-                'expanded' => false,
-                'label'=>'Selectionner le rôle :'
-            ])
-            ->add('name', TextType::class,[
-                'label'=>'Nom :'
-            ])
-            ->add('firstname', TextType::class,[
-                'label'=>'Prénom :'
-            ])
-            ->add('email', EmailType::class, [
-                'label' => 'Email :'
-            ])
-            ->add('submit', SubmitType::class, ['label' => 'Envoyer']);
+        ->add('roles', ChoiceType::class, [
+            'choices' => array_combine($options['roles'], $options['roles']),
+            'multiple' => false,
+            'expanded' => false,
+            'label'=>'Selectionner le rôle :'
+        ])
+        ->add('name', TextType::class,[
+            'label'=>'Nom :',
+            'constraints' => [
+                new NotBlank([
+                    'message' => 'Le prénom est obligatoire.',
+                ]),
+                new Length([
+                    'min'=> 2,
+                    'max'=>50,
+                    'maxMessage'=>'Le nom doit être de 50 caractères maximum.',
+                    'minMessage' => 'Le nom doit être de 2 caractères minimum.'
+                ]),
+                new Regex([
+                    'pattern'=> "/\S+/",
+                    'message'=> "Le champ ne peut pas contenir uniquement des espaces."
+                ])
+            ],
+        ])
+        ->add('firstname', TextType::class,[
+            'label'=>'Prénom :',
+            'constraints' => [
+                new NotBlank([
+                    'message' => 'Le prénom est obligatoire.',
+                ]),
+                new Length([
+                    'min'=> 2,
+                    'max'=>50,
+                    'maxMessage'=>'Le prénom doit être de 50 caractères maximum.',
+                    'minMessage' => 'Le prénom doit être de 2 caractères minimum.'
+                ]),
+                new Regex([
+                    'pattern'=> "/\S+/",
+                    'message'=> "Le champ ne peut pas contenir uniquement des espaces."
+                ])
+            ],
+        ])
+        ->add('email', EmailType::class, [
+            'label' => 'Email :',
+            'constraints' => [
+                new NotBlank([
+                    'message' => 'L\'email est obligatoire.',
+                ]),
+                new Email([
+                    'message' => 'L\'email n\'est pas valide.',
+                ]),
+            ],
+        ])
+        ->add('submit', SubmitType::class, ['label' => 'Envoyer']);
 
             // ->add('plainPassword', PasswordType::class, [
             //     'mapped' => false,
