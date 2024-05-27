@@ -4,6 +4,7 @@
 {% endblock %}
 
 {% block body %}
+{% include "base/flash.html.twig" %}
 	<form method="post">
 
 
@@ -44,7 +45,7 @@
 							<label for="rememberMeCo">Se souvenir de moi</label>
 						</div>
 						<div style="width: 160px;"></div>
-						
+						<a href="{{ path('forgotten_password') }}" class="btn btn-secondary mt-3">Mot de passe oublié</a>
 					</div>
 					<br>
 					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">

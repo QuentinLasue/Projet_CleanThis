@@ -58,6 +58,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     )]
     private ?string $firstname = null;
 
+    #[ORM\Column(length: 100, nullable: true)]
+    private ?string $resetToken = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -156,7 +159,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+    public function getResetToken(): ?string
+    {
+        return $this->resetToken;
+    }
 
+    public function setResetToken(?string $resetToken): self
+    {
+        $this->resetToken = $resetToken;
+
+        return $this;
+    }
     public function __toString()
     {
         return $this->getRoles();
