@@ -14,8 +14,8 @@
     <h1>Register</h1>
     {{ form_start(registrationForm) }}
     {# Form rendering logic #}
-    {{ form_row(registrationForm.name) }}
-    {{ form_row(registrationForm.firstname) }}
-    {{ form_row(registrationForm.email) }}
+    {{ form_row(registrationForm.name, {'attr': { 'placeholder': 'Doe'}}) }}
+    {{ form_row(registrationForm.firstname, {'attr': { 'placeholder': 'John'}}) }}
+    {{ form_row(registrationForm.email, {'attr': { 'placeholder': 'johndoe@gmail.com'}}) }}
     {{ form_end(registrationForm) }}
 {% endblock %}
