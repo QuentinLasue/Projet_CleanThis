@@ -1,59 +1,39 @@
 <?php
 
-// src/Controller/OperationController.php
-
 namespace App\Controller;
 
-use App\Entity\Operation;
 use App\Repository\OperationRepository;
-use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\Operation;
+use App\Form\OperationFormType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Request;
 
 class OperationController extends AbstractController
 {
-    private LoggerInterface $logger;
 
-    public function __construct(LoggerInterface $logger)
+    public function terminerOperation($id): Response
     {
-        $this->logger = $logger;
+        return $this->redirectToRoute('app_liste');
     }
 
-    #[Route("/operation", name: "app_operation")]
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
+    #[Route("user/operation", name: "app_operation")]
     public function operation(OperationRepository $repo): Response
     {
-        $this->logger->info('Tentative d\'accès aux opérations');
-        $this->denyAccessUnlessGranted('ROLE_USER');
 
-        $user = $this->getUser();
-        $this->logger->info('Utilisateur authentifié: ' . $user->getUserIdentifier());
-
-        $roles = $user->getRoles();
-        $this->logger->info('Rôles de l\'utilisateur: ' . implode(', ', $roles));
-
-        $role = $roles[0];
-        $this->logger->info('Rôle attribué: ' . $role);
-
-        $maxOperations = match ($role) {
-            'ROLE_ADMIN' => 5,
-            'ROLE_SENIOR' => 3,
-            'ROLE_APPRENTI' => 1,
-            default => 0,
-        };
-        $this->logger->info('Nombre maximal d\'opérations autorisées: ' . $maxOperations);
-
-        $operations = [];
-        if ($maxOperations !== null && $maxOperations > 0) {
-            $operations = $repo->findBy(['statut' => 'A faire'], null, $maxOperations);
-        } else {
-            $operations = $repo->findBy(['statut' => 'A faire']);
-        }
-
-        // Débogage : Affichage du contenu des opérations récupérées
-        dump($operations);
-
-        $this->logger->info('Nombre d\'opérations trouvées: ' . count($operations));
+        $operations = $repo->findBy([
+            "statut" => "A faire"
+        ]);
 
         return $this->render('employe/operation.html.twig', [
             'operations' => $operations,
@@ -63,9 +43,67 @@ class OperationController extends AbstractController
     #[Route("/operation/prendre/{id}", name: "app_operation_prendre")]
     public function prendreOperation(Operation $operation): Response
     {
-        $this->logger->info('Tentative de prendre l\'opération avec l\'ID: ' . $operation->getId());
-        $this->denyAccessUnlessGranted('ROLE_USER');
-        $this->logger->info('Opération prise par l\'utilisateur: ' . $this->getUser()->getUserIdentifier());
+        // Traitement pour transférer l'opération à "Ma Liste"
+        // Vous pouvez mettre à jour le statut de l'opération ici
+        // et la sauvegarder dans la base de données
+
+        $operation->setStatut("En cours");
+        $this->entityManager->persist($operation);
+        $this->entityManager->flush();
+
+        // Redirection vers la page "Ma Liste" après avoir pris l'opération
         return $this->redirectToRoute('app_operation');
     }
+    #[Route("admin/AjoutOperation", name: "add_operation_list")]
+    public function AddOperationWait(Request $request, OperationRepository $repo): Response
+    {
+        $page = $request->query->getInt('page', 1); // je regarde si j'ai un entier qui s'appelle pasge sinon je lui attribu 1 par default
+        $limit = 5; // nombre d'élément par page
+        // find avec la pagination mis en place dans OperationRepository et le critère du statut "En attente"
+        $operationList = $repo->paginateOperationWait($page, $limit);
+        $maxPage = ceil($operationList->count() / $limit); // $limit est le nombre d'éléments par page
+
+        // Gestion pour l'affichage de la priorité de l'opération 
+        $today = new \DateTime(); // Date actuelle 
+        $limitHight = new \DateTime();
+        $limitHight->modify('-1 week'); // une semaine avant la date actuelle
+        $limitMedium = new \DateTime();
+        $limitMedium->modify('-2 week'); // deux semaine avant la date actuelle
+
+        return $this->render('employe/admin/ajoutOperation.html.twig', [
+            'operationList' => $operationList,
+            'maxPage' => $maxPage,
+            'page' => $page,
+            'today' => $today,
+            'limitHight' => $limitHight,
+            'limitMedium' => $limitMedium
+        ]);
+    }
+    #[Route("admin/AjoutOperation/Details/{id}",name:"details_operation")]
+    public function detailsOperationUpdate(Operation $operation,Request $request, EntityManagerInterface $em,OperationRepository $operationRepository): Response
+    {   
+        //Création du formulaire
+        $form = $this->createForm(OperationFormType::class, $operation,[]);
+        $form->add('submit',SubmitType::class,[
+            'label'=>'Accepter l\'opération'
+        ]);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $operation->setStatut("A faire");
+            $em->persist($operation);
+            $em->flush();
+            //message flash de succés
+            $this->addFlash('success', "Votre modification a été prise en compte");
+
+            //redirection à la page liste
+            return $this->redirectToRoute('add_operation_list');
+        }
+
+        return $this->render('employe/admin/modifOperation.html.twig', [
+            'form'=>$form->createView(),
+            'operation'=>$operation
+        ]);
+    }
 }
+
