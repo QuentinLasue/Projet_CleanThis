@@ -16,18 +16,18 @@ h6 {
   display: flex;
   flex-direction: column;
   margin-left: 11%;
-  margin-top: 3%;
+  margin-top: 4%;
   align-items: flex-start;
   width: 70%;
-  height: 500px;
+  height:52.4vh ;
 
 
 }
 
-.bg-coverAll{
+ .bg-coverAll{
   padding-bottom: 1rem;
 
-}
+} 
 
 
 .bg-img{
@@ -37,6 +37,8 @@ h6 {
 .divIntro{
   display: flex;
   margin-top: 80px;
+  height: 100vh;
+
 }
 
 
@@ -55,6 +57,14 @@ h6 {
   width: 60%;
   /* Ajoutez d'autres styles CSS selon vos besoins */
 }
+
+.intro{
+  font-size:24px;
+  font-weight: bold;
+}
+
+
+
 
 .btnDecouvrir{
     margin-top: 2%;
@@ -1219,13 +1229,22 @@ margin-bottom: 3%;
   justify-content: baseline;
   align-items: center;
 }
+.para-why p{
+ font-size:24px;
+ text-align: center;
+}
+
+.para-why h4{
+  text-align: center;
+ font-size:30px;
+}
+
 
 
 
 .valeur{
   display: flex;
   justify-content: center;
-  margin-top: 1%;
   font-size: 24px;
   color: rgba(0, 153, 255, 0.856);
 }
@@ -1280,9 +1299,12 @@ margin-bottom: 3%;
   justify-content: space-around;
 }
 
+.notation{
+  width: 20vw;
+}
+
 .note-avis{
-width: 25%;
-margin-bottom: 2%;
+width: 100%;
 
 }
 
@@ -1311,6 +1333,29 @@ margin-bottom: 2%;
 }
 }
 
+@media(max-width:1110px){
+.message-titre{
+  height: 80vh;
+}
+.message-titre h1{
+  font-size: 32px;
+}
+}
+
+
+
+@media (max-width: 850px) {
+  .logo-why {
+    display: flex;
+    flex-wrap: wrap ;
+  
+  }
+
+  .para-why{
+    width: 45vw;
+  } 
+}
+
 @media (max-width: 768px) {
   .navbar-item {
     width: 100%; /* S'adapte à la largeur de l'écran */
@@ -1322,16 +1367,20 @@ margin-bottom: 2%;
   .nav-item {
     margin: 10px; /* Réduire les marges sur les petits écrans */
   }
+.divIntro{
+  flex-direction: column;
+  height: 100vh;
+
 }
 
-@media (max-width: 680px) {
-  .logo-why {
-    display: flex;
-    flex-direction: column;
+}
 
-  }
 
-  /* .para-why{
-    width: 50vw;
-  } */
+
+
+@media (max-width: 660px) {
+ .flipperFront{
+  display: vlex;
+  flex-wrap: wrap ;
+}
 }
