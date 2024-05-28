@@ -51,6 +51,15 @@
                 color: white;
                 font-size: 30px;
             }
+            .total{
+                background-color: #2678d1;
+                color: white;
+                width: 20%;
+                padding: 1%;
+                font-size: 20px;
+                text-align: center;
+                margin-left: 68%;
+            }
         </style>
 	</head>
 	<body>
@@ -88,6 +97,9 @@
                     <td>{{operation.type.prix}} €</td>
                 </tr>
             </table>
+        </div>
+        <div class="divTotal">
+            <p class="total"><b>Total : {{operation.type.prix}} €</b> </p>
         </div>
         <hr>
                 <h5>Merci de nous avoir fais confiance.</h5>
