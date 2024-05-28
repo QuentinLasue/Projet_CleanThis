@@ -1130,7 +1130,8 @@ td.statutL {
   display: flex;
   justify-content: space-around;
   background-color: #2678d1;
-  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   text-align: center;
   color: white;
   position: relative;
