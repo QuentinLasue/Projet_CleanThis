@@ -364,7 +364,6 @@ body {
 /* Operation */
 .navbarE {
   background-color: #77b800;
-
   margin-right: auto;
   margin-left: auto;
   height: 121px;
@@ -1268,4 +1267,15 @@ list-style-type: none;
       width: 33%;
     }
   }
-  
+/* Contact */
+  .formulaire-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  /* Register */
+  .registFor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }

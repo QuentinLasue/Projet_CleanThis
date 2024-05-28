@@ -4,13 +4,16 @@
 
 {% block body %}
 
-    <div class="titleAll">
-        <h1>Comment pouvons-nous vous aider ?</h1>
-        <h3>Envoyez-nous un message</h3>
-    </div>
-         <h2>Formulaire de contact</h2>
+    
+       
+        
+     <div class="titleAll">
+    {% set titre = "Formulaire de contact" %}
+         {% include "base/blueBar.html.twig" %}
+         </div>
     
     <div class="formulaire-container">
+        <h3 class="Tifor">Envoyez-nous un message</h3>
     
         <form method="post">
             {{ form_start(form) }}
