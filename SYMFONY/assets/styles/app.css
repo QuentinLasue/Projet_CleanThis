@@ -1126,14 +1126,16 @@ td.statutL {
 
 /* Footer */
 .footer {
+  width: 100%;
   display: flex;
   justify-content: space-around;
   background-color: #2678d1;
   padding: 20px;
   text-align: center;
   color: white;
-  position: absolute;
+  position: relative;
   bottom: 0;
+  margin-top: 50px;
 }
 #openModal {
   cursor: pointer;

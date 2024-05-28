@@ -9,6 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Operation;
 use App\Form\OperationFormType;
+
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\User\UserInterface;
 use App\Repository\UserRepository;
@@ -119,17 +121,32 @@ class OperationController extends AbstractController
             'limitMedium' => $limitMedium
         ]);
     }
-    #[Route("admin/AjoutOperation/Details/{id}",name:"details_operation")]
-    public function detailsOperationUpdate(Operation $operation,Request $request, EntityManagerInterface $em,OperationRepository $operationRepository): Response
-    {   
+    #[Route("admin/AjoutOperation/Details/{id}", name: "details_operation")]
+    public function detailsOperationUpdate(Operation $operation, Request $request, EntityManagerInterface $em, OperationRepository $operationRepository): Response
+    {
+        $ope = $operation->getType();
+
         //Création du formulaire
-        $form = $this->createForm(OperationFormType::class, $operation,[]);
-        $form->add('submit',SubmitType::class,[
-            'label'=>'Accepter l\'opération'
+        $form = $this->createForm(OperationFormType::class, $operation, []);
+        // si l'opération est custom on ajoute un champ
+            $form->add('prix', NumberType::class, [
+                'label' => 'Entrez le prix de l\'opération',
+                'mapped' => false,
+            ]);
+        // }
+        $form->add('submit', SubmitType::class, [
+            'label' => 'Accepter l\'opération'
         ]);
+
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
+            //Récupération du prix si il existe
+            $prix = $form->get('prix')->getData();
+            if ($prix) {
+                $operation->setCustomPrix($prix);
+            }
+
             $operation->setStatut("A faire");
             $em->persist($operation);
             $em->flush();
@@ -141,9 +158,9 @@ class OperationController extends AbstractController
         }
 
         return $this->render('employe/admin/modifOperation.html.twig', [
-            'form'=>$form->createView(),
-            'operation'=>$operation
 
+            'form' => $form->createView(),
+            'operation' => $operation
         ]);
     }
 }
