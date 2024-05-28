@@ -12,73 +12,74 @@ h6 {
   font-family: "Roboto";
 }
 
-/* home */
-/* .container {
-  padding-inline: 10%;
-  background-color: white;
-  padding-bottom: 20px;
-}
-.divIntro {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.intro {
-  font-size: 32px;
-  font-style: italic;
-} */
-  
-
-
 .message-titre{
   display: flex;
   flex-direction: column;
-  margin-left: 5%;
-  align-items: center;
+  margin-left: 11%;
+  margin-top: 4%;
+  align-items: flex-start;
   width: 70%;
-  padding-top: 3%;
-  
+  height:52.4vh ;
+
+
 }
+
+ .bg-coverAll{
+  padding-bottom: 1rem;
+
+} 
 
 
 .bg-img{
-  width: 720px;
+  width: 100%;
 }
 
 .divIntro{
   display: flex;
+  margin-top: 80px;
+  height: 100vh;
+
 }
 
 
 
 .divIntro h2.intro {
-  color: rgba(0, 0, 0, 0.767); /* Couleur du texte */
-  font-size: 20px; /* Taille de la police */
-  width: 60%;
+  color: rgba(0, 0, 0, 0.842); /* Couleur du texte */
+  font-size: 24px; /* Taille de la police */
+  margin-top: -1%;
+ 
  
   /* Ajoutez d'autres styles CSS selon vos besoins */
 }
 .divIntro h1 {
   color: rgba(0, 153, 255, 0.856); /* Couleur du texte */
-  font-size: 60px; /* Taille de la police */
+  font-size: 3rem; /* Taille de la police */
   width: 60%;
   /* Ajoutez d'autres styles CSS selon vos besoins */
 }
 
-.btnDecouvrir{
+.intro{
+  font-size:24px;
+  font-weight: bold;
+}
 
+
+
+
+.btnDecouvrir{
+    margin-top: 2%;
     display: inline-block;
     padding: 10px 20px;
     background-color: #007bff; /* Couleur de fond */
     color: #fff; /* Couleur du texte */
+    font-size: 20px;
     text-decoration: none; /* Supprimer les soulignements */
     border: none;
     border-radius: 5px; /* Coins arrondis */
     cursor: pointer;
     transition: background-color 0.3s ease; /* Transition en douceur */
-    margin-left: -42%; 
-    margin-top: 2% ;
 }
+
 
 /* Style au survol */
 .btnDecouvrir:hover {
@@ -105,6 +106,7 @@ h6 {
   justify-content: center;
   font-size: 3rem;
   margin-top: 7%;
+  color: rgba(0, 153, 255, 0.856);
 }
 
 .cardList {
@@ -318,10 +320,6 @@ label {
   background-color: #0056b3;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-}
 
 .btnInputFile {
   align-self: center;
@@ -333,10 +331,11 @@ input::placeholder {
   padding-left: 10px;
 }
 
+
 body {
   margin: 0;
   padding: 0;
-  background-color: #d9d9d9;
+  background-color: #ffffff;
 }
 /* Auto complete adresse */
 #adresse-suggestions {
@@ -837,53 +836,59 @@ tr {
 /* Navbar */
 
 .navbar {
-  background-color: white;
+  width: 100%;
+  background-color: rgb(223, 240, 250);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 5px 10px; /* Réduire le padding pour diminuer la hauteur */
-  height: 100px;
- 
+  height: 80px;
+  position: fixed; /* Rendre la navbar fixe */
+  top: 0; /* Fixer en haut de la page */
+  left: 0; /* Fixer à gauche de la page */
+  z-index: 1000; /* Assurer que la navbar reste au-dessus des autres éléments */
+  box-sizing: border-box;
 }
 
-.navbar h1{
- margin-right: 63% ;
- font-size: x-large;
- color: #2678d1;
-
-}
 
 .navbar-logo img{
 width: 190px;
 }
 
+
+
 .nav-item .nav-link img{
   width: 20px;
 }
 
-
-
+.esp-salarie{
+  margin-top:10px;
+}
 
 /* Élément de la barre de navigation */
+.nav-itemEnveloppe{
+   display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
 .navbar-item {
+ 
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 25rem; /* Ajustez selon vos besoins */
-  margin-right: 1%; /* Considérez de le rendre réactif */
+  width: 37rem; /* Ajustez selon vos besoins */
+  margin-left: 30%;
 
- 
+  
 }
 
-/* Élément individuel de la navigation */
-.nav-item {
-  text-align: center;
-  margin: 0 10px; /* Réduire les marges pour diminuer la hauteur */
-}
+
 
 .nav-item img{
 width: 20px;
 }
+
 
 /* Images des liens de navigation */
 .nav-link img {
@@ -928,6 +933,28 @@ width: 20px;
   color: #000;
   background-color: #fff;
 }
+
+
+
+.drapeaux {
+display: flex;
+justify-content: space-between;
+width: 3%;
+
+ 
+}
+
+.drapeaux img {
+ width: 20px;
+ height: 20px; 
+}
+
+
+.nav-item1{
+  margin-right: 1%;
+}
+
+
 .custom-block,
 .custom-block2 {
   margin: 0 auto;
@@ -1041,18 +1068,18 @@ td.statutL {
   margin: 0; /* Supprimer les marges pour diminuer la hauteur */
 }
 
-/* Design réactif */
-@media (max-width: 768px) {
-  .navbar-item {
-    width: 100%; /* S'adapte à la largeur de l'écran */
-    margin-right: 0; /* Supprime le margin-right pour éviter le débordement */
-    justify-content: center; /* Centre les éléments sur les petits écrans */
-  }
 
-  .nav-item {
-    margin: 10px; /* Réduire les marges sur les petits écrans */
-  }
-}
+
+
+
+
+
+
+
+
+
+
+
 
 /* GRAPHIC STAT */
 
@@ -1178,6 +1205,7 @@ list-style-type: none;
   text-decoration: none;
   cursor: pointer;
 }
+
 /* Page erreur */
 .divErreur{
   display: flex ;
@@ -1282,3 +1310,252 @@ list-style-type: none;
     flex-direction: column;
     align-items: center;
   }
+
+
+
+.intro1 {
+  font-size: 3rem; 
+  color: rgba(0, 153, 255, 0.856);
+ 
+}
+
+
+
+.eco-img1{
+width: 100px;
+height: 100px;
+
+}
+.eco-img2{
+width: 150px;
+height: 100px;
+
+}
+.eco-img3{
+width: 100px;
+
+}
+.eco-img4{
+width: 150px;
+height: 100px;
+
+}
+
+.eco-image{
+  margin-top: 5%;
+  margin-left: 25%;
+  margin-bottom: 5%;
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.eco-texte{
+  font-size: 24px;
+  display: flex;
+  justify-content: start;
+  width: 76%;
+  margin-left:12%;
+  padding: auto;
+ 
+}
+
+.eco-texte p{
+  display: flex;
+  font-size: 19px;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 5%;
+}
+
+
+
+.Ecotitre{
+  margin: 2.5%;
+  font-size: 3rem;
+  color: rgb(4, 114, 53);
+}
+
+.EcologyText{
+  width: 60%;
+  color: rgb(1, 49, 8);
+}
+
+
+.logo-why{
+margin-bottom: 3%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.logo-why img{
+  width: 150px;
+
+}
+
+.para-why{
+  padding-top: 2%;
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  align-items: center;
+}
+.para-why p{
+ font-size:24px;
+ text-align: center;
+}
+
+.para-why h4{
+  text-align: center;
+ font-size:30px;
+}
+
+
+
+
+.valeur{
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  color: rgba(0, 153, 255, 0.856);
+}
+
+.titre-para1{
+  color: rgba(3, 153, 65, 0.856);
+  font-weight: bold;
+  font-size: 19px;
+}
+
+
+.classeEco{
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 15%;
+}
+
+.classeEco img{
+  /* padding-left: 10%; */
+  width: 150px;
+  height: 150px;
+}
+
+.commentaire h1{
+  font-size: 3rem; 
+  color: rgba(0, 153, 255, 0.856);
+ display: flex;
+ justify-content: center;
+}
+
+.com-client{
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  width: 17%;
+  background-color: rgba(211, 209, 209, 0.308);
+  border-radius: 40px;
+  font-size: 20px;
+  
+}
+.client-icon{
+  width: 50px;
+  height: 50px;
+
+}
+
+.profil-client{
+  padding: 3%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.notation{
+  width: 20vw;
+}
+
+.note-avis{
+width: 100%;
+
+}
+
+.com{
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 5%;
+  
+}
+.commentaire{
+  padding-bottom: 5%;
+}
+
+/* Design réactif */
+
+
+@media (max-width: 1390px) {
+.navbar{
+  width: 100%;
+}
+.message-titre{
+ width:80% ;
+}
+.message-titre h1{
+  width: 80%;
+}
+}
+
+@media(max-width:1110px){
+.message-titre{
+  height: 80vh;
+}
+.message-titre h1{
+  font-size: 32px;
+}
+}
+
+
+
+@media (max-width: 850px) {
+  .logo-why {
+    display: flex;
+    flex-wrap: wrap ;
+  
+  }
+
+  .para-why{
+    width: 45vw;
+  } 
+}
+
+@media (max-width: 768px) {
+  .navbar-item {
+    width: 100%; /* S'adapte à la largeur de l'écran */
+    justify-content: center; /* Centre les éléments sur les petits écrans */
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-item {
+    margin: 10px; /* Réduire les marges sur les petits écrans */
+  }
+.divIntro{
+  flex-direction: column;
+  height: 100vh;
+
+}
+
+}
+
+
+
+
+@media (max-width: 660px) {
+ .flipperFront{
+  display: vlex;
+  flex-wrap: wrap ;
+}
+}
+gi
