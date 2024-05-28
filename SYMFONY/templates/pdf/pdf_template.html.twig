@@ -94,18 +94,15 @@
                     <td>{{operation.client.name}} {{operation.client.firstname}}</td>
                     <td>{{operation.description}}</td>
                     <td>{{operation.type.name}}</td>
-                    <td>{{operation.type.prix}} €</td>
+                    <td>{{ operation.customPrix ? operation.customPrix : operation.type.prix}} €</td>
                 </tr>
             </table>
         </div>
         <div class="divTotal">
-            <p class="total"><b>Total : {{operation.type.prix}} €</b> </p>
+            <p class="total"><b>Total : {{ operation.customPrix ? operation.customPrix : operation.type.prix}} €</b> </p>
         </div>
         <hr>
-                <h5>Merci de nous avoir fais confiance.</h5>
-
+        <h5>Merci de nous avoir fais confiance.</h5>
     </body>
-
-
 </html>
 

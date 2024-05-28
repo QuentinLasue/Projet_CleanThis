@@ -1,6 +1,12 @@
 {% extends "base.html.twig" %}
 {% block title %}Modification d'opération{% endblock %}
 
+{% block javascripts %}
+	<script src="{{ asset('./../assets/prixCustom.js') }}"></script>
+	{% block importmap %}
+		{{ importmap('app') }}
+	{% endblock %}
+{% endblock %}
 {% block body %}
 
 {% include "base/nave.html.twig" %}
@@ -21,6 +27,9 @@
         {{form_row(form.type)}} 
 		{{form_row(form.dateForecast,{'attr':{'value':operation.dateForecast|date('Y-m-d')}})}}
         {{form_row(form.description,{'attr':{'value':operation.description}})}}
+        <div id="inputPrix" class="displayNone">
+            {{form_row(form.prix , {'attr':{'placeholder':'Prix de l\'opération', }})}} 
+        </div>    
         <div class="displayNone">
             {{form_row(form.photo , {'attr':{'disabled': true}})}} 
         </div>
