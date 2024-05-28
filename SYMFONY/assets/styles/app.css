@@ -193,17 +193,28 @@ h6 {
 }
 
 /* Message Flash et erreur */
+.divMessageFlash{
+  display: flex;
+  justify-content: center;
+}
 .messageFlash {
   font-size: 20px;
+  padding: 10px;
 }
 .flash {
   text-align: center;
+  border: 1px solid;
+  border-radius: 20px;
 }
 .error {
   background-color: #f88170;
+  color: #701111;
+  border-color: #D06666;
 }
 .success {
   background-color: #bbf7d4;
+  color: #145C32;
+  border-color: #7DECAB;
 }
 .messageError {
   color: #f88170;
