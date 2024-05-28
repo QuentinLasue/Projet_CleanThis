@@ -49,8 +49,20 @@
                     <td>{{ operation.statut }}</td>
                     <td>{{ operation.dateForecast ? operation.dateForecast.format('d/m/Y') : 'N/A' }}</td>
                     <td>{{ operation.client.name }} {{ operation.client.firstname }}</td>
-                    <td>{{ operation.user.name }} {{ operation.user.firstname }}</td>
-                    <td>{{ operation.user.roles[0] }}</td>
+                    <td>
+                    {% if operation.user %}
+                        {{ operation.user.name }} {{ operation.user.firstname }}
+                    {% else %}
+                        Non attribué
+                    {% endif %}
+                    </td>
+                    <td>
+                    {% if operation.user %}
+                        {{ operation.user.roles[0] }}
+                    {% else %}
+                        Non attribué
+                    {% endif %}
+                    </td>
                     <td><a href="{{ path('generate_pdf' , { 'id': operation.id }) }}" target="_blank">Générer PDF</a></td>
                 </tr>
             {% endfor %}
