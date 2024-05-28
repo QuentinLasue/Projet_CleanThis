@@ -10,12 +10,14 @@
 {% block body %}
 {% include "base/nave.html.twig" %}
 
-
-    <h1>Register</h1>
-    {{ form_start(registrationForm) }}
+{% set titre = "Register" %}
+{% include "base/blueBar.html.twig" %}  
+<div class = "registFor">
+  {{ form_start(registrationForm) }}
     {# Form rendering logic #}
     {{ form_row(registrationForm.name, {'attr': { 'placeholder': 'Doe'}}) }}
     {{ form_row(registrationForm.firstname, {'attr': { 'placeholder': 'John'}}) }}
     {{ form_row(registrationForm.email, {'attr': { 'placeholder': 'johndoe@gmail.com'}}) }}
     {{ form_end(registrationForm) }}
+    </div>
 {% endblock %}
