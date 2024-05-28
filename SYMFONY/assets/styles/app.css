@@ -391,11 +391,53 @@ body {
 .navE-links li a,
 .navL-links li a {
   text-decoration: none;
-  color: #fff;
+  color: #ffffff;
   font-weight: bold;
   font-family: bold italic;
   font-size: 20px;
 }
+
+
+
+.containerOp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.contourOp {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.counter {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.custom-block {
+  margin-bottom: 20px;
+}
+
+.flash-error {
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.custom-block {
+  display: flex;
+  
+  margin-bottom: 20px;
+}
+
 
 /* login.html.twig */
 
@@ -975,9 +1017,11 @@ width: 20px;
   border-collapse: collapse;
   width: 1132px;
 }
-th,
-td {
-  border: 1px solid black;
+
+
+th, td {
+  border: 1px solid rgb(157, 255, 0);
+
   height: 115px;
   width: 283px;
   text-align: center;
@@ -1117,3 +1161,106 @@ list-style-type: none;
   align-items: center;
   min-height: 100vh; /* 100% de la hauteur de la vue */
 }
+
+/* Styles pour le menu burger */
+.burger-menu {
+    display: none; /* Caché par défaut */
+    cursor: pointer;
+  }
+  
+  .burger-icon {
+    width: 30px;
+    height: 3px;
+    background-color: #000;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+@media screen and (max-width: 850px) {
+
+    
+    .navbarE {
+      height: 75px;
+      padding: 0 10px;
+    }
+  
+    .navE-links li,
+    .navL-links li {
+      padding: 5px 5px;
+      margin-right: 10px;
+    }
+  
+    .navE-links li a,
+    .navL-links li a {
+      font-size: 14px;
+    }
+  
+    .custom-block,
+    .custom-block2 {
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .custom-block .buttonOp,
+    .custom-block2 .buttonOp {
+      width: 100%;
+      margin-top: 10px;
+    }
+  
+    .tableL {
+      width: 100%;
+    }
+  
+    th,
+    td {
+      width: 100%;
+    }
+  }
+
+  
+  @media screen and (min-width: 850px) and (max-width: 1450px) {
+    .navbarE {
+      height: 90px;
+      padding: 0 20px;
+      width: 70%;
+    }
+  
+    .navE-links li, .navL-links li {
+        padding: 10px 20px;
+        margin-right: auto;
+    }
+
+    .navE-links li,
+    .navL-links li {
+      padding: 10px 15px;
+      margin-right: 10px;
+    }
+  
+    .navE-links li a,
+    .navL-links li a {
+      font-size: 14px;
+    }
+  
+    .custom-block,
+    .custom-block2 {
+      width: 50%;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .custom-block .buttonOp,
+    .custom-block2 .buttonOp {
+      width: 100%;
+      margin-top: 10px;
+    }
+  
+    .tableL {
+      width: 80%;
+    }
+  
+    th,
+    td {
+      width: 33%;
+    }
+  }
+  

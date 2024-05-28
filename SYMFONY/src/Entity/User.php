@@ -26,17 +26,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     private ?string $email = null;
 
-    /**
-     * @var list<string> The user roles
-     */
-    #[ORM\Column]
-    private array $roles = [];
+    /** 
+     
+*@var list<string> The user roles*/#[ORM\Column]
+  private array $roles = [];
 
-    /**
-     * @var string The hashed password
-     */
-    #[ORM\Column]
-    private ?string $password = null;
+    /** 
+     
+*@var string The hashed password*/#[ORM\Column]
+  private ?string $password = null;
 
     #[ORM\Column(length: 50)]
     #[Assert\NotBlank()]
@@ -65,8 +63,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         message: "Le champ ne peut pas contenir uniquement des espaces."
     )]
     private ?string $firstname = null;
-
-    public function getId(): ?int
+public function getId(): ?int
     {
         return $this->id;
     }
@@ -84,46 +81,34 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * A visual identifier that represents this user.
-     *
-     * @see UserInterface
-     */
-    public function getUserIdentifier(): string
-    {
-        return (string) $this->email;
-    }
+     
+*A visual identifier that represents this user.*
+*@see UserInterface*/
+public function getUserIdentifier(): string{
+    return (string) $this->email;}
 
-    /**
-     * @see UserInterface
-     *
-     * @return list<string>
-     */
-    public function getRoles(): array
-    {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+    /** 
+     
+*@see UserInterface*
+*@return list<string>*/
+public function getRoles(): array{$roles = $this->roles;// guarantee every user at least has ROLE_USER$roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }
 
-    /**
-     * @param list<string> $roles
-     */
-    public function setRoles(array $roles): static
-    {
-        $this->roles = $roles;
+    /** 
+     
+*@param list<string> $roles*/
+  public function setRoles(array $roles): static{$this->roles = $roles;
 
         return $this;
     }
 
-    /**
-     * @see PasswordAuthenticatedUserInterface
-     */
-    public function getPassword(): string
-    {
-        return $this->password;
-    }
+    /** 
+     
+*@see PasswordAuthenticatedUserInterface*/
+  public function getPassword(): string{
+      return $this->password;}
 
     public function setPassword(string $password): static
     {
@@ -133,13 +118,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @see UserInterface
-     */
-    public function eraseCredentials(): void
-    {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
-    }
+     
+*@see UserInterface*/
+  public function eraseCredentials(): void{
+    // If you store any temporary, sensitive data on the user, clear it here// $this->plainPassword = null;
+}
 
     public function getName(): ?string
     {
@@ -168,6 +151,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __toString()
     {
         return $this->getRoles();
-        
+
     }
 }

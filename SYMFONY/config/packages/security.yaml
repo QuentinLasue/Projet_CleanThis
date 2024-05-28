@@ -14,8 +14,7 @@ security:
             entity:
                 class: App\Entity\User
                 property: email
-
-    # Configuration for firewalls
+# Configuration for firewalls
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -25,6 +24,7 @@ security:
             lazy: true
             provider: database_users
             custom_authenticator:
+                
                 - App\Security\LoginFormAuthenticator
                 # - App\Security\UserAuthenticator
 
@@ -49,13 +49,12 @@ security:
 
     # Access control configuration
     access_control:
+       - { path: ^/admin, roles: ROLE_EXPERT }
+       - { path: ^/profile, roles: ROLE_SENIOR }
+       - { path: ^/profile, roles: ROLE_JUNIOR }
+       - {path: ^/user, roles: [ROLE_EXPERT, ROLE_SENIOR, ROLE_JUNIOR]}
 
-        - { path: ^/admin, roles: ROLE_EXPERT }
-        - { path: ^/profile, roles: ROLE_SENIOR }
-        - { path: ^/profile, roles: ROLE_JUNIOR }
-        - {path: ^/user, roles: [ROLE_EXPERT, ROLE_SENIOR, ROLE_JUNIOR]}
 
-     
 
 when@test:
     security:
@@ -69,4 +68,3 @@ when@test:
                 cost: 4 # Lowest possible value for bcrypt
                 time_cost: 3 # Lowest possible value for argon
                 memory_cost: 10 # Lowest possible value for argon
-
