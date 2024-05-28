@@ -24,16 +24,19 @@ h6 {
 
 }
 
+.bg-coverAll{
+  padding-bottom: 1rem;
+
+}
+
 
 .bg-img{
-  width: 800px;
+  width: 100%;
 }
 
 .divIntro{
   display: flex;
   margin-top: 80px;
-  height: 100vh;
-
 }
 
 
@@ -317,6 +320,7 @@ textarea,
 input::placeholder {
   padding-left: 10px;
 }
+
 
 body {
   margin: 0;
@@ -831,7 +835,9 @@ width: 190px;
   align-items: center;
   justify-content: space-around;
   width: 37rem; /* Ajustez selon vos besoins */
-  padding-left: 30rem;
+  margin-left: 30%;
+
+  
 }
 
 
@@ -1017,18 +1023,18 @@ td.statutL {
   margin: 0; /* Supprimer les marges pour diminuer la hauteur */
 }
 
-/* Design réactif */
-@media (max-width: 768px) {
-  .navbar-item {
-    width: 100%; /* S'adapte à la largeur de l'écran */
-    margin-left: 5%; /* Supprime le margin-right pour éviter le débordement */
-    justify-content: center; /* Centre les éléments sur les petits écrans */
-  }
 
-  .nav-item {
-    margin: 10px; /* Réduire les marges sur les petits écrans */
-  }
-}
+
+
+
+
+
+
+
+
+
+
+
 
 /* GRAPHIC STAT */
 
@@ -1153,9 +1159,9 @@ height: 100px;
 
 .eco-image{
   margin-top: 5%;
-  margin-left: 10%;
+  margin-left: 25%;
   margin-bottom: 5%;
-  width: 80%;
+  width: 50%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -1194,6 +1200,7 @@ height: 100px;
 
 
 .logo-why{
+margin-bottom: 3%;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -1205,10 +1212,11 @@ height: 100px;
 }
 
 .para-why{
+  padding-top: 2%;
   width: 15%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: baseline;
   align-items: center;
 }
 
@@ -1217,7 +1225,7 @@ height: 100px;
 .valeur{
   display: flex;
   justify-content: center;
-  margin-top: 3%;
+  margin-top: 1%;
   font-size: 24px;
   color: rgba(0, 153, 255, 0.856);
 }
@@ -1250,6 +1258,80 @@ height: 100px;
  justify-content: center;
 }
 
-.commentaire img{
-  width: 100px;
+.com-client{
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  width: 17%;
+  background-color: rgba(211, 209, 209, 0.308);
+  border-radius: 40px;
+  font-size: 20px;
+  
+}
+.client-icon{
+  width: 50px;
+  height: 50px;
+
+}
+
+.profil-client{
+  padding: 3%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.note-avis{
+width: 25%;
+margin-bottom: 2%;
+
+}
+
+.com{
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 5%;
+  
+}
+.commentaire{
+  padding-bottom: 5%;
+}
+
+/* Design réactif */
+
+
+@media (max-width: 1390px) {
+.navbar{
+  width: 100%;
+}
+.message-titre{
+ width:80% ;
+}
+.message-titre h1{
+  width: 80%;
+}
+}
+
+@media (max-width: 768px) {
+  .navbar-item {
+    width: 100%; /* S'adapte à la largeur de l'écran */
+    justify-content: center; /* Centre les éléments sur les petits écrans */
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-item {
+    margin: 10px; /* Réduire les marges sur les petits écrans */
+  }
+}
+
+@media (max-width: 680px) {
+  .logo-why {
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  /* .para-why{
+    width: 50vw;
+  } */
 }
