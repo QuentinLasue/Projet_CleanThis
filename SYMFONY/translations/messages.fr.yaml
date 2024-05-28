@@ -14,3 +14,9 @@ form:
         dateForecast: 'Date prévue :'
         description: 'Description :'
         photo: 'Photo :'
+    demande_opération:
+        request : 'requete' 
+        title : 'titre'
+        back_button : retour
+        
+

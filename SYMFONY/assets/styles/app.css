@@ -368,11 +368,11 @@ body {
   margin-right: auto;
   margin-left: auto;
   height: 121px;
-  width: 1596px;
+  width: 100%;
   display: flex;
   align-items: center;
   border-radius: 1cqmax;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .navE-links,
@@ -386,7 +386,7 @@ body {
 .navE-links li,
 .navL-links li {
   padding: 10px 20px;
-  margin-right: 35px;
+  margin-right: 0;
 }
 .navE-links li a,
 .navL-links li a {
@@ -728,10 +728,11 @@ button:hover {
   border-collapse: collapse;
 }
 
+.tableListePersonnel,
 th,
 td,
 tr {
-  border: 2px solid #85ba22;
+  border: 2px solid #77b800;
   font-size: 21px;
   padding: 20px;
 }
@@ -899,7 +900,7 @@ width: 20px;
 .custom-block2 {
   margin: 0 auto;
   display: flex;
-  width: 1596px;
+  width: 100%;
   height: 100px;
   justify-content: space-around;
   align-items: center;
@@ -1028,38 +1029,66 @@ td.statutL {
   flex-direction: column;
 }
 
-.chart1 {
-  width: 50%;
-  margin-top: 5%;
-}
-.chart2 {
-  width: 50%;
-  margin-top: 5%;
-}
-.chart3 {
+.chart1, .chart2, .chart3 {
   width: 50%;
   margin-top: 5%;
 }
 
-.operation-table table {
+.operation-table h2 {
+  display: flex;
+  justify-content: center;
+}
+
+.operation-table {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+  width: 100%;
+  
 
-.operation-table table thead {
-  display: none;
+}
+.tableStat {
+  background-color: white;
+}
+.operation-table table tbody tr {
+  width: 100%;
+  padding: 0;
+  background-color:white;
+}
+.operation-table table tbody td {
+  width: 100%;
+  background-color: #007bff;
+  color: white;
 }
 
 .operation-table table tbody {
   display: flex;
   flex-direction: row;
+  
 }
 
-.operation-table table tbody tr {
-  display: flex;
-  flex-direction: column;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .chart1, .chart2, .chart3 {
+    width: 80%;
+    margin-top: 5%;
+  }
+  
+  .operation-table table tbody {
+    flex-direction: column;
+  }
 }
+
+@media (max-width: 480px) {
+  .chart1, .chart2, .chart3 {
+    width: 100%;
+    margin-top: 5%;
+  }
+  
+
+}
+
+
 
 /* Footer */
 .footer {
@@ -1069,6 +1098,8 @@ td.statutL {
   padding: 20px;
   text-align: center;
   color: white;
+  position: absolute;
+  bottom: 0;
 }
 #openModal {
   cursor: pointer;
