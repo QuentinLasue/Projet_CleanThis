@@ -53,7 +53,8 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
 
             // Redirection vers la page de connexion après l'inscription
-            return $this->redirectToRoute('app_login');
+            $this->addFlash('success', 'Ajout d\' employé réussi');
+            return $this->redirectToRoute('app_register');
         }
 
         // Rendre le formulaire et les rôles disponibles dans le template

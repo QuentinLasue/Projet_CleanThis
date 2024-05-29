@@ -63,7 +63,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         message: "Le champ ne peut pas contenir uniquement des espaces."
     )]
     private ?string $firstname = null;
+
+#[ORM\Column(length: 100, nullable: true)]
+    private ?string $resetToken = null;
+    
 public function getId(): ?int
+
+
+
     {
         return $this->id;
     }
@@ -147,7 +154,17 @@ public function getRoles(): array{$roles = $this->roles;// guarantee every user 
 
         return $this;
     }
+    public function getResetToken(): ?string
+    {
+        return $this->resetToken;
+    }
 
+    public function setResetToken(?string $resetToken): self
+    {
+        $this->resetToken = $resetToken;
+
+        return $this;
+    }
     public function __toString()
     {
         return $this->getRoles();

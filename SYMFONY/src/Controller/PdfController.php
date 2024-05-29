@@ -16,7 +16,11 @@ class PdfController extends AbstractController
     {
         $this->pdfGenerator = $pdfGenerator;
     }
+
     #[Route("user/pdf/{id}", name: 'generate_pdf')]
+
+
+
     public function generatePdf(Operation $operation): Response
     {
         

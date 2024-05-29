@@ -854,7 +854,7 @@ tr {
   align-items: center;
   padding: 5px 10px; /* Réduire le padding pour diminuer la hauteur */
   height: 80px;
-  position: fixed; /* Rendre la navbar fixe */
+ /* position: fixed;  Rendre la navbar fixe */
   top: 0; /* Fixer en haut de la page */
   left: 0; /* Fixer à gauche de la page */
   z-index: 1000; /* Assurer que la navbar reste au-dessus des autres éléments */
@@ -1419,6 +1419,7 @@ margin-bottom: 3%;
  text-align: center;
 }
 
+
 .para-why h4{
   text-align: center;
  font-size:30px;
@@ -1569,4 +1570,19 @@ width: 100%;
   flex-wrap: wrap ;
 }
 }
-gi
+
+
+/* login */
+.modalLogin{
+  position: relative;
+  background-color: red;
+  z-index:1;
+}
+.loginModal{
+  display: flex;
+  flex-direction: column;
+}
+.modalEmailCo{
+  display: none;
+}
+

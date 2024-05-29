@@ -26,6 +26,7 @@ class RegistrationFormType extends AbstractType
     {
         $builder
 
+
         ->add('roles', ChoiceType::class, [
             'choices' => array_combine($options['roles'], $options['roles']),
             'multiple' => false,
@@ -80,6 +81,7 @@ class RegistrationFormType extends AbstractType
             ],
         ])
         ->add('submit', SubmitType::class, ['label' => 'Envoyer']);
+
 
             // ->add('plainPassword', PasswordType::class, [
             //     'mapped' => false,
