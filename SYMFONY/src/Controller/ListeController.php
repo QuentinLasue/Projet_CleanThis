@@ -37,6 +37,7 @@ class ListeController extends AbstractController
             $operation = $this->operationRepository->find($operationId);
     
             if ($operation) {
+                $operation->setDateEnd(new \DateTime());
                 $operation->setStatut('Terminé');
                 $entityManager->flush();
     

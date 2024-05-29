@@ -74,6 +74,7 @@ class OperationController extends AbstractController
         $maxAllowed = $maxOperations[$userRole] ?? 0;
 
         if ($userOperationsCount < $maxAllowed) {
+            $operation->setDateStart(new \DateTime());
             $operation->setStatut("En cours");
             $operation->setUser($currentUser);
             $this->entityManager->persist($operation);
