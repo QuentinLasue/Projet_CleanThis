@@ -854,13 +854,15 @@ tr {
   align-items: center;
   padding: 5px 10px; /* Réduire le padding pour diminuer la hauteur */
   height: 80px;
- /* position: fixed;  Rendre la navbar fixe */
+ position: fixed;/*   Rendre la navbar fixe */
   top: 0; /* Fixer en haut de la page */
   left: 0; /* Fixer à gauche de la page */
   z-index: 1000; /* Assurer que la navbar reste au-dessus des autres éléments */
   box-sizing: border-box;
 }
-
+.fullBody{
+  margin-top: 80px;
+}
 
 .navbar-logo img{
 width: 190px;

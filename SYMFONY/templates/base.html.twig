@@ -20,9 +20,11 @@
 		{% block header %}
 			{{ include("/navbar/index.html.twig") }}
 		{% endblock %}
+		<div class='fullBody'>
 		{% block body %}
 			{% include "home/home.html.twig" %}
 		{% endblock %}
+		</div>
 
 		{% include "base/footer.html.twig" %}
 	</body>
