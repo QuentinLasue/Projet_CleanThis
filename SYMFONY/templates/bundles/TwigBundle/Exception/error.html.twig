@@ -3,7 +3,7 @@
 {% block body %}
 	{% set titre = 'Erreur ' ~ status_code  %}
 	{% include "base/blueBar.html.twig" %}
-	<div class="divErreur">
+	<div class="divErreur min-height100">
 		<p>Impossible de trouver la page demandée.</p>
 		<p>Toutes nos excuses pour la gêne occasionnée.</p>
 		<p>{{status_text}},

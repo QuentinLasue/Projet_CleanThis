@@ -16,7 +16,7 @@
 
     {% include "base/nave.html.twig" %}
 
-    <div class="container">
+    <div class="container min-height100">
         {% for flash_message in app.flashes('error') %}
             <div class="flash-error">
                 {{ flash_message }}

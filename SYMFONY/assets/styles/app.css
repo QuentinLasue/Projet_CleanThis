@@ -1228,9 +1228,11 @@ list-style-type: none;
   display: flex ;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh; /* 100% de la hauteur de la vue */
 }
+.min-height100{
+  min-height: 100vh; /* 100% de la hauteur de la vue */
 
+}
 /* Styles pour le menu burger */
 .burger-menu {
     display: none; /* Caché par défaut */

@@ -14,7 +14,7 @@
 {% set titre = "Description de l'opération" %}
 {% include "base/blueBar.html.twig" %}
 
-<div class="formClient">
+<div class="formClient min-height100">
     <a href="{{path('add_operation_list')}}" class="btnBack btn">Retour</a>
     {% if operation.namePhoto %}
         <img src="{{ asset('photoClient/' ~ operation.namePhoto)}}" alt="photo de l'opération n°{{operation.id}}" class="imgOperationDetails">

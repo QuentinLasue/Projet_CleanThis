@@ -9,7 +9,7 @@
     {% include "base/blueBar.html.twig" %}
     
 
-<div class="formClient">
+<div class="formClient min-height100">
     <a href="{{path('admin.listePersonnel')}}" class="btnBack btn">Retour</a>
     {{form_start(form)}}
         {{form_row(form.name, {'attr':{'value':nom}})}}

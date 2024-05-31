@@ -5,7 +5,7 @@
     {% set titre = "Qui êtes-vous ?" %}
 	{% include "base/blueBar.html.twig" %}
     {% include "base/flash.html.twig" %}
-    <div class="formClient">
+    <div class="formClient min-height100">
         <a href="{{path('client')}}" class=" btn btnBack">Retour</a>
         {% for message in app.flashes('danger') %}
         <div class="alert">
