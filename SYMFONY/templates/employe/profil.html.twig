@@ -1,0 +1,18 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+    <h1>Bienvenu {{user.name}} {{user.firstname}} </h1>
+    {% include "base/flash.html.twig" %}
+    {{ form_start(EmployeForm) }}
+    {# Form rendering logic #}
+    {# {{ form_row(EmployeForm.name, {'attr':{'value':user.name}})}}
+    {{ form_row(EmployeForm.firstname, {'attr':{'value':user.firstname}}) }}
+    {{ form_row(EmployeForm.email) }} #}
+    {{ form_row(EmployeForm.password) }}
+    {{ form_end(EmployeForm) }}
+
+    {% endblock %}

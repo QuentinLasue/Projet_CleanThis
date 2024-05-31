@@ -45,8 +45,7 @@ class ContactType extends AbstractType
                     ])
                 ],
             ])
-            ->add('envoyer', SubmitType::class)
-        ;
+            ->add('envoyer', SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

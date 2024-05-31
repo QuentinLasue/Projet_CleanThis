@@ -6,14 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class NavbarController extends AbstractController
+class SecurityController extends AbstractController
 {
-    #[Route('/navbar', name: 'app_navbar')]
+    #[Route('/security', name: 'app_security')]
     public function index(): Response
     {
-        return $this->render('navbar/index.html.twig', [
-            'controller_name' => 'NavbarController',
+        return $this->render('security/index.html.twig', [
+            'controller_name' => 'SecurityController',
         ]);
     }
-  
 }

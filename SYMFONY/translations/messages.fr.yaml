@@ -1,0 +1,22 @@
+form:
+    adresse:
+        number: 'Numéro :'
+        street: 'Rue :'
+        city: 'Ville :'
+        county: 'Département :'
+        country: 'Pays :'
+    client:
+        name: 'Nom :'
+        firstname: 'Prénom :'
+        mail: 'E-mail :'
+    operation:
+        type: 'Type opération :'
+        dateForecast: 'Date prévue :'
+        description: 'Description :'
+        photo: 'Photo :'
+    demande_opération:
+        request : 'requete' 
+        title : 'titre'
+        back_button : retour
+        
+

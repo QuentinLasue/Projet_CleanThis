@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Repository\RoleRepository;
-use App\Domain\Service\PasswordMailer;
+use App\Service\PasswordMailer;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -53,7 +53,8 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
 
             // Redirection vers la page de connexion après l'inscription
-            return $this->redirectToRoute('app_login');
+            $this->addFlash('success', 'Ajout d\' employé réussi');
+            return $this->redirectToRoute('app_register');
         }
 
         // Rendre le formulaire et les rôles disponibles dans le template

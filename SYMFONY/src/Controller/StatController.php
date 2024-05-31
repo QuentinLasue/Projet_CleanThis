@@ -43,22 +43,22 @@ class StatController extends AbstractController
 
             // Ajouter le prix de l'opération au prix total du type correspondant
             switch ($type) {
-                case 'grosse':
+                case 'Grosse Operation':
                     $prixGrosse += $typeOperation->getPrix();
                     $countGrosse += 1;
                     $dateGrosse[$month] += 1;
                     break;
-                case 'moyenne':
+                case 'Moyenne Operation':
                     $prixMoyenne += $typeOperation->getPrix();
                     $countMoyenne += 1;
                     $dateMoyenne[$month] += 1;
                     break;
-                case 'petite':
+                case 'Petite Operation':
                     $prixPetite += $typeOperation->getPrix();
                     $countPetite += 1;
                     $datePetite[$month] += 1;
                     break;
-                case 'custom':
+                case 'Custom Operation':
                     $prixCustom += $typeOperation->getPrix();
                     $countCustom += 1;
                     $dateCustom[$month] += 1;

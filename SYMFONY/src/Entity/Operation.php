@@ -63,6 +63,9 @@ class Operation
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $namePhoto = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?float $customPrix = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -184,6 +187,18 @@ class Operation
     public function setNamePhoto(?string $namePhoto): static
     {
         $this->namePhoto = $namePhoto;
+
+        return $this;
+    }
+
+    public function getCustomPrix(): ?float
+    {
+        return $this->customPrix;
+    }
+
+    public function setCustomPrix(?float $customPrix): static
+    {
+        $this->customPrix = $customPrix;
 
         return $this;
     }

@@ -1,20 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Log in!
+{% endblock %}
 
 {% block body %}
-{% include "base/flash.html.twig" %}   
-      
-    <div class="contentCo">
-     {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
 
-    {% if app.user %}
-        <div class="mb-3 navbarCo">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
+{% include "base/flash.html.twig" %}
+	<form method="post">
+
+
+
+		<div class="contentCo">
+			{% if error %}
+				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			{% endif %}
+
+			{% if app.user %}
+				<div class="mb-3 navbarCo">
+					You are logged in as
+					{{ app.user.userIdentifier }},
+					<a href="{{ path('app_logout') }}">Logout</a>
+				</div>
+			{% endif %}
 			<div class="form-containerCo">
 				<h1 id="h1Co">Se Connecter</h1>
 				<form method="post">
@@ -42,9 +49,8 @@
 							</div>
 						</div>
 						<div style="width: 160px;"></div>
-						<div class="forgot-passwordCo">
-							<a href="#">Mot de passe oublié ?</a>
-						</div>
+						<a href="{{ path('forgotten_password') }}" class="btn btn-secondary mt-3">Mot de passe oublié</a>
+
 					</div>
 					<br>
 					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
@@ -71,4 +77,26 @@
 				</div>
 			</div>
 		</div>
+
+	</form>
+	<form method="post">
+	<div id='modalEmailCo' class='modalEmailCo'>
+							<div class='loginModal'>
+								<div class="input-iconCo">
+									<i class="fas fa-lockCo"></i>
+									<input type="email" name="email" id="" placeholder="adresse mail" required>
+									<button type="submit" id="">Valider</button>
+								</div>
+							</div>
+
+						</div>
+	</form>
+	{% block javascripts %}
+
+		<script src="{{asset('./../assets/login.js')}}"></script>
+		{% block importmap %}
+			{{ importmap('app') }}
+		{% endblock %}
+	{% endblock %}
+
 {% endblock %}

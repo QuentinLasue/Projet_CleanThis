@@ -1,4 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/operation.css') }}">
+{% endblock %}
 
 
 {% block javascripts %}
@@ -9,22 +13,50 @@
 		{% endblock %}
 
 {% block body %}
-     
+
     {% include "base/nave.html.twig" %}
 
-    <div class="contourOp">
+    <div class="container">
+        {% for flash_message in app.flashes('error') %}
+            <div class="flash-error">
+                {{ flash_message }}
+            </div>
+        {% endfor %}
 
-{% for operation in operations %}
-    <div class="custom-block">
-        <div class="date">{{ operation.dateStart|date('d/m/Y') }}</div>
-        <div class="status">{{ operation.statut }}</div>
-        <div class="description">{{ operation.description }}</div>
-        <form action="{{ path('app_operation_prendre', {'id': operation.id}) }}" method="post" class="operation-form">
-            <button type="submit" class="prendre-button buttonOp">Prendre</button>
-        </form>
-    </div>
-{% endfor %}
 
+        <div class="contourOp">
+            <div class="counter" data-count="{{ userOperationsCount }}" data-max-count="{{ maxOperations[userRole] }}">
+                {% if userRole == 'ROLE_EXPERT' %}
+                    Vous avez pris {{ userOperationsCount }} opérations sur 5 autorisées.
+                {% elseif userRole == 'ROLE_SENIOR' %}
+                    Vous avez pris {{ userOperationsCount }} opérations sur 3 autorisées.
+                {% elseif userRole == 'ROLE_JUNIOR' %}
+                    Vous avez pris {{ userOperationsCount }} opération sur 1 autorisée.
+                {% endif %}
+            </div>
+
+
+            {% for operation in operations %}
+                <div class="custom-block">
+                    <div class="date">{{ operation.dateStart|date('d/m/Y') }}</div>
+                    <div class="status">{{ operation.statut }}</div>
+                    <div class="description">{{ operation.description }}</div>
+                    
+                    {% if (userRole == 'ROLE_EXPERT' and userOperationsCount < maxOperations['ROLE_EXPERT']) or 
+                          (userRole == 'ROLE_SENIOR' and userOperationsCount < maxOperations['ROLE_SENIOR']) or 
+                          (userRole == 'ROLE_JUNIOR' and userOperationsCount < maxOperations['ROLE_JUNIOR']) %}
+                        <form action="{{ path('app_operation_prendre', {'id': operation.id}) }}" method="post" class="operation-form">
+                            <button type="submit" class="prendre-button buttonOp">Prendre</button>
+                        </form>
+                    {% else %}
+                        
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+l
     </div>
+
+    <script src="{{ asset('../assets/boutonPrendre.js') }}"></script>
 
 {% endblock %}

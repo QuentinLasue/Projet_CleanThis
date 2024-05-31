@@ -11,12 +11,12 @@ class RoleFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $apprenti = new Role();
-        $apprenti->setName("ROLE_APPRENTI");
+        $apprenti->setName("ROLE_JUNIOR");
 
         $manager->persist($apprenti);
 
         $senior = new Role();
-        $senior->setName("Role_SENIOR");
+        $senior->setName("ROLE_SENIOR");
 
         $manager->persist($senior);
 

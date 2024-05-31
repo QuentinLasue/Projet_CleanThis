@@ -7,7 +7,7 @@ use Dompdf\Options;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
-class PdfGenerator
+class PdfService
 {
     private $twig;
 
