@@ -23,22 +23,22 @@ class AdresseFormType extends AbstractType
     {
         $builder
             ->add('number', IntegerType::class, [
-                'label' => $this->translator->trans('form.adresse.number'),
+                'label' => 'Numéro',
                 'attr' => [
                     'min' => 1,
                 ]
             ])
             ->add('street', TextType::class, [
-                'label' => $this->translator->trans('form.adresse.street')
+                'label' => 'Rue'
             ])
             ->add('city', TextType::class, [
-                'label' => $this->translator->trans('form.adresse.city')
+                'label' => 'Ville'
             ])
             ->add('county', TextType::class, [
-                'label' => $this->translator->trans('form.adresse.county')
+                'label' => 'Département'
             ])
             ->add('country', TextType::class, [
-                'label' => $this->translator->trans('form.adresse.country')
+                'label' => 'Pays'
             ])
         ;
     }
