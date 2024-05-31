@@ -28,7 +28,7 @@
 		{{form_row(form.dateForecast,{'attr':{'value':operation.dateForecast|date('Y-m-d')}})}}
         {{form_row(form.description,{'attr':{'value':operation.description}})}}
         <div id="inputPrix" class="displayNone">
-            {{form_row(form.prix , {'attr':{'placeholder':'Prix de l\'opération', }})}} 
+            {{form_row(form.prix , {'attr':{'placeholder':'Prix de l\'opération', 'disabled': true}})}} 
         </div>    
         <div class="displayNone">
             {{form_row(form.photo , {'attr':{'disabled': true}})}} 

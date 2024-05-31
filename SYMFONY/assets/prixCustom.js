@@ -7,11 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (typeOperationSelect.value === '4') {
             prixDiv.classList.add('displayBlock'); // Affiche le champ "prix"
             prixDiv.classList.remove('displayNone');
-            prixInput.ariaDisabled =false;
+            prixInput.disabled =false;
         } else {
             prixDiv.classList.add('displayNone'); // Masque le champ "prix"
             prixDiv.classList.remove('displayBlock');
-            prixInput.ariaDisabled =true;
+            prixInput.disabled =true;
         }
     });
 })
