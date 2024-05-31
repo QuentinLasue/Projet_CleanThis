@@ -306,7 +306,8 @@ label {
   justify-content: center;
   margin: 20px;
 }
-.btn {
+
+.btn, .last, .next ,.page, .current, .previous, .first {
   background-color: #2678d1;
   color: white;
   border: none;
@@ -330,7 +331,7 @@ label {
   border-radius: 10px;
   align-self: flex-start;
 }
-.btn:hover {
+.btn:hover,.last:hover, .next:hover ,.page:hover, .current:hover, .previous:hover, .first:hover {
   box-shadow: 0px 4px 4px #4a4a4a inset;
   background-color: #0056b3;
 }
@@ -804,7 +805,7 @@ tr {
   margin: 20px;
   width: 60%;
 }
-.btnPagination {
+.btnPagination,.last, .next ,.page, .current, .previous, .first {
   color: #2678d1;
   background-color: white;
   border: 1px solid #2678d1;
@@ -813,7 +814,11 @@ tr {
   padding-right: 10px;
   text-decoration: none;
 }
-.pageActuelle {
+.last a, .next a,.page a, .current a, .previous a, .first a{
+  text-decoration: none;
+  color: white;
+}
+.pageActuelle,.last, .next ,.page, .current, .previous, .first {
   color: white;
   background-color: #2678d1;
   border: none;
