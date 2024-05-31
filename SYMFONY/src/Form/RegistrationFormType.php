@@ -34,50 +34,50 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('name', TextType::class,[
                 'label'=>'Nom :',
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Le prénom est obligatoire.',
-                    ]),
-                    new Length([
-                        'min'=> 2,
-                        'max'=>50,
-                        'maxMessage'=>'Le nom doit être de 50 caractères maximum.',
-                        'minMessage' => 'Le nom doit être de 10 caractères minimum.'
-                    ]),
-                    new Regex([
-                        'pattern'=> "/\S+/",
-                        'message'=> "Le champ ne peut pas contenir uniquement des espaces."
-                    ])
-                ],
+                // 'constraints' => [
+                //     new NotBlank([
+                //         'message' => 'Le prénom est obligatoire.',
+                //     ]),
+                //     new Length([
+                //         'min'=> 2,
+                //         'max'=>50,
+                //         'maxMessage'=>'Le nom doit être de 50 caractères maximum.',
+                //         'minMessage' => 'Le nom doit être de 10 caractères minimum.'
+                //     ]),
+                //     new Regex([
+                //         'pattern'=> "/\S+/",
+                //         'message'=> "Le champ ne peut pas contenir uniquement des espaces."
+                //     ])
+                // ],
             ])
             ->add('firstname', TextType::class,[
                 'label'=>'Prénom :',
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Le prénom est obligatoire.',
-                    ]),
-                    new Length([
-                        'min'=> 2,
-                        'max'=>50,
-                        'maxMessage'=>'Le prénom doit être de 50 caractères maximum.',
-                        'minMessage' => 'Le prénom doit être de 10 caractères minimum.'
-                    ]),
-                    new Regex([
-                        'pattern'=> "/\S+/",
-                        'message'=> "Le champ ne peut pas contenir uniquement des espaces."
-                    ])
-                ],
+                // 'constraints' => [
+                //     new NotBlank([
+                //         'message' => 'Le prénom est obligatoire.',
+                //     ]),
+                //     new Length([
+                //         'min'=> 2,
+                //         'max'=>50,
+                //         'maxMessage'=>'Le prénom doit être de 50 caractères maximum.',
+                //         'minMessage' => 'Le prénom doit être de 10 caractères minimum.'
+                //     ]),
+                //     new Regex([
+                //         'pattern'=> "/\S+/",
+                //         'message'=> "Le champ ne peut pas contenir uniquement des espaces."
+                //     ])
+                // ],
             ])
             ->add('email', EmailType::class, [
                 'label' => 'Email :',
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'L\'email est obligatoire.',
-                    ]),
-                    new Email([
-                        'message' => 'L\'email n\'est pas valide.',
-                    ]),
-                ],
+                // 'constraints' => [
+                //     new NotBlank([
+                //         'message' => 'L\'email est obligatoire.',
+                //     ]),
+                //     new Email([
+                //         'message' => 'L\'email n\'est pas valide.',
+                //     ]),
+                // ],
             ])
             ->add('submit', SubmitType::class, ['label' => 'Envoyer']);
 

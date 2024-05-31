@@ -55,6 +55,9 @@ class RegistrationController extends AbstractController
             // Redirection vers la page de connexion après l'inscription
             $this->addFlash('success', 'Ajout d\' employé réussi');
             return $this->redirectToRoute('app_register');
+        }elseif($form->isSubmitted() && !$form->isValid()) {
+            $this->addFlash('error', 'invalid');
+            return $this->redirectToRoute('app_register');
         }
 
         // Rendre le formulaire et les rôles disponibles dans le template
