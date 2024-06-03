@@ -1,62 +1,86 @@
 {% block header %}
 
-	<nav class="navbar">
-	
-		<div class="Logo-item">
-			<a class="navbar-logo" href={{ path("home") }}>
-				<img src="{{ asset('image/LOGO.png') }}" alt="Votre Logo">
-			</a>
-		</div>
-	<div class='nav-itemEnveloppe'>
-		<div class="navbar-item">
-			<div class="nav-item">
-				<a class="nav-link" href={{ path("home") }}>
-					<img src="{{ asset('image/note-avis.png') }}" alt="Accueil">
-					<p>Acceuil</p>
-				</a>
-			</div>
-			<div class="nav-item">
-				<a class="nav-link" href={{ path("client") }}>
-					<img src="{{ asset('image/image_devis.png') }}" alt="Devis">
-					<p>Devis</p>
-				</a>
-			</div>
-			{% if app.user %}
-			<div class="nav-item">
-				<a class="nav-link" href={{ path("app_operation") }}>
-					<img src="{{ asset('image/image_operations.png') }}" alt="Opérations">
-					<p>Opérations</p>
-				</a>
-			</div>
-			{% endif %}
-			<div class="nav-item">
-				<a class="nav-link" href={{ path("app_contact") }}>
-					<img src="{{ asset('image/image_aide.png') }}" alt="Aide">
-					<p>Aide</p>
-				</a>
-			</div>
-		</div>
+<nav class="header-area">
+    <div class="header-container">
+        <div class="site-logo">
+            <a class="navbar-logo" href={{ path("home") }}>
+                <img src="{{ asset('image/LOGO.png') }}" alt="Votre Logo">
+            </a>
+        </div>
 
-		<div
-			class="nav-item1">
-			{# Élément de navigation pour Espace Salarié ou Déconnexion #}
-			{% if app.user %}
-				<a class="nav-link" href="{{ path('app_logout') }}">
-					<p>Déconnexion</p>
-				</a>
-			{% else %}
-				<a class="nav-link salarie" href="{{ path('app_login') }}">
-					<img class="imgnav-item" src="{{ asset('image/codicon_account.png') }}" alt="Aide">
-					<p>Espace salarié</p>
-				</a>
-			{% endif %}
+        <div class="mobile-nav">
+            <img src="{{ asset('image/menu-btn.png') }}" alt="burger">
+        </div>
 
-		</div>
-	</div>
-		<div class="drapeaux">
-			<img src="{{ asset('image/france.png') }}" alt="france">
-			<img src="{{ asset('image/royaume-uni.png') }}" alt="anglais">
-		</div>
-	</nav>
+        <div class='site-nav-menu'>
+            <ul class="primary-menu">
+                <li class="nav-item">
+                    <a class="nav-link" href={{ path("home") }}>
+                        <img src="{{ asset('image/note-avis.png') }}" alt="Accueil">
+                        <p>Accueil</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href={{ path("client") }}>
+                        <img src="{{ asset('image/image_devis.png') }}" alt="Devis">
+                        <p>Devis</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href={{ path("app_operation") }}>
+                        <img src="{{ asset('image/image_operations.png') }}" alt="Opérations">
+                        <p>Opérations</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href={{ path("app_contact") }}>
+                        <img src="{{ asset('image/image_aide.png') }}" alt="Aide">
+                        <p>Aide</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    {# Élément de navigation pour Espace Salarié ou Déconnexion #}
+                    {% if app.user %}
+                        <a class="nav-link" href="{{ path('app_logout') }}">
+                            <p>Déconnexion</p>
+                        </a>
+                    {% else %}
+                        <a class="nav-link salarie" href="{{ path('app_login') }}">
+                            <img class="imgnav-item" src="{{ asset('image/codicon_account.png') }}" alt="espace salarié">
+                            <p>Espace salarié</p>
+                        </a>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+
+        {# <ul class="drapeaux salarie">
+            <li>
+                <img src="{{ asset('image/france.png') }}" alt="france">
+            </li>
+            <li>
+                <img src="{{ asset('image/royaume-uni.png') }}" alt="anglais">
+            </li>
+        </ul> #}
+    </div>
+</nav>
+
+<section class="hero-section"></section>
+
+<!-- JqueryCDN -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $(".mobile-nav img").click(function(){        
+            $(".site-nav-menu").toggleClass("mobile-menu");
+        });
+    });
+</script>
+
 {% endblock %}
 {% block footer %}{% endblock %}

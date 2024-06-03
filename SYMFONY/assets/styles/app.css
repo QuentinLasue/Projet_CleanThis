@@ -44,8 +44,8 @@ h6 {
 
 
 .divIntro h2.intro {
-  color: rgba(0, 0, 0, 0.842); /* Couleur du texte */
-  font-size: 24px; /* Taille de la police */
+  color: #000000d7; /* Couleur du texte */
+  font-size: 2rem; /* Taille de la police */
   margin-top: -1%;
  
  
@@ -59,7 +59,7 @@ h6 {
 }
 
 .intro{
-  font-size:24px;
+  font-size:1.5rem;
   font-weight: bold;
 }
 
@@ -855,127 +855,246 @@ tr {
 /* Conteneur de la barre de navigation */
 /* Navbar */
 
-.navbar {
-  width: 100%;
-  background-color: rgb(223, 240, 250);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px 10px; /* Réduire le padding pour diminuer la hauteur */
-  height: 80px;
- position: fixed;/*   Rendre la navbar fixe */
-  top: 0; /* Fixer en haut de la page */
-  left: 0; /* Fixer à gauche de la page */
-  z-index: 1000; /* Assurer que la navbar reste au-dessus des autres éléments */
-  box-sizing: border-box;
-}
+
 .fullBody{
   margin-top: 80px;
 }
 
-.navbar-logo img{
-width: 190px;
+.header-area {
+  width: 100%;
+  background-color: rgb(223, 240, 250);
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  padding: 5px 10px;
+  height: 100px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-sizing: border-box;
 }
 
+.header-container {
+  width: 100%;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  position: relative;
+}
 
+.site-logo {
+  padding: 10px;
+  position: absolute;
+  left: 10px; 
+}
 
-.nav-item .nav-link img{
+.site-logo img {
+  width: 250px;
+}
+
+.mobile-nav {
+  display: none;
+}
+
+.site-nav-menu {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  width: 30%; 
+}
+
+.primary-menu {
+  list-style: none;
+  margin: 0;
+  display: flex; 
+  justify-content: space-around; 
+  align-items: center;
+  width: 100%; 
+}
+
+.primary-menu li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px; 
+}
+
+.primary-menu li:first-child {
+  margin-left: 0; 
+}
+
+.primary-menu li:last-child {
+  margin-right: 10px; 
+}
+
+.primary-menu a {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: #13a738;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 15px 10px;
+  transition: .5s;
+}
+
+.primary-menu a img {
   width: 20px;
 }
 
-.esp-salarie{
-  margin-top:10px;
-}
-
-/* Élément de la barre de navigation */
-.nav-itemEnveloppe{
-   display: flex;
-  width: 100%;
-  justify-content: space-between;
-}
-
-.navbar-item {
- 
+.nav-item {
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-around;
-  width: 37rem; /* Ajustez selon vos besoins */
-  margin-left: 30%;
-
-  
+  margin: 0;
 }
 
-
-
-.nav-item img{
-width: 20px;
+.primary-menu a:hover,
+.primary-menu .active {
+  color: #397af3;;
 }
 
-
-/* Images des liens de navigation */
-.nav-link img {
-  display: block;
-  margin: auto;
-  margin-bottom: 2px; /* Réduire la marge inférieure pour diminuer la hauteur */
-  padding-bottom: 5px; /* Réduire le padding pour diminuer la hauteur */
+.primary-menu li a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #397af3;
+  bottom: 25px;
+  left: 0;
+  transition: all .5s;
 }
 
-/* Texte des liens de navigation */
-.nav-link p {
-  font-family: "Roboto", sans-serif;
-
-  color: #85ba22;
-  border-radius: 30px;
-  text-decoration: none;
-  font-size: 16px; /* Ajuster la taille de la police si nécessaire */
-  margin: 0; /* Supprimer les marges pour diminuer la hauteur */
+.primary-menu li a:hover:after {
+  width: 100%;
 }
 
-/* Effet de survol pour le texte des liens de navigation */
-.nav-link p:hover {
-  background-color: #2678d1;
-  color: white;
+.primary-menu li .active:after {
+  width: 100%;
 }
 
-/* Supprimer la décoration de texte des liens */
-.nav-link {
-  text-decoration: none; /* Supprime le soulignement des liens */
+.mobile-nav {
+  float: right;
+  margin: 10px;
+  padding: 10px;
+  font-size: 24px;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+  position: absolute;
+  right: 10px; 
 }
 
-/* Cas spécial pour l'élément 'Espace Salarié' */
-.nav-item.espace-salarie {
-  position: absolute; /* Positionnement absolu par rapport au conteneur */
-  top: 0; /* Position en haut */
-  right: 1%; /* Position à droite */
-  margin: 10px; /* Réduire les marges pour diminuer la hauteur */
+.mobile-nav img {
+  width: 40px;
 }
-
-.navE-links li a:hover,
-.navL-links li a:hover {
-  color: #000;
-  background-color: #fff;
-}
-
-
 
 .drapeaux {
-display: flex;
-justify-content: space-between;
-width: 3%;
-
- 
+  list-style-type: none;
+  display: flex;
+  align-items: center;
 }
 
 .drapeaux img {
- width: 20px;
- height: 20px; 
+  width: 20px;
+  margin-left: 10px; 
 }
 
 
-.nav-item1{
-  margin-right: 1%;
+.hero-section {
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
 }
 
+/* CSS pour responsive */
+
+@media {
+  
+}
+
+@media all and (orientation: portrait){
+
+
+  .site-nav-menu {
+      margin-top: -25px;
+      float: none;
+      position: absolute;
+      background: #142440;
+      width: 100%;
+      left: 0;
+      top: 85px;
+      padding: 0px 0 380px 0px;
+      border-top: 1px solid #4a4848;
+      clip-path: circle(0px at 100% 0%);
+      transition: all .8s;
+  }
+
+  .primary-menu {
+      display: flex;
+      flex-direction: column; 
+      align-items: center;
+      margin-top: 50px;
+      font-size: 16px;
+    
+  }
+
+  .primary-menu li {
+      display: block;
+      text-align: center;
+      margin :5px 0 5px 0;
+     
+  }
+
+  .primary-menu li a img {
+      display: none; 
+  }
+
+  .primary-menu li a {
+      display: block;
+      margin-bottom: 0;
+      padding: 5px 0;
+
+  }
+
+  .mobile-nav {
+    display: block;
+  }
+
+  .mobile-nav img{
+    width: 40px;
+  }
+
+  .mobile-menu {
+      clip-path: circle(112% at 100% 0%);
+  }
+
+  .primary-menu li a:after {
+      display: none;
+  }
+
+
+
+  .divIntro h2.intro {
+    color: #000000d7; /* Couleur du texte */
+    font-size: 3.5rem; /* Taille de la police */
+    margin-top: -1%;
+   
+   
+    /* Ajoutez d'autres styles CSS selon vos besoins */
+  }
+  .divIntro h1 {
+    color: rgba(0, 153, 255, 0.856); /* Couleur du texte */
+    font-size: 5rem; /* Taille de la police */
+    width: 60%;
+    /* Ajoutez d'autres styles CSS selon vos besoins */
+  }
+}
 
 .custom-block,
 .custom-block2 {
@@ -1151,7 +1270,7 @@ td.statutL {
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media all and (orientation: portrait){
   .chart1, .chart2, .chart3 {
     width: 80%;
     margin-top: 5%;
@@ -1251,7 +1370,7 @@ list-style-type: none;
     margin: 6px 0;
     transition: 0.4s;
   }
-@media screen and (max-width: 850px) {
+  @media all and (orientation: portrait){
 
     
     .navbarE {
@@ -1520,7 +1639,7 @@ width: 100%;
 /* Design réactif */
 
 
-@media (max-width: 1390px) {
+@media all and (orientation: portrait){
 .navbar{
   width: 100%;
 }
@@ -1532,18 +1651,18 @@ width: 100%;
 }
 }
 
-@media(max-width:1110px){
+@media all and (orientation: portrait){
 .message-titre{
   height: 80vh;
 }
 .message-titre h1{
-  font-size: 32px;
+  font-size: 5rem;
 }
 }
 
 
 
-@media (max-width: 850px) {
+@media all and (orientation: portrait) {
   .logo-why {
     display: flex;
     flex-wrap: wrap ;
@@ -1555,7 +1674,7 @@ width: 100%;
   } 
 }
 
-@media (max-width: 768px) {
+@media all and (orientation: portrait){
   .navbar-item {
     width: 100%; /* S'adapte à la largeur de l'écran */
     justify-content: center; /* Centre les éléments sur les petits écrans */
