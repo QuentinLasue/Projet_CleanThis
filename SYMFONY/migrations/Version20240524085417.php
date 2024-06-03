@@ -20,7 +20,7 @@ final class Version20240524085417 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('DROP TABLE messenger_messages');
+    
         $this->addSql('ALTER TABLE operation ADD name_photo VARCHAR(255) DEFAULT NULL');
         $this->addSql('ALTER TABLE type_operation ADD photo_op VARCHAR(150) DEFAULT NULL');
     }
