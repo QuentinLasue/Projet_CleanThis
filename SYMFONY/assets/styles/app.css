@@ -919,6 +919,7 @@ tr {
   justify-content: center;
   align-items: center;
   margin-left: 10px; 
+  
 }
 
 .primary-menu li:first-child {
@@ -992,17 +993,6 @@ tr {
 
 .mobile-nav img {
   width: 40px;
-}
-
-.drapeaux {
-  list-style-type: none;
-  display: flex;
-  align-items: center;
-}
-
-.drapeaux img {
-  width: 20px;
-  margin-left: 10px; 
 }
 
 
@@ -1154,12 +1144,18 @@ td.statutL {
 
 /* Texte pour 'Espace Salarié' ou 'Déconnexion' */
 
-.nav-item.espace-salarie p {
+.nav-link.espace-salarie {
   font-size: 16px; /* Ajuster la taille de la police si nécessaire */
   margin: 0; /* Supprimer les marges pour diminuer la hauteur */
+  text-align: center;
+
+  width: 100%;
+
 }
 
-
+.underscore{
+  color: rgb(223, 240, 250);
+}
 
 
 
@@ -1521,6 +1517,7 @@ width: 100%;
 }
 
 @media screen and (min-width: 850px) and (max-width: 1450px) {
+
     .navbarE {
       height: 90px;
       padding: 0 20px;
@@ -1561,6 +1558,7 @@ width: 100%;
   }
 
 @media (max-width: 660px) {
+  
  .flipperFront{
   display: vlex;
   flex-wrap: wrap ;
@@ -1574,6 +1572,7 @@ width: 100%;
   }}
   
 @media all and (orientation: portrait){
+  .fullBody{margin-top: 10vh;}
   .header-area{
     height: 10vh;
   }
@@ -1620,6 +1619,12 @@ width: 100%;
       font-size: 16px;
     
   }
+  .esp-salarie{
+   display: flex;
+   justify-content: center;
+  }
+
+
 
   .primary-menu li {
       display: block;
@@ -1632,7 +1637,7 @@ width: 100%;
       display: none; 
   }
 
-  .primary-menu li a {
+  .primary-menu li a, .esp-salarie {
       display: block;
       margin-bottom: 0;
       padding: 5px 0;
@@ -1862,6 +1867,10 @@ font-size: 60px;
 
 .intro1{
   font-size: 4rem;
+}
+
+.underscore{
+  color: #142440;
 }
 }
 

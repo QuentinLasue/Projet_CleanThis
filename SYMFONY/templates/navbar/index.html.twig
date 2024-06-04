@@ -49,9 +49,9 @@
                             <p>Déconnexion</p>
                         </a>
                     {% else %}
-                        <a class="nav-link salarie" href="{{ path('app_login') }}">
+                        <a class="nav-link espace-salarie" href="{{ path('app_login') }}">
                             <img class="imgnav-item" src="{{ asset('image/codicon_account.png') }}" alt="espace salarié">
-                            <p>Espace salarié</p>
+                            <p class="esp-salarie">Espace<span class='underscore'>_</span>salarié</p>
                         </a>
                     {% endif %}
                 </li>
