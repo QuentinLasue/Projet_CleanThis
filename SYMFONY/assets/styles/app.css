@@ -1017,212 +1017,7 @@ tr {
 
 
 
-@media all and (orientation: portrait){
-  .header-area{
-    height: 10vh;
-  }
 
-
-  .navbar-logo img{
-    width: 300px;
-
-  }
-
-.btnDecouvrir{
-  width: 45%;
-  height: 60px;
-  font-size: 2.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-  .message-titre{
-    margin-top: 150px;
-  }
-
-  .site-nav-menu {
-      margin-top: -25px;
-      float: none;
-      position: absolute;
-      background: #142440;
-      width: 100%;
-      left: 0;
-      top: 85px;
-      padding: 0px 0 380px 0px;
-      border-top: 1px solid #4a4848;
-      clip-path: circle(0px at 100% 0%);
-      transition: all .8s;
-  }
-
-  .primary-menu {
-      display: flex;
-      flex-direction: column; 
-      align-items: center;
-      margin-top: 50px;
-      font-size: 16px;
-    
-  }
-
-  .primary-menu li {
-      display: block;
-      text-align: center;
-      margin :5px 0 5px 0;
-     
-  }
-
-  .primary-menu li a img {
-      display: none; 
-  }
-
-  .primary-menu li a {
-      display: block;
-      margin-bottom: 0;
-      padding: 5px 0;
-      font-size: 3rem;
-
-  }
-
-  .mobile-nav {
-    display: block;
-  }
-
-  .mobile-nav img{
-    width: 90px;
-  }
-
-  .mobile-menu {
-      clip-path: circle(112% at 100% 0%);
-  }
-
-  .primary-menu li a:after {
-      display: none;
-  }
-
-
-
-  .divIntro h2.intro {
-    color: #000000d7; /* Couleur du texte */
-    font-size: 3.5rem; /* Taille de la police */
-    margin-top: -1%;
-   
-   
-    /* Ajoutez d'autres styles CSS selon vos besoins */
-  }
-  .divIntro h1 {
-    color: rgba(0, 153, 255, 0.856); /* Couleur du texte */
-    font-size: 5rem; /* Taille de la police */
-    width: 60%;
-    /* Ajoutez d'autres styles CSS selon vos besoins */
-  }
-
-.image-home img{
-  width: 90%;
-
-}
-
-.logo-why .para-why img{
-  width: 220px;
-}
-
-
-.logo-why .para-why  {
-  width: 45%;
-}
-
-.valeur h1{
-  font-size: 5rem;
-
-}
-
-.presta{
-  font-size: 4rem;
-}
-
-.cardList .flipContainer {
-  width: 50%;
-  height: 550px;
-
-}
-
-.btnDevis{
-  width: 75%;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top:  -10%;
-
-}
-
-.eco-texte{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  margin: 0;
-}
-
-.eco-texte p{
-text-align: justify;
-font-size: 60px;
-}
-
-.devDurable{
-  width: 750px;
-
-}
-
-.eco-image{
-  display: flex;
-  justify-content: space-between;
-  width: 80%;
-  margin:10%
-}
- 
-.commentaire h1{
-
-  font-size: 4rem; 
-  color: rgba(0, 153, 255, 0.856);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 10%;
- 
-  }
-
-.com-client{
-    padding: 2%;
-    display: flex;
-    flex-direction: column;
-    width: 77%;
-    background-color: rgba(211, 209, 209, 0.308);
-    border-radius: 40px;
-    font-size: 20px;
-    margin-left: 10%;
-    gap: 30px;
-    margin-bottom: 5%;
-   } 
-   
-  .client-icon img{
-    width: 60px;
-    height: 60px;
-  
-  }
-
-
-.note-avis{
-
-  width: 650px;
-  margin-left: 70%;
-
-  }
-  
-
-
-
-}
 
 
 
@@ -1424,26 +1219,6 @@ td.statutL {
   
 }
 
-/* Responsive adjustments */
-@media all and (orientation: portrait){
-  .chart1, .chart2, .chart3 {
-    width: 80%;
-    margin-top: 5%;
-  }
-  
-  .operation-table table tbody {
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 480px) {
-  .chart1, .chart2, .chart3 {
-    width: 100%;
-    margin-top: 5%;
-  }
-  
-
-}
 
 
 
@@ -1525,77 +1300,8 @@ list-style-type: none;
     margin: 6px 0;
     transition: 0.4s;
   }
-  @media all and (orientation: portrait){
-
-    
-    .navbarE {
-      height: 75px;
-      padding: 0 10px;
-    }
   
-    .navE-links li,
-    .navL-links li {
-      padding: 5px 5px;
-      margin-right: 10px;
-    }
-  
-    .navE-links li a,
-    .navL-links li a {
-      font-size: 14px;
-    }
-  
-    
-  
-    .tableL {
-      width: 100%;
-    }
-  
-    th,
-    td {
-      width: 100%;
-    }
-  }
-
-  
-  @media screen and (min-width: 850px) and (max-width: 1450px) {
-    .navbarE {
-      height: 90px;
-      padding: 0 20px;
-      width: 70%;
-    }
-  
-    .navE-links li, .navL-links li {
-        padding: 10px 20px;
-        margin-right: auto;
-    }
-
-    .navE-links li,
-    .navL-links li {
-      padding: 10px 15px;
-      margin-right: 10px;
-    }
-  
-    .navE-links li a,
-    .navL-links li a {
-      font-size: 14px;
-    }
-  
-  
-    .custom-block .buttonOp,
-    .custom-block2 .buttonOp {
-      width: 100%;
-      margin-top: 10px;
-    }
-  
-    .tableL {
-      width: 80%;
-    }
-  
-    th,
-    td {
-      width: 33%;
-    }
-  }
+ 
 /* Contact */
   .formulaire-container{
     display: flex;
@@ -1639,7 +1345,7 @@ height: 100px;
 
 }
 
-/* .eco-image{
+ .eco-image{
   margin-top: 5%;
   margin-left: 25%;
   margin-bottom: 5%;
@@ -1647,7 +1353,7 @@ height: 100px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-} */
+}
 
 .eco-texte{
   font-size: 24px;
@@ -1742,17 +1448,32 @@ margin-bottom: 3%;
   height: 150px;
 }
 
+ 
+.commentaire{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.commentaire h1{
 
-/* .com-client{
+  font-size: 3rem; 
+  color: rgba(0, 153, 255, 0.856);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4%;
+ 
+  }
+.com-client{
   padding: 2%;
   display: flex;
   flex-direction: column;
   width: 17%;
   background-color: rgba(211, 209, 209, 0.308);
   border-radius: 40px;
-  font-size: 20px; */
+  font-size: 20px;
   
-/* } */
+ } 
 .client-icon{
   width: 100px;
   height: 100px;
@@ -1769,22 +1490,333 @@ margin-bottom: 3%;
   width: 20vw;
 }
 
-/* .note-avis{
-width: 100%; */
+.note-avis{
+width: 100%; 
 
-/* } */
-/* 
+ } 
+
 .com{
   display: flex;
   justify-content: space-evenly;
   padding-bottom: 5%;
   
-} */
+} 
+
+
 
 /* Design réactif */
 
+/* login */
+.modalLogin{
+  position: relative;
+  background-color: red;
+  z-index:1;
+}
+.loginModal{
+  display: flex;
+  flex-direction: column;
+}
+.modalEmailCo{
+  display: none;
+}
 
+@media screen and (min-width: 850px) and (max-width: 1450px) {
+    .navbarE {
+      height: 90px;
+      padding: 0 20px;
+      width: 70%;
+    }
+  
+    .navE-links li, .navL-links li {
+        padding: 10px 20px;
+        margin-right: auto;
+    }
+
+    .navE-links li,
+    .navL-links li {
+      padding: 10px 15px;
+      margin-right: 10px;
+    }
+  
+    .navE-links li a,
+    .navL-links li a {
+      font-size: 14px;
+    }
+  
+  
+    .custom-block .buttonOp,
+    .custom-block2 .buttonOp {
+      width: 100%;
+      margin-top: 10px;
+    }
+  
+    .tableL {
+      width: 80%;
+    }
+  
+    th,
+    td {
+      width: 33%;
+    }
+  }
+
+@media (max-width: 660px) {
+ .flipperFront{
+  display: vlex;
+  flex-wrap: wrap ;
+}
+}
+
+@media (max-width: 480px) {
+  .chart1, .chart2, .chart3 {
+    width: 100%;
+    margin-top: 5%;
+  }}
+  
 @media all and (orientation: portrait){
+  .header-area{
+    height: 10vh;
+  }
+
+
+  .navbar-logo img{
+    width: 300px;
+
+  }
+
+.btnDecouvrir{
+  width: 45%;
+  height: 60px;
+  font-size: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+  .message-titre{
+    margin-top: 150px;
+  }
+
+  .site-nav-menu {
+      margin-top: -25px;
+      float: none;
+      position: absolute;
+      background: #142440;
+      width: 100%;
+      left: 0;
+      top: 85px;
+      padding: 0px 0 380px 0px;
+      border-top: 1px solid #4a4848;
+      clip-path: circle(0px at 100% 0%);
+      transition: all .8s;
+  }
+
+  .primary-menu {
+      display: flex;
+      flex-direction: column; 
+      align-items: center;
+      margin-top: 50px;
+      font-size: 16px;
+    
+  }
+
+  .primary-menu li {
+      display: block;
+      text-align: center;
+      margin :5px 0 5px 0;
+     
+  }
+
+  .primary-menu li a img {
+      display: none; 
+  }
+
+  .primary-menu li a {
+      display: block;
+      margin-bottom: 0;
+      padding: 5px 0;
+      font-size: 3rem;
+
+  }
+
+  .mobile-nav {
+    display: block;
+  }
+
+  .mobile-nav img{
+    width: 90px;
+  }
+
+  .mobile-menu {
+      clip-path: circle(112% at 100% 0%);
+  }
+
+  .primary-menu li a:after {
+      display: none;
+  }
+
+
+
+  .divIntro h2.intro {
+    color: #000000d7; /* Couleur du texte */
+    font-size: 3.5rem; /* Taille de la police */
+    margin-top: -1%;
+   
+   
+    /* Ajoutez d'autres styles CSS selon vos besoins */
+  }
+  .divIntro h1 {
+    color: rgba(0, 153, 255, 0.856); /* Couleur du texte */
+    font-size: 5rem; /* Taille de la police */
+    width: 60%;
+    /* Ajoutez d'autres styles CSS selon vos besoins */
+  }
+
+.image-home img{
+  width: 90%;
+
+}
+
+.logo-why .para-why img{
+  width: 220px;
+}
+
+
+.logo-why .para-why  {
+  width: 45%;
+}
+
+.valeur h1{
+  font-size: 5rem;
+
+}
+
+.presta{
+  font-size: 4rem;
+}
+
+.cardList .flipContainer {
+  width: 50%;
+  height: 550px;
+
+}
+
+.btnDevis{
+  width: 75%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top:  -10%;
+
+}
+
+.eco-texte{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+
+.eco-texte p{
+text-align: justify;
+font-size: 60px;
+}
+
+.devDurable{
+  width: 750px;
+
+}
+
+.eco-image{
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin:10%
+}
+
+.commentaire h1{
+
+  font-size: 4rem; 
+  color: rgba(0, 153, 255, 0.856);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10%;
+ 
+  }
+.com{
+  display: flex;
+  flex-direction: column;
+}
+.com-client{
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    width: 77%;
+    background-color: rgba(211, 209, 209, 0.308);
+    border-radius: 40px;
+    font-size: 20px;
+    margin-left: 10%;
+    gap: 30px;
+    margin-bottom: 5%;
+   } 
+   
+  .client-icon img{
+    width: 60px;
+    height: 60px;
+  
+  }
+
+  .profil-client h4{
+    font-size: 2rem;
+  }
+
+.note-avis{
+
+  width: 650px;
+  margin-left: 70%;
+
+  }
+
+/* Responsive adjustments */
+
+  .chart1, .chart2, .chart3 {
+    width: 80%;
+    margin-top: 5%;
+  }
+  
+  .operation-table table tbody {
+    flex-direction: column;
+  }
+
+    .navbarE {
+      height: 75px;
+      padding: 0 10px;
+    }
+  
+    .navE-links li,
+    .navL-links li {
+      padding: 5px 5px;
+      margin-right: 10px;
+    }
+  
+    .navE-links li a,
+    .navL-links li a {
+      font-size: 14px;
+    }
+  
+    .tableL {
+      width: 100%;
+    }
+  
+    th,
+    td {
+      width: 100%;
+    }
+
 .navbar{
   width: 100%;
 }
@@ -1794,20 +1826,16 @@ width: 100%; */
 .message-titre h1{
   width: 80%;
 }
-}
 
-@media all and (orientation: portrait){
+
+
 .message-titre{
   height: 80vh;
 }
 .message-titre h1{
   font-size: 5rem;
 }
-}
 
-
-
-@media all and (orientation: portrait) {
   .logo-why {
     display: flex;
     flex-wrap: wrap ;
@@ -1817,9 +1845,6 @@ width: 100%; */
   .para-why{
     width: 45vw;
   } 
-}
-
-@media all and (orientation: portrait){
   .navbar-item {
     width: 100%; /* S'adapte à la largeur de l'écran */
     justify-content: center; /* Centre les éléments sur les petits écrans */
@@ -1840,28 +1865,4 @@ width: 100%; */
 }
 }
 
-
-
-
-@media (max-width: 660px) {
- .flipperFront{
-  display: vlex;
-  flex-wrap: wrap ;
-}
-}
-
-
-/* login */
-.modalLogin{
-  position: relative;
-  background-color: red;
-  z-index:1;
-}
-.loginModal{
-  display: flex;
-  flex-direction: column;
-}
-.modalEmailCo{
-  display: none;
-}
 
