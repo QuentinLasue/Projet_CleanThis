@@ -55,7 +55,7 @@ class OperationController extends AbstractController
     }
 
 
-    #[Route("/operation/prendre/{id}", name: "app_operation_prendre")]
+    #[Route("/user/operation/prendre/{id}", name: "app_operation_prendre")]
 
     public function prendreOperation(Operation $operation, UserInterface $user, UserRepository $userRepo, OperationRepository $repo, Request $request): Response
 

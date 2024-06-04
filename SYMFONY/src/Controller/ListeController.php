@@ -27,7 +27,7 @@ class ListeController extends AbstractController
         return $this->redirectToRoute('app_liste');
     }
 
-    #[Route('/liste', name: 'app_liste')]
+    #[Route('/user/liste', name: 'app_liste')]
     public function app_operation(Request $request): Response
     {
         if ($request->request->has('operation_id')) {
