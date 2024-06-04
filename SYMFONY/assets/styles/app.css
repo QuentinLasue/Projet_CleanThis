@@ -1174,12 +1174,15 @@ td.statutL {
   width: 100%;
   align-items: center;
   display: flex;
-  flex-direction: column;
-}
+flex-direction: column;}
 
-.chart1, .chart2, .chart3 {
-  width: 50%;
+.chart1, .chart2{
+  width: 40%;
   margin-top: 5%;
+}
+.chart3{
+  margin-top: 5%;
+  width: 25%;
 }
 
 .operation-table h2 {
@@ -1566,10 +1569,11 @@ width: 100%;
 }
 
 @media (max-width: 480px) {
-  .chart1, .chart2, .chart3 {
+  .chart1, .chart2 {
     width: 100%;
     margin-top: 5%;
   }}
+ 
   
 @media all and (orientation: portrait){
   .fullBody{margin-top: 10vh;}
@@ -1788,9 +1792,12 @@ font-size: 60px;
 
 /* Responsive adjustments */
 
-  .chart1, .chart2, .chart3 {
+  .chart1, .chart2 {
     width: 80%;
     margin-top: 5%;
+  }
+  .chart3{
+    width: 70%;
   }
   
   .operation-table table tbody {

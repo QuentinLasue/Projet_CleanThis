@@ -59,7 +59,7 @@ class StatController extends AbstractController
                     $datePetite[$month] += 1;
                     break;
                 case 'Custom Operation':
-                    $prixCustom += $typeOperation->getPrix();
+                    $prixCustom += $op->getCustomPrix();
                     $countCustom += 1;
                     $dateCustom[$month] += 1;
                     break;
@@ -134,6 +134,7 @@ class StatController extends AbstractController
             'countCustom' => $countCustom,
             'totalCount' => $totalCount,
             'totalPrix' => $totalPrix,
+            'operations' => $operations
         ]);
     }
 }
