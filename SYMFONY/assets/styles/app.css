@@ -17,11 +17,9 @@ h6 {
   flex-direction: column;
   margin-left: 11%;
   margin-top: 4%;
+  margin-bottom: 4%;
   align-items: flex-start;
   width: 70%;
-  height:52.4vh ;
-
-
 }
 
  .bg-coverAll{
@@ -29,23 +27,16 @@ h6 {
 
 } 
 
-
+.divIntro{
+  display: flex;
+}
 .bg-img{
   width: 100%;
 }
 
-.divIntro{
-  display: flex;
-  margin-top: 80px;
-  height: 100vh;
-
-}
-
-
-
 .divIntro h2.intro {
   color: #000000d7; /* Couleur du texte */
-  font-size: 2rem; /* Taille de la police */
+  font-size: 1.5rem; /* Taille de la police */
   margin-top: -1%;
  
  
@@ -1575,8 +1566,19 @@ width: 100%;
     margin-top: 5%;
   }}
  
-  
+
+
+
 @media all and (orientation: portrait){
+  .divIntro{
+    display: flex;
+    flex-direction: column;
+  }
+  .container{
+    display: flex;
+    flex-direction: column;
+  }
+
   .fullBody{margin-top: 10vh;}
   .header-area{
     height: 10vh;
@@ -1591,16 +1593,11 @@ width: 100%;
 .btnDecouvrir{
   width: 45%;
   height: 60px;
-  font-size: 2.5rem;
+  font-size: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-
-  .message-titre{
-    margin-top: 150px;
-  }
 
   .site-nav-menu {
       margin-top: -25px;
@@ -1610,7 +1607,7 @@ width: 100%;
       width: 100%;
       left: 0;
       top: 85px;
-      padding: 0px 0 380px 0px;
+      padding: 0px 0 550px 0px;
       border-top: 1px solid #4a4848;
       clip-path: circle(0px at 100% 0%);
       transition: all .8s;
@@ -1670,7 +1667,7 @@ width: 100%;
 
   .divIntro h2.intro {
     color: #000000d7; /* Couleur du texte */
-    font-size: 3.5rem; /* Taille de la police */
+    font-size: 3rem; /* Taille de la police */
     margin-top: -1%;
    
    
@@ -1683,10 +1680,7 @@ width: 100%;
     /* Ajoutez d'autres styles CSS selon vos besoins */
   }
 
-.image-home img{
-  width: 90%;
 
-}
 
 .logo-why .para-why img{
   width: 220px;
@@ -1833,18 +1827,11 @@ font-size: 60px;
 .navbar{
   width: 100%;
 }
-.message-titre{
- width:80% ;
-}
+
 .message-titre h1{
   width: 80%;
 }
 
-
-
-/* .message-titre{
-  height: 80vh;
-} */
 .message-titre h1{
   font-size: 5rem;
 }
@@ -1868,10 +1855,7 @@ font-size: 60px;
   .nav-item {
     margin: 10px; /* Réduire les marges sur les petits écrans */
   }
-.divIntro{
-  flex-direction: column;
-  height: 100vh;
-}
+
 
 .intro1{
   font-size: 4rem;
