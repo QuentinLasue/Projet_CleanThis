@@ -6,7 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Repository\OperationRepository;
+use App\Service\FactureMailService;
+use App\Service\PdfService;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ListeController extends AbstractController
@@ -28,7 +31,7 @@ class ListeController extends AbstractController
     }
 
     #[Route('/user/liste', name: 'app_liste')]
-    public function app_operation(Request $request): Response
+    public function app_operation(Request $request, FactureMailService $email, PdfService $pdfContent): Response
     {
         if ($request->request->has('operation_id')) {
             $entityManager = $this->entityManager;
@@ -40,7 +43,13 @@ class ListeController extends AbstractController
                 $operation->setDateEnd(new \DateTime());
                 $operation->setStatut('Terminé');
                 $entityManager->flush();
-    
+                
+                $client = $operation->getClient();
+                $pdf = $pdfContent->generatePdf(['operation'=>$operation]);
+                $emailClient = $client->getMail();
+
+          
+                $email->sendFactureMail($emailClient, $pdf);
                 // Redirection vers une page intermédiaire
                 return $this->redirectToRoute('operation_terminer', ['id' => $operationId]);
             }

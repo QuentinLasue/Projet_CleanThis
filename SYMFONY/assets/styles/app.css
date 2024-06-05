@@ -1560,6 +1560,7 @@ width: 100%;
     }
   }
 
+  
 @media (max-width: 660px) {
   
  .flipperFront{
@@ -1841,9 +1842,9 @@ font-size: 60px;
 
 
 
-.message-titre{
+/* .message-titre{
   height: 80vh;
-}
+} */
 .message-titre h1{
   font-size: 5rem;
 }

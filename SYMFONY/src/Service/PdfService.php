@@ -38,12 +38,6 @@ class PdfService
             'Content-Type' => 'application/pdf',
             'Content-Disposition' => 'inline; filename="exemple.pdf"'
         ]);
-
-
-
-
-
-
     }
 
 }
