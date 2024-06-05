@@ -39,12 +39,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         pattern: "/\S+/",
         message: "Le champ ne peut pas contenir uniquement des espaces."
     )]
-    #[Assert\Length(
-        min: 6,
-        max: 50,
-        minMessage: 'Votre mot de passe est trop court.',
-        maxMessage: 'Votre mot de passe est trop long, il ne doit pas dépasser 50 caractères.'
-    )]
+    // #[Assert\Length(
+    //     min: 6,
+    //     max: 50,
+    //     minMessage: 'Votre mot de passe est trop court.',
+    //     maxMessage: 'Votre mot de passe est trop long, il ne doit pas dépasser 50 caractères.'
+    // )]
     private ?string $password = null;
 
     #[ORM\Column(length: 50)]

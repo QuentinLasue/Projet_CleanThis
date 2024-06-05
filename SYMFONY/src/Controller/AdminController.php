@@ -59,6 +59,9 @@ class AdminController extends AbstractController
             $this->addFlash('success', "Votre modification a été prise en compte");
 
             return $this->redirectToRoute('admin.listePersonnel');
+        }else{
+            $this->addFlash('error', "Formulaire invalide");
+
         }
 
         // on render en envoyant le formulaire l'utilisateur pour la blueBar et les infos (nom,prenom,role) pour le préremplissage 
