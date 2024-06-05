@@ -1,12 +1,22 @@
-# This file is the entry point to configure your own services.
-# Files in the packages/ subdirectory configure your dependencies.
+# config/services.yaml
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
 
+    admin_email: 'cleanthis154@gmail.com'
+    photo_directory: '%kernel.project_dir%/public/photoClient' # chemin vers la où on veut stocker les photos, %kerne..% represente le repertoire racine du projet
+    app.jwtsecret: '%env(JWT_SECRET)%'
+    google_client_id: '%env(GOOGLE_CLIENT_ID)%' #lien avec la variable d'environement du .env
+
 services:
+    # Déclarez votre contrôleur en tant que service public
+    App\Controller\YourController:
+        public: true
+
     # default configuration for services in *this* file
+    App\Service\PasswordMailer:
+        autowire: true
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
@@ -17,8 +27,19 @@ services:
         resource: '../src/'
         exclude:
             - '../src/DependencyInjection/'
-            - '../src/Entity/'
+            # - '../src/Entity/'
             - '../src/Kernel.php'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+
+    App\Service\MailService:
+            $adminEmail: '%admin_email%'
+            $mailer: '@Symfony\Component\Mailer\MailerInterface'
+            $twig: '@twig'
+
+    App\Service\PdfService:
+        arguments:
+            $twig: '@twig'
+

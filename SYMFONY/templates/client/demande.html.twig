@@ -1,0 +1,54 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Demande d'opération{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('../assets/apiAdresse.js') }}"></script>
+    <script src="{{ asset('../assets/inputFile.js') }}"></script>
+    {% block importmap %}
+        {{ importmap('app') }}
+    {% endblock %}
+{% endblock %}
+
+{% block body %}
+    {% set titre = 'Demande d\'opération de nettoyage' %}
+    {% include "base/blueBar.html.twig" %}
+    {% include "base/flash.html.twig" %}
+
+    <div class="formClient">
+        <a href="{{ path('client') }}" class="btnBack btn">Retour</a>
+        {{ form_start(form) }}
+        <div>
+        	<p class="titleForm">Vos coordonées :</p>
+            <div class="doubleChamp">
+                {{ form_row(form.client.name, {'attr':{'placeholder':"John"}}) }}
+                {{ form_row(form.client.firstname,{'attr':{'placeholder':"Doe"}}) }}
+            </div>
+            {{ form_row(form.client.mail,{'attr':{'placeholder':"john.doe@gmail.com"}}) }}
+        </div>
+
+        <div>
+            <p class="titleForm">Adresse de l'opération :</p>
+            <div class="doubleChamp">
+                {{ form_row(form.adresse.number,{'attr':{'placeholder':"7"}}) }}
+                {{ form_row(form.adresse.street,{'attr':{'placeholder':"Rue de la gare"}}) }}
+            </div>
+            <div id="adresse-suggestions"></div>
+            <div class="doubleChamp">
+                {{ form_row(form.adresse.city,{'attr':{'placeholder':"Bailleul"}}) }}
+                {{ form_row(form.adresse.county,{'attr':{'placeholder':"Nord"}}) }}
+            </div>
+            {{ form_row(form.adresse.country,{'attr':{'placeholder':"France"}}) }}
+        </div>
+
+        <div>
+            <p class="titleForm">Votre demande :</p>
+            {{ form_row(form.operation.type) }}
+            {{ form_row(form.operation.dateForecast) }}
+            {{ form_row(form.operation.description,{'attr':{'placeholder':"Description de votre demande"}}) }}
+            {{ form_row(form.operation.photo) }}
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

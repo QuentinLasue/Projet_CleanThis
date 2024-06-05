@@ -1,0 +1,13 @@
+<nav class="navbarE">
+    <ul class="navE-links">
+        <li><a href="{{ path('app_operation')}}">Opérations</a></li>
+        <li><a href="{{ path('app_liste')}}">Ma Liste</a></li>
+        {% if is_granted('ROLE_EXPERT') %}
+            <li><a href="{{ path('add_operation_list')}}">Ajout Opération</a></li>
+            <li><a href="{{ path('admin.listePersonnel')}}">Liste Personnel</a></li>
+            <li><a href="{{ path('app_register')}}">Ajout Personnel</a></li>
+            <li><a href="{{ path('app_statistique')}}">Statistique</a></li>
+            <li><a href="{{path('app_repertoire')}}">Répertoire</a></li>
+        {% endif %}
+    </ul>
+</nav>

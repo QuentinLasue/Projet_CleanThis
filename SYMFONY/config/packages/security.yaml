@@ -1,29 +1,60 @@
 security:
-    # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
+    # Configuration for password hashers and providers
     password_hashers:
-        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
-    # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
+        App\Entity\User:
+            algorithm: auto
+
     providers:
-        users_in_memory: { memory: null }
+        # users_in_memory: { memory: null }
+        database_users:
+            entity:
+                class: App\Entity\User
+                property: email
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
+# Configuration for firewalls
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+
         main:
             lazy: true
-            provider: users_in_memory
+            provider: database_users
+            custom_authenticator:
+                
+                - App\Security\LoginFormAuthenticator
+                # - App\Security\UserAuthenticator
 
-            # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#the-firewall
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                # target: app_any_route
 
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
 
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800
+                path: /
+                #always_remember_me: true
+                # by default, the feature is enabled by checking a checkbox in the
+                # login form, uncomment the following line to always enable it.
+                #always_remember_me: true
+
+        connect_google_check: 
+            pattern: ^/connect/google_check
+            security: false
+
+    # Access control configuration
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+       - { path: ^/admin, roles: ROLE_EXPERT }
+       - { path: ^/profile, roles: ROLE_SENIOR }
+       - { path: ^/profile, roles: ROLE_JUNIOR }
+       - {path: ^/user, roles: [ROLE_EXPERT, ROLE_SENIOR, ROLE_JUNIOR]}
+
+
 
 when@test:
     security:

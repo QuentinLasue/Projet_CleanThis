@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+            Facture pour {{operation.client.name}} {{operation.client.firstname}}
+		</title>
+        <style>
+            table{
+                border-collapse: collapse;
+                width: 80%;
+                margin: auto;
+            }
+            td,th{
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: center;
+            }
+            th{
+                background-color: #2678d1;
+                color: white;
+            }
+            hr{
+                color: #2678d1;
+            }
+            h1{
+                color: #2678d1;
+                font-size: 40px;
+            }
+            h1,h3,h5{
+                text-align: center;
+            }
+            .divTable{
+                text-align: center;
+                width: 100%;
+                display:flex;
+                justify-content: center;
+            }
+            .titleDiv {
+                display: flex;
+                justify-content: center;
+            }
+            .blueBar {
+                width: 500px;
+                background-color: #2678d1;
+                padding: 0.3%;
+                padding-left: 5%;
+                border-radius: 0 150px 0 0;
+            }
+            .blueBar h2 {
+                color: white;
+                font-size: 30px;
+            }
+            .total{
+                background-color: #2678d1;
+                color: white;
+                width: 20%;
+                padding: 1%;
+                font-size: 20px;
+                text-align: center;
+                margin-left: 68%;
+            }
+        </style>
+	</head>
+	<body>
+        <h1>CleanThis</h1>
+
+        <div class="titleDiv">
+            <div class="blueBar"> 
+                <h2> Facture pour {{operation.client.name}} {{operation.client.firstname}}</h2>
+            </div>
+        </div>
+        <h3>Information renseigné par le client</h3>
+            <p><b>Adresse</b> : {{operation.adresse.number }} {{operation.adresse.street}} {{operation.adresse.city}} {{operation.adresse.county}} {{operation.adresse.country}}</p>
+            <p><b>Date de réalisation souhaité</b> : {{operation.dateForecast|date('d/m/Y')}}</p>
+            <p><b>Description</b> : {{operation.description}}</p>
+            <hr>
+        
+        <h3>Information sur l'opération</h3>
+        <p><b>Employé en charge de l'opération</b> : {{operation.user ? operation.user.name : "Pas encore attribué"}} {{operation.user ? operation.user.firstname : ""}}</p>
+        <p><b>Date de réalisation</b> : {{operation.dateStart ? operation.dateStart|date('d/m/Y') : "Pas encore réalisé"}}</p>
+        <p><b>Date de fin de l'opération</b> : {{operation.dateEnd ? operation.dateEnd|date('d/m/Y') : "Pas encore terminé"}}</p>
+        <hr>
+        <h3>Récapitulatif de l'opération</h3>
+        <div class="divTable">
+            <table>
+                <tr>
+                    <th>Client</th>
+                    <th>Description de l'opération</th>
+                    <th>Type d'opération</th>
+                    <th>Prix</th>
+                </tr>
+                <tr>
+                    <td>{{operation.client.name}} {{operation.client.firstname}}</td>
+                    <td>{{operation.description}}</td>
+                    <td>{{operation.type.name}}</td>
+                    <td>{{ operation.customPrix ? operation.customPrix : operation.type.prix}} €</td>
+                </tr>
+            </table>
+        </div>
+        <div class="divTotal">
+            <p class="total"><b>Total : {{ operation.customPrix ? operation.customPrix : operation.type.prix}} €</b> </p>
+        </div>
+        <hr>
+        <h5>Merci de nous avoir fais confiance.</h5>
+    </body>
+</html>
+
+

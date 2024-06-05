@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+{% block title %}Description
+{% endblock %}
+{% block javascripts %}
+	<script src="{{ asset('../assets/apiAdresse.js') }}"></script>
+	<script src="{{ asset('./../assets/inputFile.js') }}"></script>
+	{% block importmap %}
+		{{ importmap('app') }}
+	{% endblock %}
+{% endblock %}
+{% block body %}
+    {% set titre = "Description de votre demande" %}
+	{% include "base/blueBar.html.twig" %}
+    <div class="formClient">
+        <a href="{{path('getClient')}}" class=" btn btnBack">Retour</a>
+        {{form_start(form)}}
+        {{form_row(form.type)}}
+        {{form_row(form.dateForecast)}}
+        {{form_row(form.description,{'attr':{'placeholder':"Description de votre demande..."}})}}
+        {{form_row(form.photo)}}
+        {{form_end(form)}}
+    </div>
+
+    
+{% endblock %}

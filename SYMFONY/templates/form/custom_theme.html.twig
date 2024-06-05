@@ -1,0 +1,89 @@
+{% use 'bootstrap_5_layout.html.twig'%}
+
+{% block form_label %}
+	<div class="divLabel">
+		<label {{ block('attributes') }}>{{ label }}</label>
+	</div>
+{% endblock %}
+
+{% block text_widget %}
+	<div class="divInput">
+		<input type="text" {{ block('widget_attributes') }}>
+	</div>
+
+{% endblock %}
+
+{% block integer_widget %}
+	<div class="divInput">
+		<input type="number" {{ block('widget_attributes') }}>
+	</div>
+{% endblock %}
+
+{% block textarea_widget %}
+	<textarea {{ block('widget_attributes') }}>{{value}}</textarea>
+
+{% endblock %}
+{% block choice_widget %}
+	<div class="divInput">
+		{% if expanded %}
+			<div {{ block('widget_container_attributes') }}>
+				{% for child in form %}
+					{{ form_widget(child) }}
+					{{ form_label(child) }}
+				{% endfor %}
+			</div>
+		{% else %}
+			<select {{ block('widget_attributes') }} class="form-control">
+				{% if placeholder is not empty %}
+					<option value="" {% if required and value is null %} selected="selected" {% endif %}>{{ placeholder != '' ? placeholder : 'Choose an option' }}</option>
+				{% endif %}
+				{% if preferred_choices|length > 0 %}
+					{% set options = preferred_choices %}
+					{{ block('choice_widget_options') }}
+					{% if choices|length > 0 and separator is not none %}
+						<div{{block('widget_container_attributes')}}>{{ separator }}</div>
+					{% endif %}
+				{% endif %}
+				{% set options = choices %}
+				{{ block('choice_widget_options') }}
+			</select>
+		{% endif %}
+	</div>
+{% endblock %}
+
+{% block date_widget %}
+	<div class="divInput">
+		<input type="date" {{ block('widget_attributes') }} class="widgetDate">
+	</div>
+{% endblock %}
+{% block submit_widget %}
+	<div class="divBtnSend">
+		<button type="submit" {{ block('button_attributes') }} class="btn btnSend">
+			{{ label|default('Submit') }}
+		</button>
+	</div>
+
+{% endblock %}
+{% block file_widget %}
+<div class="doubleChamp">
+	<label for="fileInput" class="btn btnInputFile">Choisir un fichier</label>
+	<input type="file" id="fileInput"{{ block('widget_attributes') }} accept="image/png,image/jpeg" onchange="displayFileName(this)">
+	<p id="file-name" class="fileInput">Aucun fichier sélectionné.</p>
+</div>
+{% endblock %}
+
+{% block radio_label %}
+	<label {{ block('attributes') }}>{{ label }}</label>
+{% endblock %}
+{% block radio_widget %}
+	<input type="radio" {{ block('widget_attributes') }} class="radioInput" value={{ value }}>
+{% endblock %}
+
+
+{% block form_errors %}
+	{% if errors|length > 0 %}
+		{% for error in errors %}
+				<p class="messageError">{{error.message}}</p>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

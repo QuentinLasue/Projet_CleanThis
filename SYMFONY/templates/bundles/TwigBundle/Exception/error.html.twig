@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+{% block title %}
+Error
+{% endblock %}
+
+{% block body %}
+	{% set titre = 'Erreur ' ~ status_code  %}
+	{% include "base/blueBar.html.twig" %}
+	<div class="divErreur min-height100">
+		<p>Impossible de trouver la page demandée.</p>
+		<p>Toutes nos excuses pour la gêne occasionnée.</p>
+		<p>{{status_text}},
+			{{ exception.message }}</p>
+		<a class="btn btnInputFile" href="{{ path('home')}}">Retour a la page d'accueil</a>
+	</div>
+{% endblock %}

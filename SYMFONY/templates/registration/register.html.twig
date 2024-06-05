@@ -1,0 +1,23 @@
+
+{# registration/register.html.twig #}
+
+
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+{% include "base/nave.html.twig" %}
+{% include "base/flash.html.twig" %}
+{% set titre = "Register" %}
+{% include "base/blueBar.html.twig" %}  
+<div class = "registFor">
+  {{ form_start(registrationForm) }}
+    {# Form rendering logic #}
+    {{ form_row(registrationForm.name, {'attr': { 'placeholder': 'Doe'}}) }}
+    {{ form_row(registrationForm.firstname, {'attr': { 'placeholder': 'John'}}) }}
+    {{ form_row(registrationForm.email, {'attr': { 'placeholder': 'johndoe@gmail.com'}}) }}
+    {{ form_end(registrationForm) }}
+    </div>
+{% endblock %}

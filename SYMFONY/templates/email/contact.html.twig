@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page de contact{% endblock %}
+
+{% block body %}
+
+    
+       
+        
+     <div class="titleAll">
+    {% set titre = "Formulaire de contact" %}
+         {% include "base/blueBar.html.twig" %}
+         </div>
+    
+    <div class="formulaire-container">
+        <h3 class="Tifor">Envoyez-nous un message</h3>
+    
+        <form method="post">
+            {{ form_start(form) }}
+            <div class="form-group">
+    {{ form_row(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Entrez votre adresse e-mail'}}) }}
+            </div>
+
+            <div class="form-group2">
+                {{ form_row(form.content, {'attr': {'class': 'form-control', 'placeholder':'Précisez votre demande...'}}) }}
+            </div>
+            {{ form_end(form) }}
+        </form>
+    </div>
+{% endblock %}

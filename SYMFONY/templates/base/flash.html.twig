@@ -1,0 +1,9 @@
+{% for type, messages in app.flashes %}
+
+
+<div class="divMessageFlash">
+    <div class="flash {{ type }}"> 
+        <p class="messageFlash">{{ messages | join('. ') }}</p> 
+    </div>
+</div>
+{% endfor %}

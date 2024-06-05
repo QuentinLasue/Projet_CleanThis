@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+{% block title %}Client
+{% endblock %}
+{% block body %}
+    {% set titre = "Qui êtes-vous ?" %}
+	{% include "base/blueBar.html.twig" %}
+    {% include "base/flash.html.twig" %}
+    <div class="formClient min-height100">
+        <a href="{{path('client')}}" class=" btn btnBack">Retour</a>
+        {% for message in app.flashes('danger') %}
+        <div class="alert">
+        {{ message }}
+        </div>
+        {% endfor %}
+        
+        {{form_start(form)}}
+            {{form_row(form.mail,{'attr':{'placeholder':"exemple@exemple.com"}})}}
+        {{form_end(form)}}
+    </div>
+
+    
+{% endblock %}

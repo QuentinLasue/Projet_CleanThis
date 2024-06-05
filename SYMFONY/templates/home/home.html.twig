@@ -1,0 +1,173 @@
+{% include "base/flash.html.twig" %}
+<div class="container">
+
+	<div class="divIntro" style="background-image: url('{{ asset('image/wave.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+
+		<div class="message-titre">
+			<h1>Éclat garanti, sans compromis</h1>
+			<h2 class="intro">
+				Depuis un demi-siècle, Clean This définit l'excellence en nettoyage. Avec 50 ans d'expérience, notre savoir-faire inégalé garantit un service de qualité supérieure à chaque intervention. Faites confiance à notre héritage pour des résultats impeccables à chaque fois.
+			</h2>
+			<a class="btnDecouvrir" href="#cardList">Découvrez nos offres</a>
+		</div>
+
+		<div class="image-home">
+			<img class="bg-img" src="{{ asset('image/bg2.png') }}" alt="Image de fond montrant des services de nettoyage">
+		</div>
+
+	</div>
+
+	<div class="bg-coverAll" style="background-image: url('{{ asset('image/body.png') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+		
+
+		<div class="valeur">
+			<h1>Pourquoi CleanThis ?</h1>
+		</div>
+
+		<div class="logo-why">
+
+
+			<div class="para-why">
+				<img src="{{ asset('image/logo-texte/check.png') }}" alt="trust">
+				<h4 class="titre-para1">Votre partenaire de confiance
+				</h4>
+				<p>
+					Pour un nettoyage professionnel de qualité.</p>
+			</div>
+
+			<div class="para-why">
+				<img src="{{ asset('image/logo-texte/medal.png') }}" alt="trust">
+				<h4 class="titre-para1">Expertise et excellence
+				</h4>
+				<p>
+					n résultat impeccable à chaque intervention</p>
+			</div>
+
+			<div class="para-why">
+				<img src="{{ asset('image/logo-texte/chrono.png') }}" alt="techno">
+				<h4 class="titre-para1">Gain de temps précieux
+				</h4>
+				<p>
+					Libérez du temps pour vous concentrer sur l'essentiel</p>
+			</div>
+
+			<div class="para-why">
+				<img src="{{ asset('image/logo-texte/checkList.png') }}" alt="besoins">
+				<h4 class="titre-para1">Services sur mesure
+				</h4>
+				<p>
+					Des solutions personnalisées, adaptées à vos exigences</p>
+			</div>
+
+			<div class="para-why">
+				<img src="{{ asset('image/logo-texte/economy.png') }}" alt="economie">
+				<h4 class="titre-para1">Économie intelligente
+				</h4>
+				<p>
+					Un choix économiquement judicieux.</p>
+			</div>
+
+
+		</div>
+
+	</div>
+	{# Section Prestation #}
+	<h2 class="presta">Choisissez Parmi Nos Prestations</h2>
+	<div id="cardList" class="cardList">
+		{% for typeOperation in typesOperations %}
+			<div class="flipContainer">
+				<div class="flipper">
+					<div class="flipperFront flip">
+						<img src="https://th.bing.com/th/id/OIP.CmTZmPvJbpQq4Gvr44Fn9AHaEW?rs=1&pid=ImgDetMain" alt="Image de présentation de l'opération {{ typeOperation.name }}">
+						<div>
+							<h4 class="titre-para">{{ typeOperation.name }}</h4class="titre-para">
+						</div>
+					</div>
+					<div class="flipperBack flip">
+						<h4 class="titre-para">{{ typeOperation.name }}</h4class="titre-para">
+						<p>{{ typeOperation.description }}</p>
+						<p>
+							Prix :
+							{% if typeOperation.prix == 0 %}
+								Personnalisé
+							{% else %}
+								{{ typeOperation.prix }}
+								€
+							{% endif %}
+						</p>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+	{# Bouton Demande de Devis #}
+	<div class="divIntro1">
+		<a class="btnDevis" href="{{ path('client') }}">DEMANDER VOTRE DEVIS</a>
+	</div>
+
+	<div class="classeEco">
+		<img class="eco-img1" src="{{ asset('image/terre.jpg') }}" alt="">
+		<h1 class="intro1">
+			Notre Engagement pour la Planète : Construire un Avenir Durable
+		</h1>
+	</div>
+	<div class="eco-texte ">
+		<p>Notre engagement pour la planète, en tant que société de nettoyage, repose sur la conviction que chaque geste compte et que nous avons tous un rôle crucial à 
+			  jouer dans la préservation de notre environnement. Conscients des défis écologiques auxquels nous faisons face, nous nous efforçons de promouvoir des pratiques durables et 
+			  responsables dans toutes nos prestations. Nous utilisons des produits de nettoyage écologiques, adoptons des méthodes qui minimisent l'impact environnemental et 
+			  réduisons notre consommation d'eau et d'énergie. En soutenant des initiatives locales de conservation et en sensibilisant nos clients à l'importance de l'écologie, 
+			  nous mettons tout en œuvre pour contribuer à un avenir plus vert et plus sain. Ensemble, avec détermination et solidarité, nous pouvons bâtir un monde où la propreté 
+			  et la durabilité vont de pair.
+		</p>
+		<div>
+		<img class="devDurable" src="{{ asset('image/devDurable.png') }}" alt="Image de fond montrant des services de nettoyage">
+		</div>
+	</div>
+
+	<div class="eco-image">
+		<img class="eco-img1" src="{{ asset('image/eco-label-logo-1.jpg') }}" alt="">
+		<img class="eco-img2" src="{{ asset('image/nf-environnement.jpg') }}" alt="">
+		<img class="eco-img3" src="{{ asset('image/logo-ecocert-detergent.jpg') }}" alt="">
+		<img class="eco-img4" src="{{ asset('image/nordic_swan.jpg') }}" alt="">
+	</div>
+
+
+	<div class="commentaire">
+		<h1>Plus de 1000 clients nous font confiance</h1>
+	</div>
+
+
+	<div class="com">
+		<div class="com-client">
+
+			<div class="profil-client">
+				<img class="client-icon" src="{{ asset('image/person.jpg') }}" alt="">
+				<h4>
+					Martine, client Cleanthis</h4>
+			</div>
+
+			<p>Ayant essayé d’autres prestataires, je suis restée sur Cleanthis pour leur compétence et sérieux. 
+					 L’intervenant, Moussa, prend des initiatives 
+					 et marque tout dans le carnet de bord. Je suis très satisfaite de son travail.</p>
+
+		</div>
+
+		<div class="com-client">
+			<div class="profil-client">
+				<img class="client-icon" src="{{ asset('image/person.jpg') }}" alt="">
+				<h4>Mourad, Formateur
+				</h4>
+			</div>
+			<p>Les prestations de mon intervenant sont de grande qualité et la société toujours très réactive et disponible. 
+					   Merci pour la qualité qui est à la hauteur du coût du service rendu.</p>
+		</div>
+		
+		<div class="notation">
+		<img class="note-avis" src="{{ asset('image/noteAvis.png') }}" alt="">
+		</div>
+		
+
+	</div>
+
+</div>

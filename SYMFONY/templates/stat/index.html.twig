@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Statistique{% endblock %}
+
+	{% block javascripts %}
+    
+			{% block importmap %}
+				{{ importmap('importBootstrap') }}
+			{% endblock %}
+		{% endblock %}
+{% block body %}
+{% include "base/nave.html.twig" %}
+   <div class="operation-table ">
+                <h2>Chiffre d'Affaires 2024</h2>
+                <table class="tableStat">
+                 
+                    <tbody>
+                        <tr>
+                            <td>Petite</td>
+                            <td>{{ countPetite }}</td>
+                        </tr>
+                        <tr>
+                            <td>Moyenne</td>
+                            <td>{{ countMoyenne }}</td>
+                        </tr>
+                        <tr>
+                            <td>Grosse</td>
+                            <td>{{ countGrosse }}</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Custom</td>
+                            <td>{{ countCustom }}</td>
+                        </tr>
+                        <tr>
+                            <td>Nombre total</td>
+                            <td>{{ totalCount }}</td>
+                        </tr>
+                        <tr>
+                            <td>Chiffre total en cours</td>
+                            <td>{{ totalPrix }}</td>
+                        </tr>
+                     
+                    </tbody>
+                </table>
+            </div>
+    <div class="example-wrapper">
+        <div class="chart1">
+            
+            
+            {{ render_chart(chart3) }}
+        </div>
+         
+        <div class="chart2">
+          
+            {{ render_chart(chart2) }}
+        </div>
+       <div class="chart3">
+            
+            {{ render_chart(chart1) }}
+        </div>
+    </div>
+
+
+    
+{% endblock %}

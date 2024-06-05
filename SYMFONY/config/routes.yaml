@@ -3,3 +3,27 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+redirection_vue:
+    path: /redirection
+    controller: App\Controller\YourController::yourAction
+
+app_login:
+    path: /login
+    controller: App\Controller\LoginController::login
+
+confirmation:
+    path: /confirmation
+    controller: App\Controller\ConfirmationController::index
+
+
+generate_pdf:
+    path: user/pdf/{id}
+    controller: App\Controller\PdfController::generatePdf
+    methods: get
+
+connect_google: 
+    path: /connect/google
+    controller: App\Controller\LoginController::connectGoogle
+
+
