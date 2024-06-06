@@ -75,6 +75,8 @@ Les informations demandées lors d’une demande de d’opérations sont :
 Intégration API Externe
 
 Pour le formulaire de demande d’opération nous faisons a l’API adresse du gouvernement (API Gouv - Base Adresse Nationale) en utilisant la technologie AJAX, pour générer des adresse en fonction de ce que le client rentre dans les chams pour faciliter sa demande et pré remplir sa demande si ils sélectionne l’un des choix proposé.
+
+
 try {
       //Appel de l'API Adresse avec la requête
       const response = await fetch(
