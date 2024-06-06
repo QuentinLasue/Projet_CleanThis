@@ -1,3 +1,22 @@
+Pour lancer se projet en local : 
+Cloner le projet depuis ce repository
+
+dans le terminal : 
+composer install 
+
+Puis : 
+php bin/console doctrine:migrations:migrate
+
+et enfin :
+php bin/console doctrine:fixtures:load
+
+Si vous souhaiter accéder au côté employé de l'application :
+Dans votre base de donné en local ajouter à la table User un user, avec votre nom, votre prenom, une adresse mail google, un mot de passe, et en role mettez ceci : ["ROLE_EXPERT"] pour avoir accés à tous le côté employé.
+attention la connexion avec le mot de passe que vou avez choisis ne fonctionneras pas à cause du hashage il faudra utiliser la fonctionnalité mot de passe oublié pour le rendre fonctionnel.
+
+Lancer le projet avec : 
+symfony server:start   
+
 Version	1.0
 Équipe de développement	Scrum Master : - Melon Samuel
 
