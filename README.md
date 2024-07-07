@@ -22,7 +22,7 @@ Version	1.0
 
 Devellopeur : -Lasue Quentin
                        -Benarab Nordine
-                       -Leitren Areis
+                       -Letren Areis
                        -Achouri Moussa
 
 Introduction 
